@@ -1,0 +1,18 @@
+.delivery {
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    margin: 0;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1400px) {
+   .delivery {
+    flex-wrap: wrap;
+    gap: 150px;
+    
+   }
+  }
+  

@@ -1,0 +1,17 @@
+.katalogs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+    gap: 80px;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1650px) {
+    .katalogs {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    
+}

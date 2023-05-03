@@ -1,0 +1,150 @@
+.card {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.image_Back_ground {
+    position: absolute;
+    z-index: -1;
+    border-radius: 12px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.translate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 33px;
+    justify-content: flex-start;
+    margin-top: 60px;
+    transform: translateY(220px);
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    transition: 0.4s;
+}
+
+.translate:hover {
+    transform: translateY(20px);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.info_link {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 104.5%;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0;
+    z-index: 10;
+}
+
+.info_link:hover {
+    color: rgba(1, 87, 65, 1);
+}
+
+.opacity {
+    border-top-right-radius: 0 10px;
+    position: relative;
+}
+
+.imageOpacity {
+    background-image: url(../../../image/wave.svg);
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: -80px;
+    width: 100%;
+    height: 120%;
+    opacity: 0.8;
+}
+
+.title {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    color: #ffffff;
+    z-index: 10;
+}
+
+@media screen and (max-width: 1650px) {
+    .card {
+        width: 400px;
+        height: 320px;
+    }
+
+    .image_Back_ground {
+        width: 100%;
+        height: auto;
+    }
+
+    .translate {
+        transform: translateY(125px);
+    }
+
+    .translate:hover {
+        transform: translateY(-20px);
+    }
+
+    .imageOpacity {
+        height: 150%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .card {
+        flex: 0 1 40%;
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .card {
+        flex: 0 0 80%;
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+
+@media screen and (max-width: 778px) {
+    .card {
+        flex: 0 1 100%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .image_Back_ground {
+        width: 100%;
+        height: 100%;
+    }
+
+    .info {
+        width: 100%;
+        padding-left: 20px;
+    }
+}

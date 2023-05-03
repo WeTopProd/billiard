@@ -1,0 +1,165 @@
+.card {
+    margin: 0;
+    width: 425px;
+    background-color: black;
+    border: 2px solid #d4cdca;
+    border-radius: 10px;
+    position: relative;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 26px; 
+    margin-bottom: 100px;
+}
+
+.imageHit_container {
+    width: 100%;
+    height: 297px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    margin: 0;
+}
+
+.imageHit {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+.iconHit {
+    position: absolute;
+    color: rgba(10, 139, 106, 1);
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    top: 11px;
+    left: 14px;
+    border: 2px solid #0a8b6a;
+    padding: 5px 10px;
+}
+
+.heart {
+    position: absolute;
+    top: 14px;
+    right: 11px;
+}
+
+.heart:hover svg {
+    fill: #0a8b6a;
+    cursor: pointer;
+}
+
+.description {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    max-width: 331px;
+}
+
+.price {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 17px;
+    color: #0a8b6a;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.buttons_item {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.button_one {
+    flex: 0 1 45%;
+    height: 64px;
+    border: none;
+    background-color: #e3dcd9;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button_two {
+    flex: 0 1 45%;
+    height: 64px;
+    border: 1px solid white;
+    background-color: black;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #f1efee;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.buttonOneClick_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonOneClick {
+    flex: 0 1 98%;
+    height: 64px;
+    border: none;
+    background-color: #e3dcd9;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button_one:hover,
+.buttonOneClick:hover {
+    background-color: #004E3A;
+    color: white;
+}
+
+.button_two:hover {
+    background-color: white;
+    color: black;
+}
