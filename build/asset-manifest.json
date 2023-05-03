@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.058cf35c.css",
+    "main.js": "/static/js/main.4dc6877d.js",
+    "static/media/Billiard_background.jpg": "/static/media/Billiard_background.a374a51440817e0f7450.jpg",
+    "static/media/Acsessuar.jpg": "/static/media/Acsessuar.dd0860c415fb2cef82eb.jpg",
+    "static/media/Poppins-Regular.ttf": "/static/media/Poppins-Regular.d670998329bb87deac6c.ttf",
+    "static/media/Poppins-Medium.ttf": "/static/media/Poppins-Medium.fd6c3448ac6bc488ac57.ttf",
+    "static/media/Poppins-SemiBold.ttf": "/static/media/Poppins-SemiBold.a1b0848ceedfa784fc2f.ttf",
+    "static/media/BilliardRounds.jpg": "/static/media/BilliardRounds.c1008f286259cbf27d21.jpg",
+    "static/media/services.jpg": "/static/media/services.214076db180b7dd8d470.jpg",
+    "static/media/kii (2).jpg": "/static/media/kii (2).48d138a1107dba9a4a67.jpg",
+    "static/media/pnecilKii (2).jpg": "/static/media/pnecilKii (2).26bb85a81c227b19e542.jpg",
+    "static/media/heart.svg": "/static/media/heart.464bc65b1913bbd508d98dabd93c1647.svg",
+    "static/media/Group 1.svg": "/static/media/Group 1.c5039ee566ff2c8e8d1d3539fec9977a.svg",
+    "static/media/basket.svg": "/static/media/basket.d5ea0208ecee76fca12410d181f8c53b.svg",
+    "index.html": "/index.html",
+    "static/media/search.svg": "/static/media/search.cfd084fef55b0d2427d12bbf960613d5.svg",
+    "static/media/wave.svg": "/static/media/wave.afdcb0e311c9836be25a.svg",
+    "main.058cf35c.css.map": "/static/css/main.058cf35c.css.map",
+    "main.4dc6877d.js.map": "/static/js/main.4dc6877d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.058cf35c.css",
+    "static/js/main.4dc6877d.js"
+  ]
+}
