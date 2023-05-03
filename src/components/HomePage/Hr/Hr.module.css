@@ -1,0 +1,39 @@
+.blockHr {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+
+
+.titleHr {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 104.5%; 
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.hr {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    margin: 0;
+    margin-top: 10px;  
+
+}
+
+
+@media screen and (max-width: 480px) {
+    .blockHr {
+        flex-direction: column;
+    }
+
+    .titleHr {
+        white-space: pre-wrap;
+        text-align: center;
+    }
+}

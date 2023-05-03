@@ -1,0 +1,72 @@
+.section {
+    background-image: url("../../image/Billiard_background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.kiy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+}
+
+.title {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    color: #ffffff;
+    margin: 0;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+    padding-bottom: 20px;
+}
+
+
+.text {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    color: #ffffff;
+    margin: 0;
+}
+
+
+.katalog_link {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 12px 52px;
+    transition: .5s;
+    text-decoration: none;
+    margin: 0;
+    margin-top: 76px;
+}
+
+.katalog_link:hover {
+    background: #004e3a;    
+}
+
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 45px;
+    max-width: max-content;
+  }
+}
