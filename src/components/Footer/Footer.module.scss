@@ -18,6 +18,11 @@
             justify-content: space-between;
             margin: 0;
             text-align: left;
+
+            &:nth-child(2):hover{
+                color: red;
+                cursor: pointer;
+            }
             & img {
                 margin: 0;
             }
@@ -237,7 +242,7 @@
                         @media screen and (max-width: 550px) {
                             width: 100px;
                         }
-                    }
+                    } 
                 }
             }
         }

@@ -34,7 +34,7 @@ const KatalogKiyCard = (item) => {
         </div>
 
         <Swiper
-          width={594}
+          // width={594}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           scrollbar={false}
           navigation={true}
@@ -42,11 +42,23 @@ const KatalogKiyCard = (item) => {
           spaceBetween={0}
           slidesPerView={1}
           centeredSlides={true}
+          breakpoints= {{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            },
+           
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            }         
+          }}
           onSwiper={(swiper) => swiper}
-          className={s.swiper}>
+          className={s.swiper}>  
+
           {item.image.map((item) => (
             <SwiperSlide>
-              <img src={item} />
+              <img className={s.image} src={item} />
             </SwiperSlide>
           ))}
         </Swiper>

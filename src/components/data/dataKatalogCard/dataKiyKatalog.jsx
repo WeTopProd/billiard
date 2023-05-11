@@ -5,7 +5,7 @@ import swiperImg from '../../../image/filterImage/swiperImg.png'
 export const dataKiyFilter = [
   {
     id: uuidv4(),
-    title: "Кий Московская пирамида",
+    title: "Кий Московская пирамида Снукер",
     description: "Трехсоставной кий с удлинителем ручной работы",
     composition: "3",
     structure: "винге, падук, мовинго, грапп, черный грапп.",
@@ -19,7 +19,7 @@ export const dataKiyFilter = [
 
   {
     id: uuidv4(),
-    title: "Кий Московская пирамида",
+    title: "Кий Московская пирамида Пул",
     description: "Трехсоставной кий с удлинителем ручной работы",
     composition: "1",
     structure: "винге, падук, мовинго, грапп, черный грапп.",
@@ -33,7 +33,35 @@ export const dataKiyFilter = [
 
   {
     id: uuidv4(),
-    title: "Кий Московская пирамида",
+    title: "Кий Московская пирамида Пирамида",
+    description: "Трехсоставной кий с удлинителем ручной работы",
+    composition: "1",
+    structure: "винге, падук, мовинго, грапп, черный грапп.",
+    workshop: 'Московская пирамида',
+    weight: 700,
+    article: 5140576,
+    price: 50000, 
+    play: 'Пирамида',
+    image: [swiperImg, swiperImg, swiperImg, swiperImg],
+  },
+
+  {
+    id: uuidv4(),
+    title: "Кий Московская пирамида Пул",
+    description: "Трехсоставной кий с удлинителем ручной работы",
+    composition: "1",
+    structure: "винге, падук, мовинго, грапп, черный грапп.",
+    workshop: 'Московская пирамида',
+    weight: 700,
+    article: 5140576,
+    price: 50000, 
+    play: 'Пул',
+    image: [swiperImg, swiperImg, swiperImg, swiperImg],
+  },
+
+  {
+    id: uuidv4(),
+    title: "Кий Московская пирамида Пирамида",
     description: "Трехсоставной кий с удлинителем ручной работы",
     composition: "2",
     structure: "винге, падук, мовинго, грапп, черный грапп.",
@@ -47,7 +75,7 @@ export const dataKiyFilter = [
 
   {
     id: uuidv4(),
-    title: "Кий Московская пирамида",
+    title: "Кий Московская пирамида Эксклюзив",
     description: "Трехсоставной кий с удлинителем ручной работы",
     composition: "3/4",
     structure: "винге, падук, мовинго, грапп, черный грапп.",

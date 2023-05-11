@@ -3,14 +3,9 @@
     margin: 0 auto;
 }
 
-.swiper-scrollbar { 
-    display: none;
+.activeHeart {
+    fill: green;
 }
-
-.swiper-wrapper {
-    
-}
-
 
 
 p {

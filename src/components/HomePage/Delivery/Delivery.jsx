@@ -10,7 +10,7 @@ const Delivery = () => {
   return (
     <div className='container'>
         <div id='delivery' className={s.delivery}>
-            {info.map((item) => <DeliveryCard {...item} />)}
+            {info.map((item) => <DeliveryCard key={item.id} {...item} />)}
         </div>
     </div>
   )

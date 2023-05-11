@@ -1,13 +1,20 @@
 import s from "./Hit.module.css";
+import { MyContext } from "../../../useContext/Context";
+import { useContext } from "react";
+
 
 const Hit = ({ imageHit, description, price }) => {
+  const toggle = useContext(MyContext)
+  
+
   return (
     <div className={s.card}>
       <div className={s.imageHit_container}>
         <img className={s.imageHit} src={imageHit} alt="image" />
       </div>
       <p className={s.iconHit}>Хит</p>
-      <div className={s.heart}>
+      <div onClick={toggle} className={s.heart}>
+        
         <svg
           width="24"
           height="24"

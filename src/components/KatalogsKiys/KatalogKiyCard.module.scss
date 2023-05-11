@@ -7,9 +7,30 @@
     box-sizing: border-box;
     margin: 0;
 
+    @media screen and (max-width: 1650px) {
+        flex-direction: column;
+        width: 800px;
+    }
+
+    @media screen and (max-width: 1280px) {
+        max-width: 600px;
+    }
+
+    @media screen and (max-width: 1070px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 640px) {
+        width: auto;
+    }
+
     & .swiperWrapper {
         overflow: hidden;
         position: relative;
+
+        @media screen and (max-width: 1650px) {
+            width: 100%;
+        }
 
         & .heart {
             position: absolute;
@@ -29,8 +50,39 @@
         & .swiper {
             width: 100%;
             max-width: 594px;
+
+            @media screen and (max-width: 1650px) {
+                width: 100%;
+            }
+
+            @media screen and (max-width: 650px) {
+                width: 100%;
+            }
+
+         
         }
     }
+
+
+    @media screen and (max-width: 1650px) {
+        .image {
+          width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .image {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .image {
+            width: 100%;
+        }
+    }
+  
+    
 
     & .container {
         height: auto;

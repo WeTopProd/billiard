@@ -7,7 +7,7 @@ const Hits = () => {
     <div  className="container">
       <div id="hits" className={s.cards}>
         {dataHit.map((item) => (
-          <Hit key={item.id} {...item} />
+          <Hit  key={item.id} {...item} />
         ))}
       </div>
     </div>
