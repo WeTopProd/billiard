@@ -24,7 +24,9 @@ services:
     restart: always
 
   backend:
-    image: y4r1k/academy-backend:latest
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8000:8000"
