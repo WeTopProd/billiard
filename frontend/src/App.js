@@ -8,11 +8,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Search from "./components/Search/Search";
 import KatalogsKiys from "./components/KatalogsKiys/KatalogsKiys";
 import Favorites from "./components/Favorites/Favorites";
+import TreidIn from "./components/TreidIn/TreidIn";
 
- 
 
 function App() {
-
 
 
   return (
@@ -30,6 +29,7 @@ function App() {
               element={<KatalogsKiys />}
             />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/redemtion" element={<TreidIn />} />
           </Routes>
           <Footer />
         </div>

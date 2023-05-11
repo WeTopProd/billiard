@@ -8,9 +8,27 @@ import KatalogCard from "./KatalogKiyCard";
 import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const KatalogKiy = ({ cards, setCards }) => {
   console.log(cards);
+
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState('')
+
+
+  // const dataKiyFilterFetch = 'https://jsonplaceholder.typicode.com/users'
+
+  // useEffect(() => {
+  //   fetch(dataKiyFilterFetch) // запрос на сервер
+  //     .then((res) => res.json()) //получили Promise
+  //     .then(
+  //       (item) => console.log(item) //Записали в переменную todo
+  //     )
+  //     // .catch((error) => setError(error.message))
+  //     // .finally(() => setIsLoading(false));
+  // }, [])
+
 
   function filterMini(category) {
     setCards([...dataKiyFilter].filter((item) => item.play === category));
