@@ -7,6 +7,7 @@ from rest_framework import permissions
 
 urlpatterns = [
     path('api/', include('users.urls')),
+    path('api/', include('cue.urls')),
     path('admin/', admin.site.urls),
 ]
 

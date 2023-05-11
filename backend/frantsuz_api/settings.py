@@ -7,12 +7,9 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv(
-    'SECRET_KEY',
-    default='django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
-)
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -37,9 +34,11 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'django_filters',
     'drf_yasg',
     'phonenumber_field',
     'users.apps.UsersConfig',
+    'cue.apps.CueConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,11 +54,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'frantsuz_api.urls'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,11 +144,6 @@ else:
         'https://37.140.195.3',
         'https://37.140.195.3:3000',
         'https://37.140.195.3:8000',
-        'https://shashlandia.ru',
-        'https://37.140.192.105',
-        'https://37.140.192.105:3000',
-        'https://37.140.192.105:8000',
-        'https://pominki-dostavka.ru',
     ]
 
 DJOSER = {
