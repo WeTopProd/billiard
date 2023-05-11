@@ -13,7 +13,7 @@ const Order = () => {
             Изготовление киев по вашим параметрам от опытных мастеров с
             доставкой
           </p>
-          <a className={s.button_order} href="#">
+          <a className={s.button_order} href="frontend/src/components/HomePage/Order/Order#">
             Заказать
           </a>
         </div>

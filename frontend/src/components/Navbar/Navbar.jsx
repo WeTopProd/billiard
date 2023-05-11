@@ -10,8 +10,8 @@ const Navbar = () => {
           <NavbarMenu />
 
           <div className= {s.login}>
-            <a href="#" className={s.login__item}><img className={s.image} src={SignUp} alt="image" /></a>
-            <a href="#" className={s.login__item}>Войти</a>
+            <a href="frontend/src/components/Navbar/Navbar#" className={s.login__item}><img className={s.image} src={SignUp} alt="image" /></a>
+            <a href="frontend/src/components/Navbar/Navbar#" className={s.login__item}>Войти</a>
           </div>
         </div>
       </div>

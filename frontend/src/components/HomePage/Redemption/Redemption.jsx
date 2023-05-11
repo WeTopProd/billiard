@@ -21,7 +21,7 @@ const Redemption = () => {
               Продай или обменяй свой кий на новый по программе Трейд инн
             </p>
 
-            <a className={s.button_detailed} href="#">Подробнее</a>
+            <a className={s.button_detailed} href="frontend/src/components/HomePage/Redemption/Redemption#">Подробнее</a>
 
             <span className={s.wave}>
             <div className={s.line}></div>

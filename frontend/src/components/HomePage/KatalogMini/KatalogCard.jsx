@@ -8,13 +8,13 @@ const KatalogCard = ({ image, title, info1, info2, info3, imageOpacity }) => {
         <div className={s.imageOpacity}></div>
         <p className={s.title}>{title}</p>
         <div className={s.info}>
-          <a className={s.info_link} href="#">
+          <a className={s.info_link} href="frontend/src/components/HomePage/KatalogMini/KatalogCard#">
             {info1}
           </a>
-          <a className={s.info_link} href="#">
+          <a className={s.info_link} href="frontend/src/components/HomePage/KatalogMini/KatalogCard#">
             {info2}
           </a>
-          <a className={s.info_link} href="#">
+          <a className={s.info_link} href="frontend/src/components/HomePage/KatalogMini/KatalogCard#">
             {info3}
           </a>
           

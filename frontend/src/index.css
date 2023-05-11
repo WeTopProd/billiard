@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Poppins";
-  src: url("/src/Fonts/Poppins-Medium.ttf") format("ttf"), url("/src/Fonts/Poppins-Regular.ttf") format("ttf"),
-    url("/src/Fonts/Poppins-SemiBold.ttf") format("ttf");
+  src: url("/frontend/srcntend/src/Fonts/Poppins-Medium.ttf") format("ttf"), url("/frontend/srcntend/src/Fonts/Poppins-Regular.ttf") format("ttf"),
+    url("/frontend/srcntend/src/Fonts/Poppins-SemiBold.ttf") format("ttf");
 }
 
 body * {
