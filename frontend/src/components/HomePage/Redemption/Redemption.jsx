@@ -3,6 +3,8 @@ import kiys from "../../../image/Kiys.jpg";
 import wave1 from "../../../image/wave1.svg";
 import wave2 from "../../../image/wave2.svg";
 
+import { NavLink } from "react-router-dom";
+
 const Redemption = () => {
   return (
     <section id="redemtion" className={s.section}>
@@ -21,7 +23,7 @@ const Redemption = () => {
               Продай или обменяй свой кий на новый по программе Трейд инн
             </p>
 
-            <a className={s.button_detailed} href="frontend/src/components/HomePage/Redemption/Redemption#">Подробнее</a>
+            <NavLink to="/redemtion" className={s.button_detailed} >Подробнее</NavLink>
 
             <span className={s.wave}>
             <div className={s.line}></div>

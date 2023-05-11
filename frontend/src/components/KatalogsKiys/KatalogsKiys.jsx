@@ -1,14 +1,30 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 
 import s from "./KatalogsKiys.module.scss";
 import Hr from "../HomePage/Hr/Hr";
 import FilterKiy from "./FilterKiy";
 import KatalogKiy from "./KatalogKiy";
 
+
+
+
 import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 const KatalogsKiys = () => {
+
+
+  const [users, setUsers] = useState([])
+  console.log(users)
+
+
+  useEffect(() => {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(json => setUsers(json))
+  }, [])
+
+
 
   const [btn, setBtn] = useState(false)
 

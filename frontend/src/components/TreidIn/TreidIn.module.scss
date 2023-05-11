@@ -1,0 +1,16 @@
+.section_treydIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_card {
+        display: flex;
+        flex-direction: column;
+        background-image: url('../../image/treydIn/backTI.png');
+        background-position: center;
+        min-height: 767px;
+
+        background-size: cover;
+
+    }
+}
