@@ -1,0 +1,288 @@
+.section__footer {
+  padding: 70px 0px;
+  background-color: #1d1d1d;
+  margin: 0;
+}
+@media screen and (max-width: 550px) {
+  .section__footer {
+    padding: 40px 0px;
+  }
+}
+.section__footer .footer {
+  width: 100%;
+  margin: 0;
+}
+.section__footer .footer__logos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  text-align: left;
+}
+.section__footer .footer__logos:nth-child(2):hover {
+  color: red;
+  cursor: pointer;
+}
+.section__footer .footer__logos img {
+  margin: 0;
+}
+.section__footer .footer__info {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0;
+  margin-top: 80px;
+}
+@media screen and (max-width: 900px) {
+  .section__footer .footer__info {
+    flex-direction: column-reverse;
+    gap: 40px;
+    margin-top: 40px;
+  }
+}
+.section__footer .footer__info_item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  text-align: left;
+  gap: 30px;
+}
+.section__footer .footer__info_item_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 28px;
+  color: rgb(0, 78, 58);
+  text-align: left;
+  margin: 0;
+}
+@media screen and (max-width: 900px) {
+  .section__footer .footer__info_item_title {
+    text-align: left;
+    width: 100%;
+  }
+}
+.section__footer .footer__info_item_mode {
+  display: flex;
+  gap: 10px;
+  align-items: left;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+  margin-top: 80px;
+}
+.section__footer .footer__info_item_contacts {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin: 0;
+}
+@media screen and (max-width: 900px) {
+  .section__footer .footer__info_item_contacts {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .section__footer .footer__info_item_contacts {
+    gap: 20px;
+    width: 100%;
+  }
+}
+.section__footer .footer__info_item_contacts_tel {
+  display: flex;
+  gap: 10px;
+}
+.section__footer .footer__info_item_contacts_tel a {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #fff;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+.section__footer .footer__info_item_contacts_tel a:hover {
+  color: rgb(0, 78, 58);
+}
+.section__footer .footer__info_item_contacts_icons {
+  display: flex;
+  gap: 16px;
+}
+.section__footer .footer__info_item_contacts_icons .telegram {
+  transition: all ease 0.3s;
+}
+.section__footer .footer__info_item_contacts_icons .telegram:hover {
+  fill: #3f94ff !important;
+}
+.section__footer .footer__info_item_contacts_icons svg {
+  transition: all ease 0.3s;
+}
+.section__footer .footer__info_item_contacts_icons svg:hover {
+  transition: all ease 0.3s;
+}
+.section__footer .footer__info_item_contacts_icons svg:hover path {
+  transition: all ease 0.3s;
+  fill: #63ff03 !important;
+}
+.section__footer .footer__info_item_mail {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin: 0;
+}
+.section__footer .footer__info_item_mail_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+.section__footer .footer__info_item_mail_text:hover {
+  color: rgb(0, 78, 58);
+}
+.section__footer .footer__info_item_geo {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin: 0;
+}
+@media screen and (max-width: 550px) {
+  .section__footer .footer__info_item_geo {
+    gap: 10px;
+  }
+}
+.section__footer .footer__info_item_geo_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0px;
+  text-align: center;
+  color: #ffffff;
+}
+.section__footer .footer__info_item_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  margin: 0;
+  color: #ffffff;
+}
+@media screen and (max-width: 550px) {
+  .section__footer .footer__info_item_text {
+    font-size: 18px;
+    text-align: left;
+  }
+}
+.section__footer .footer__info_item_svg {
+  margin-top: 40px;
+}
+.section__footer .footer__info_port {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0;
+  justify-content: baseline;
+}
+@media screen and (max-width: 900px) {
+  .section__footer .footer__info_port {
+    max-width: 700px;
+  }
+}
+.section__footer .footer__info_port_imgs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 50px;
+  margin: 0;
+  margin-top: 80px;
+  width: 100%;
+}
+@media screen and (max-width: 900px) {
+  .section__footer .footer__info_port_imgs {
+    margin-top: 20px;
+  }
+}
+.section__footer .footer__info_port_imgs img {
+  margin: 0;
+}
+@media screen and (max-width: 550px) {
+  .section__footer .footer__info_port_imgs img {
+    width: 100px;
+  }
+}
+
+.footer__bottom {
+  background-color: #1d1d1d;
+  padding: 40px 0px;
+  border-top: 1px solid #606060;
+}
+.footer__bottom .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+@media screen and (max-width: 900px) {
+  .footer__bottom .bottom {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 550px) {
+  .footer__bottom .bottom {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+.footer__bottom .bottom_left {
+  max-width: 180px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #a5a5a5;
+}
+.footer__bottom .bottom_center {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: rgb(0, 78, 58);
+}
+.footer__bottom .bottom_right {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+@media screen and (max-width: 900px) {
+  .footer__bottom .bottom_right {
+    flex-direction: column-reverse;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}/*# sourceMappingURL=Footer.module.css.map */

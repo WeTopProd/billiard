@@ -1,0 +1,153 @@
+.card {
+  display: flex;
+  max-width: 1190px;
+  border: 1px solid white;
+  padding: 30px;
+  gap: 86px;
+  box-sizing: border-box;
+  margin: 0;
+}
+@media screen and (max-width: 1650px) {
+  .card {
+    flex-direction: column;
+    width: 800px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .card {
+    max-width: 600px;
+  }
+}
+@media screen and (max-width: 1070px) {
+  .card {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .card {
+    width: auto;
+  }
+}
+.card .swiperWrapper {
+  overflow: hidden;
+  position: relative;
+}
+@media screen and (max-width: 1650px) {
+  .card .swiperWrapper {
+    width: 100%;
+  }
+}
+.card .swiperWrapper .heart {
+  position: absolute;
+  z-index: 10;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.card .swiperWrapper .heart:hover svg {
+  fill: rgb(30, 105, 75);
+  z-index: 10;
+}
+.card .swiperWrapper .swiper {
+  width: 100%;
+  max-width: 594px;
+}
+@media screen and (max-width: 1650px) {
+  .card .swiperWrapper .swiper {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .card .swiperWrapper .swiper {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1650px) {
+  .card .image {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .card .image {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .card .image {
+    width: 100%;
+  }
+}
+.card .container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 394px;
+  box-sizing: border-box;
+  margin: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.card .container_info {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 0;
+}
+.card .container_info_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 41px;
+  color: #ffffff;
+  margin: 0;
+  z-index: 10;
+}
+.card .container_info_description, .card .container_info_structure, .card .container_info_workshop, .card .container_info_weight {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #ffffff;
+}
+.card .container_info_article {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15.8783px;
+  line-height: 29px;
+  color: #888888;
+}
+.card .container_price {
+  display: flex;
+  gap: 40px;
+}
+.card .container_price_info {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 31px;
+  color: #ffffff;
+}
+.card .container_price_button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  background-color: rgb(0, 78, 58);
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.card .container_price_button:hover {
+  background-color: white;
+  color: black;
+}/*# sourceMappingURL=KatalogKiyCard.module.css.map */

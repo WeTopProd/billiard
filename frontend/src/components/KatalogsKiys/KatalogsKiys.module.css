@@ -1,0 +1,25 @@
+.katalogs {
+  display: flex;
+  gap: 122px;
+  padding: 100px 0;
+  margin: 0;
+  justify-content: flex-start;
+  color: white;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1070px) {
+  .katalogs {
+    flex-direction: column;
+  }
+}
+.katalogs .filter {
+  margin: 0;
+  box-sizing: border-box;
+}
+.katalogs .kiys {
+  max-width: 1190px;
+  margin: 0;
+  box-sizing: border-box;
+}/*# sourceMappingURL=KatalogsKiys.module.css.map */
