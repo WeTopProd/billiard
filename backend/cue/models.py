@@ -3,6 +3,22 @@ from django.db import models
 from users.models import User
 
 
+class Image(models.Model):
+    images = models.ImageField(
+        upload_to='backend_media/',
+        verbose_name='Изображение'
+    )
+    cue = models.ForeignKey(
+        "Cue",
+        related_name='images',
+        on_delete=models.CASCADE,
+        verbose_name='Кий'
+    )
+
+    def __str__(self):
+        return f'Картинка #{self.pk} для кия {self.cue.title}'
+
+
 class Cue(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название кия')
     description = models.CharField(max_length=255, verbose_name='Описание кия')
@@ -16,15 +32,15 @@ class Cue(models.Model):
         max_length=50,
         verbose_name='Принадлежность к игре'
     )
-    image = models.ImageField(
-        upload_to='backend_media/',
-        verbose_name='Изображение кия'
-    )
+    image = models.ManyToManyField(Image, blank=True, related_name='cues_img')
 
     class Meta:
         verbose_name = 'Кий'
         verbose_name_plural = 'Кии'
         ordering = ['-title']
+
+    def __str__(self):
+        return f'Кий {self.title}'
 
 
 class Favorite(models.Model):

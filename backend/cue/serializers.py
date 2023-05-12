@@ -1,11 +1,17 @@
 from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers, validators
 
-from .models import (Cue, Favorite, ShoppingCart)
+from .models import (Cue, Favorite, ShoppingCart, Image)
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = ('images', )
 
 
 class CueSerializer(serializers.ModelSerializer):
-    image = Base64ImageField()
+    images = ImageSerializer(many=True, read_only=True)
     is_favorited = serializers.SerializerMethodField()
     is_in_shopping_cart = serializers.SerializerMethodField()
 
@@ -22,7 +28,7 @@ class CueSerializer(serializers.ModelSerializer):
             'article',
             'price',
             'play',
-            'image',
+            'images',
             'is_favorited',
             'is_in_shopping_cart'
         )
