@@ -7,23 +7,22 @@ import FilterKiy from "./FilterKiy";
 import KatalogKiy from "./KatalogKiy";
 
 
-
-
 import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 const KatalogsKiys = () => {
 
+  const [Title, setTitle] = useState([])
 
-  const [users, setUsers] = useState([])
-  console.log(users)
+  const dataKiy = Title.results
+  console.log(Title)
 
+  const data = "http://localhost:8001/api/cue/"
 
   useEffect(() => {
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then(response => response.json())
-    .then(json => setUsers(json))
+    fetch("http://localhost:8001/api/cue/?page=2")
+    .then(res => res.json())
+    .then(json => setTitle(json))
   }, [])
-
 
 
   const [btn, setBtn] = useState(false)
@@ -39,7 +38,7 @@ const KatalogsKiys = () => {
   const priceFilter = () => {
     setBtn(false)
     let newArray = [];
-    console.log(array.length);
+    
 
     if (min === "" && max === "") {
       setCards(dataKiyFilter);
@@ -135,7 +134,6 @@ const KatalogsKiys = () => {
       );
       setCards(newArray);
     }
-    console.log(newArray);
   };
 
   

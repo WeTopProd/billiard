@@ -1,0 +1,29 @@
+.basket_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin: 100px 0;
+
+    &_title {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 44px;
+        text-align: center;
+        color: #bababa;
+    }
+
+    &_link {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 22px;
+        text-align: center;
+        color: #18563d;
+        text-decoration: none;
+    }
+}

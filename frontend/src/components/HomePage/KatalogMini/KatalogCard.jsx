@@ -1,12 +1,13 @@
+import { NavLink } from "react-router-dom";
 import s from "./KatalogCard.module.css";
 
-const KatalogCard = ({ image, title, info1, info2, info3, imageOpacity }) => {
+const KatalogCard = ({ image, title, info1, info2, info3, path }) => {
   return (
     <div className={s.card}>
       <img className={s.image_Back_ground} src={image} alt="image" />
       <div className={s.translate}>
         <div className={s.imageOpacity}></div>
-        <p className={s.title}>{title}</p>
+        <NavLink to={path} className={s.title}>{title}</NavLink>
         <div className={s.info}>
           <a className={s.info_link} href="frontend/src/components/HomePage/KatalogMini/KatalogCard#">
             {info1}

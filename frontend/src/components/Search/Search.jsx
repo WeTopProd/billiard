@@ -26,7 +26,7 @@ const Search = () => {
             <span className={s.count}>0</span>
           </div>
           <div className={s.counters}>
-            <NavLink to="">
+            <NavLink to="/basket">
               <img className={s.basket} src={basket} alt="image" />
             </NavLink>
             <span className={s.count}>0</span>

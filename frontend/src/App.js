@@ -9,9 +9,14 @@ import Search from "./components/Search/Search";
 import KatalogsKiys from "./components/KatalogsKiys/KatalogsKiys";
 import Favorites from "./components/Favorites/Favorites";
 import TreidIn from "./components/TreidIn/TreidIn";
+import Basket from "./components/Basket/Basket";
+import KatalogsRound from "./components/KatalogsRound/KatalogsRound";
+import { useEffect, useState } from "react";
 
 
 function App() {
+
+  
 
 
   return (
@@ -29,7 +34,9 @@ function App() {
               element={<KatalogsKiys />}
             />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/basket" element={<Basket />} />
             <Route path="/redemtion" element={<TreidIn />} />
+            <Route path="/round" element={<KatalogsRound />} />
           </Routes>
           <Footer />
         </div>

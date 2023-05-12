@@ -6,7 +6,7 @@ export const MyContext = createContext();
 
 const Context = (props) => {
 
-    const [favorites, setFavorites] = useState(false);
+  const [favorites, setFavorites] = useState(false);
 
   console.log(favorites);
 

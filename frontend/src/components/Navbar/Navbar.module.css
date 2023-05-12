@@ -5,18 +5,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all ease 0.3s;
+}
 
+.header_active {
+    padding: 15px 0px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.819);
+    padding: 0px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: all ease 0.3s;
+    z-index: 9990;
     
-
 }
 
 @media screen and (max-width: 1200px) {
     .header {
         height: 67px;
     }
-  }
+}
 
-  @media screen and (max-width: 770px) {
+@media screen and (max-width: 770px) {
     .header {
         padding: 0px 0px;
     }
@@ -48,11 +61,16 @@
     color: #ffffff;
     display: flex;
     align-items: center;
-    transition: .3s;
+    transition: 0.3s;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
 }
 
+
+
 .login__item:hover {
-    color: #0A8B6A;
+    color: #0a8b6a;
 }
 
 @media screen and (max-width: 1400px) {
