@@ -77,6 +77,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         request = self.context['request']
         return ShortCueSerializer(
-            instance.recipe,
+            instance.cue,
             context={'request': request}
         ).data
