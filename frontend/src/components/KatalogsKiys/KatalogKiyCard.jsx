@@ -56,9 +56,9 @@ const KatalogKiyCard = (item) => {
           onSwiper={(swiper) => swiper}
           className={s.swiper}>  
 
-          {item.image.map((item) => (
+          {item.images.map((image) => (
             <SwiperSlide>
-              <img className={s.image} src={item} />
+              <img className={s.image} src={image.images} />
             </SwiperSlide>
           ))}
         </Swiper>
