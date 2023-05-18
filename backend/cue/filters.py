@@ -1,4 +1,4 @@
-from django_filters.rest_framework import FilterSet, filters
+from django_filters.rest_framework import FilterSet, filters, RangeFilter, MultipleChoiceFilter
 
 from users.models import User
 
@@ -6,15 +6,29 @@ from .models import Cue
 
 
 class CueFilter(FilterSet):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        workshops = Cue.objects.values_list('workshop', 'workshop').distinct()
+        self.filters['workshop'].extra['choices'] = workshops
+
+        plays = Cue.objects.values_list('play', 'play').distinct()
+        self.filters['play'].extra['choices'] = plays
+
     title = filters.CharFilter(lookup_expr='icontains', field_name='title')
     composition = filters.NumberFilter(lookup_expr='exact',
                                        field_name='composition')
-    workshop = filters.CharFilter(lookup_expr='icontains',
-                                  field_name='workshop')
+    workshop = MultipleChoiceFilter(
+        lookup_expr='icontains',
+        field_name='workshop'
+    )
     weight = filters.NumberFilter(lookup_expr='exact', field_name='weight')
     article = filters.NumberFilter(lookup_expr='exact', field_name='article')
-    price = filters.NumberFilter(lookup_expr='exact', field_name='price')
-    play = filters.CharFilter(lookup_expr='icontains', field_name='play')
+    price = RangeFilter(field_name='price')
+
+    play = MultipleChoiceFilter(
+        field_name='play'
+    )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(
         method='get_is_in_shopping_cart'
