@@ -1,44 +1,40 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 import s from "./KatalogsKiys.module.scss";
 import Hr from "../HomePage/Hr/Hr";
 import FilterKiy from "./FilterKiy";
 import KatalogKiy from "./KatalogKiy";
 
-
 import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 const KatalogsKiys = () => {
-
-  const [Title, setTitle] = useState([])
-
-  const dataKiy = Title.results
-  console.log(Title)
-
-  const data = "http://localhost:8001/api/cue/"
+  const [cards, setCards] = useState([]);
+  const [finall, setFinall] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:8001/api/cue/?page=2")
-    .then(res => res.json())
-    .then(json => setTitle(json))
-  }, [])
+    axios
+      .get("http://localhost:8000/api/cue/")
+      .then((res) => {
+        setCards(res.data.results);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setFinall(false))
+  }, []);
 
+  // console.log(cards);
 
-  const [btn, setBtn] = useState(false)
+  const [btn, setBtn] = useState(false);
 
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-  const [cards, setCards] = useState(dataKiyFilter);
-
   const [array, setArraye] = useState([]);
 
-  
   const priceFilter = () => {
-    setBtn(false)
+    setBtn(false);
     let newArray = [];
-    
 
     if (min === "" && max === "") {
       setCards(dataKiyFilter);
@@ -90,7 +86,6 @@ const KatalogsKiys = () => {
       setCards(
         newArray.filter((item) => item.price >= min && item.price <= max)
       );
-
     }
     if (min === "" && max === "" && array.length !== 0) {
       newArray = [...dataKiyFilter].filter(
@@ -136,8 +131,6 @@ const KatalogsKiys = () => {
     }
   };
 
-  
-
   return (
     <div className="container">
       <Hr title="Кии для бильярда" />
@@ -157,7 +150,7 @@ const KatalogsKiys = () => {
           />
         </aside>
         <main className={s.kiys}>
-          <KatalogKiy cards={cards} setCards={setCards} />
+          <KatalogKiy  />
         </main>
       </div>
     </div>

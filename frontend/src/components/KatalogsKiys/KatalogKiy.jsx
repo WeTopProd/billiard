@@ -3,36 +3,36 @@ import pul from "../../image/filterImage/pul.png";
 import snuker from "../../image/filterImage/snuker.png";
 import ecsclusive from "../../image/filterImage/ecsclusive.png";
 import s from "./KatalogKiy.module.scss";
+import load from '../../image/gif/Вращающиеся стрелы.gif'
 
 import KatalogCard from "./KatalogKiyCard";
-import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
+// import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const KatalogKiy = ({ cards, setCards }) => {
-  console.log(cards);
+const KatalogKiy = () => {
 
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState('')
+  const [cards, setCards] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
+  useEffect( () => {
+    axios
+    .get("http://localhost:8000/api/cue/")
+    .then(res => setCards(res.data.results))
+    .catch(err => console.error(err))
+    .finally(() => setIsLoading(false))
+  }, [])
 
-  // const dataKiyFilterFetch = 'https://jsonplaceholder.typicode.com/users'
-
-  // useEffect(() => {
-  //   fetch(dataKiyFilterFetch) // запрос на сервер
-  //     .then((res) => res.json()) //получили Promise
-  //     .then(
-  //       (item) => console.log(item) //Записали в переменную todo
-  //     )
-  //     // .catch((error) => setError(error.message))
-  //     // .finally(() => setIsLoading(false));
-  // }, [])
-
+  
+  
 
   function filterMini(category) {
-    setCards([...dataKiyFilter].filter((item) => item.play === category));
+    setCards(cards.filter((item) => item.play === category));
   }
+
+  
 
   return (
     <div className={s.katalogKiy}>
@@ -68,7 +68,7 @@ const KatalogKiy = ({ cards, setCards }) => {
       </div>
 
       <div className={s.card_container}>
-        {cards.map((item) => (
+        {isLoading ? <span className={s.loading}>...loading</span> : cards.map((item) => (
           <KatalogCard key={item.id} {...item} />
         ))}
       </div>
