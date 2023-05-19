@@ -1,0 +1,117 @@
+.card {
+    width: 100%;
+    height: 351px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 25px;
+
+    &_info {
+        display: flex;
+        margin: 0;
+        gap: 45px;
+
+        &_image {
+            margin: 0;
+        }
+
+        &_description {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 40px;
+            color: #ffffff;
+            max-width: 400px;
+        }
+    }
+
+    &_counter {
+        display: flex;
+        align-items: flex-start;
+        margin: 0;
+        gap: 70px;
+        padding: 20px 0;
+
+        &_count {
+            display: flex;
+            width: 156px;
+            justify-content: center;
+            align-items: center;
+
+            &_dicrement {
+                border: 1px solid white;
+                flex: 0 1 32%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 300;
+                font-size: 30px;
+                line-height: 17px;
+                padding: 10px 0;
+                cursor: pointer;
+                background-color: inherit;
+                margin: 0;
+            }
+
+            &_number {
+                border: 1px solid white;
+                flex: 0 1 36%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 300;
+                font-size: 30px;
+                line-height: 17px;
+                padding: 10px 0;
+            }
+
+            &_increment {
+                border: 1px solid white;
+                flex: 0 1 32%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 300;
+                font-size: 30px;
+                line-height: 17px;
+                padding: 10px 0;
+                cursor: pointer;
+                background-color: inherit;
+                margin: 0;
+            }
+        }
+
+        &_price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &_title {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 25px;
+                line-height: 17px;
+                color: #ffffff;
+            }
+
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 17px;
+            color: #0a8b6a;
+        }
+    }
+}

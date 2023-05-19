@@ -3,7 +3,7 @@ import pul from "../../image/filterImage/pul.png";
 import snuker from "../../image/filterImage/snuker.png";
 import ecsclusive from "../../image/filterImage/ecsclusive.png";
 import s from "./KatalogKiy.module.scss";
-import load from '../../image/gif/Вращающиеся стрелы.gif'
+import load from '../../image/gif/68882650-download-sign-on-transparent-background-load-icon-data-loading-bar-vector-stock-illustration.webp'
 
 import KatalogCard from "./KatalogKiyCard";
 // import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
@@ -12,24 +12,20 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const KatalogKiy = () => {
+const KatalogKiy = ({cards, setCards, finall}) => {
 
-  const [cards, setCards] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  
 
-  useEffect( () => {
+  function filterMini(type) {
     axios
-    .get("http://localhost:8000/api/cue/")
+    .get("http://localhost:8000/api/cue",
+    {
+      params: {
+        play: type
+      }
+    })
     .then(res => setCards(res.data.results))
     .catch(err => console.error(err))
-    .finally(() => setIsLoading(false))
-  }, [])
-
-  
-  
-
-  function filterMini(category) {
-    setCards(cards.filter((item) => item.play === category));
   }
 
   
@@ -63,12 +59,12 @@ const KatalogKiy = () => {
           className={s.katalog_kiy_container_link}
           to="#">
           <img src={ecsclusive} alt="image" />
-          <p>Эксклюзив</p>
+          <p>Эксклюзив</p> 
         </Link>
       </div>
 
       <div className={s.card_container}>
-        {isLoading ? <span className={s.loading}>...loading</span> : cards.map((item) => (
+        {finall ? <span className={s.loading}>...loading</span> : cards.map((item) => (
           <KatalogCard key={item.id} {...item} />
         ))}
       </div>

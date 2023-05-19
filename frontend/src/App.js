@@ -11,28 +11,9 @@ import Favorites from "./components/Favorites/Favorites";
 import TreidIn from "./components/TreidIn/TreidIn";
 import Basket from "./components/Basket/Basket";
 import KatalogsRound from "./components/KatalogsRound/KatalogsRound";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 
 function App() {
-
-
-  const [cards, setCards] = useState([]);
-  const [finall, setFinall] = useState(true)
-
-  console.log('cards', cards)
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8001/api/cue/?play=Пул")
-      .then((res) => {
-        setCards(res.data.results);
-      })
-      .catch((err) => console.error(err))
-      .finally(() => setFinall(false))
-  }, []);
-
 
   return (
       <BrowserRouter>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import inputImg from "../../image/Input---.svg";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+// import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import s from "./FilterKiy.module.scss";
 
@@ -9,11 +9,24 @@ const FilterKiy = ({
   setMin,
   max,
   setMax,
-  priceFilter,
-  array,
-  setArraye,
-  btn, setBtn
+  // priceFilter,
+  // array,
+  setArrayePlay,
+  setArrayeStructure,
+  setArrayeWorkshop,
+  arrayPlay,
+  arrayStructure,
+  arrayWorkshop,
+  btn,
+  setBtn,
+  Filter,
 }) => {
+
+   
+
+  
+
+
   // хуки для ктегорий киёв
   const ref = useRef();
   const refPul = useRef();
@@ -24,6 +37,7 @@ const FilterKiy = ({
   const [hanldeRefPul, setHandleRefPul] = useState(refPul);
   const [hanldeRefSnuker, setHandleRefSnuker] = useState(refSnuker);
   const [hanldeRefExclusive, setHandleRefExclusive] = useState(refExclusive);
+
 
   const [check, setCheck] = useState(false);
   const [checkPul, setCheckPul] = useState(false);
@@ -65,8 +79,7 @@ const FilterKiy = ({
   const [checkKorolev, setCheckKorolev] = useState(false);
   const [checkMironova, setCheckMironova] = useState(false);
 
-  // console.log(check)
-  // console.log(checkPul)
+
 
   // Функции для категорий киёв
 
@@ -122,182 +135,169 @@ const FilterKiy = ({
     setCheckMironova(!checkMironova);
   }
 
-  // const [array, setArraye] = useState([]);
-  const [arr, setArr] = useState([]);
   const [n, setN] = useState(0);
+
+  const [play, setPlay] = useState([]) 
+  const [structure, setStructure] = useState([]) 
+  const [workshop, setWorkshop] = useState([])
 
   //useEffect для категорий киёв
 
   useEffect(() => {
     if (check) {
-      arr.push(hanldeRef.current.value);
+      play.push(hanldeRef.current.value);
     }
     if (check === false) {
-      if (arr.includes(hanldeRef.current.value)) {
-        setN(arr.indexOf(hanldeRef.current.value));
-        // console.log('a' + n)
-        setArr(arr.splice(n, 1));
+      if (play.includes(hanldeRef.current.value)) {
+        setN(play.indexOf(hanldeRef.current.value));
+        setPlay(play.splice(n, 1));
       }
     }
 
     if (checkPul) {
-      arr.push(hanldeRefPul.current.value);
+      play.push(hanldeRefPul.current.value);
     }
 
     if (checkPul === false) {
-      if (arr.includes(hanldeRefPul.current.value)) {
-        setN(arr.indexOf(hanldeRefPul.current.value));
-        // console.log('b' + n)
-        setArr(arr.splice(n, 1));
+      if (play.includes(hanldeRefPul.current.value)) {
+        setN(play.indexOf(hanldeRefPul.current.value));
+        setPlay(play.splice(n, 1));
       }
     }
 
     if (checkSnuker) {
-      arr.push(hanldeRefSnuker.current.value);
+      play.push(hanldeRefSnuker.current.value);
     }
 
     if (checkSnuker === false) {
-      if (arr.includes(hanldeRefSnuker.current.value)) {
-        setN(arr.indexOf(hanldeRefSnuker.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (play.includes(hanldeRefSnuker.current.value)) {
+        setN(play.indexOf(hanldeRefSnuker.current.value));
+        setPlay(play.splice(n, 1));
       }
     }
 
     if (checkExclusive) {
-      arr.push(hanldeRefExclusive.current.value);
+      play.push(hanldeRefExclusive.current.value);
     }
 
     if (checkExclusive === false) {
-      if (arr.includes(hanldeRefExclusive.current.value)) {
-        setN(arr.indexOf(hanldeRefExclusive.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (play.includes(hanldeRefExclusive.current.value)) {
+        setN(play.indexOf(hanldeRefExclusive.current.value));
+        setPlay(play.splice(n, 1));
       }
     }
 
-    setArraye(Array.from(new Set(arr)));
+    setArrayePlay(Array.from(new Set(play)))
   }, [check, checkPul, checkSnuker, checkExclusive]);
 
   //useEffect для категорий составности
 
   useEffect(() => {
     if (checkSolid) {
-      arr.push(handleRefSolid.current.value);
+      structure.push(handleRefSolid.current.value);
     }
     if (checkSolid === false) {
-      if (arr.includes(handleRefSolid.current.value)) {
-        setN(arr.indexOf(handleRefSolid.current.value));
-        // console.log('a' + n)
-        setArr(arr.splice(n, 1));
+      if (structure.includes(handleRefSolid.current.value)) {
+        setN(structure.indexOf(handleRefSolid.current.value));
+        setStructure(structure.splice(n, 1));
       }
     }
 
     if (checkOne) {
-      arr.push(handleRefOne.current.value);
+      structure.push(handleRefOne.current.value);
     }
 
     if (checkOne === false) {
-      if (arr.includes(handleRefOne.current.value)) {
-        setN(arr.indexOf(handleRefOne.current.value));
-        // console.log('b' + n)
-        setArr(arr.splice(n, 1));
+      if (structure.includes(handleRefOne.current.value)) {
+        setN(structure.indexOf(handleRefOne.current.value));
+        setStructure(structure.splice(n, 1));
       }
     }
 
     if (checkTwo) {
-      arr.push(handleRefTwo.current.value);
+      structure.push(handleRefTwo.current.value);
     }
 
     if (checkTwo === false) {
-      if (arr.includes(handleRefTwo.current.value)) {
-        setN(arr.indexOf(handleRefTwo.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (structure.includes(handleRefTwo.current.value)) {
+        setN(structure.indexOf(handleRefTwo.current.value));
+        setStructure(structure.splice(n, 1));
       }
     }
 
     if (checkThreeFourths) {
-      arr.push(handleRefThreeFourths.current.value);
+      structure.push(handleRefThreeFourths.current.value);
     }
 
     if (checkThreeFourths === false) {
-      if (arr.includes(handleRefThreeFourths.current.value)) {
-        setN(arr.indexOf(handleRefThreeFourths.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (structure.includes(handleRefThreeFourths.current.value)) {
+        setN(structure.indexOf(handleRefThreeFourths.current.value));
+        setStructure(structure.splice(n, 1));
       }
     }
 
-    setArraye(Array.from(new Set(arr)));
+    setArrayeStructure(Array.from(new Set(structure)));
   }, [checkSolid, checkOne, checkTwo, checkThreeFourths]);
 
   //useEffect для категорий мастерской
 
   useEffect(() => {
     if (checkMoscow) {
-      arr.push(handleRefMoscow.current.value);
+      workshop.push(handleRefMoscow.current.value);
     }
     if (checkMoscow === false) {
-      if (arr.includes(handleRefMoscow.current.value)) {
-        setN(arr.indexOf(handleRefMoscow.current.value));
-        // console.log('a' + n)
-        setArr(arr.splice(n, 1));
+      if (workshop.includes(handleRefMoscow.current.value)) {
+        setN(workshop.indexOf(handleRefMoscow.current.value));
+        setWorkshop(workshop.splice(n, 1));
       }
     }
 
     if (checkTropin) {
-      arr.push(handleRefTropin.current.value);
+      workshop.push(handleRefTropin.current.value);
     }
 
     if (checkTropin === false) {
-      if (arr.includes(handleRefTropin.current.value)) {
-        setN(arr.indexOf(handleRefTropin.current.value));
-        // console.log('b' + n)
-        setArr(arr.splice(n, 1));
+      if (workshop.includes(handleRefTropin.current.value)) {
+        setN(workshop.indexOf(handleRefTropin.current.value));
+        setWorkshop(workshop.splice(n, 1));
       }
     }
 
     if (checkKorolev) {
-      arr.push(handleRefKorolev.current.value);
+      workshop.push(handleRefKorolev.current.value);
     }
 
     if (checkKorolev === false) {
-      if (arr.includes(handleRefKorolev.current.value)) {
-        setN(arr.indexOf(handleRefKorolev.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (workshop.includes(handleRefKorolev.current.value)) {
+        setN(workshop.indexOf(handleRefKorolev.current.value));
+        setWorkshop(workshop.splice(n, 1));
       }
     }
 
     if (checkMironova) {
-      arr.push(handleRefMironova.current.value);
+      workshop.push(handleRefMironova.current.value);
     }
 
     if (checkMironova === false) {
-      if (arr.includes(handleRefMironova.current.value)) {
-        setN(arr.indexOf(handleRefMironova.current.value));
-        // console.log('c' + n)
-        setArr(arr.splice(n, 1));
+      if (workshop.includes(handleRefMironova.current.value)) {
+        setN(workshop.indexOf(handleRefMironova.current.value));
+        setWorkshop(workshop.splice(n, 1));
       }
     }
 
-    setArraye(Array.from(new Set(arr)));
+    setArrayeWorkshop(Array.from(new Set(workshop)));
   }, [checkMoscow, checkTropin, checkKorolev, checkMironova]);
 
-
-
-  
-
   function toggleBtn() {
-    setBtn(!btn)
+    setBtn(!btn);
   }
-
 
   return (
     <div className={s.filter_container}>
-      <button onClick={toggleBtn} className={s.button}>Подобрать по параметрам</button>
-      <div className={btn ? `${s.filter } ${ s.activeFilter}`: `${s.filter}`}>
+      <button onClick={toggleBtn} className={s.button}>
+        Подобрать по параметрам
+      </button>
+      <div className={btn ? `${s.filter} ${s.activeFilter}` : `${s.filter}`}>
         <p className={s.filter_title}>Фильтр по параметрам</p>
         <div className={s.filter_price}>
           <p className={s.price}>Цена</p>
@@ -496,7 +496,7 @@ const FilterKiy = ({
             </label>
           </ul>
         </div>
-        <button onClick={priceFilter} className={s.filter_button}>
+        <button onClick={() => Filter(arrayPlay, arrayStructure, arrayWorkshop, min, max)} className={s.filter_button}>
           Показать
         </button>
       </div>
