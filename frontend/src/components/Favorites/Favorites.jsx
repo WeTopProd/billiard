@@ -17,6 +17,7 @@ const Favorites = () => {
     axios
       .get("http://127.0.0.1:8000/api/cue/?is_favorited=false")
       .then((res) => {
+        console.log(res.data)
         setFavorites(res.data.results);
       })
       .catch((err) => console.error(err))

@@ -77,7 +77,7 @@ export const dataKiyFilter = [
     id: uuidv4(),
     title: "Кий Московская пирамида Эксклюзив",
     description: "Трехсоставной кий с удлинителем ручной работы",
-    composition: 3/4,
+    composition: 4,
     structure: "винге, падук, мовинго, грапп, черный грапп.",
     workshop: 'Диана Миронова',
     weight: 700,
