@@ -7,11 +7,15 @@ import Hr from "../HomePage/Hr/Hr";
 import FilterKiy from "./FilterKiy";
 import KatalogKiy from "./KatalogKiy";
 
-import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 const KatalogsKiys = () => {
   const [cards, setCards] = useState([]);
-  const [finall, setFinall] = useState(true)
+  const [finall, setFinall] = useState(true);
+
+  const [btn, setBtn] = useState(false);
+
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
 
   useEffect(() => {
     axios
@@ -20,117 +24,37 @@ const KatalogsKiys = () => {
         setCards(res.data.results);
       })
       .catch((err) => console.error(err))
-      .finally(() => setFinall(false))
-  }, []);
+      .finally(() => setFinall(false));
+  }, [setCards]);
 
-  // console.log(cards);
+  const [arrayPlay, setArrayePlay] = useState([]);
+  const [arrayStructure, setArrayeStructure] = useState([]);
+  const [arrayWorkshop, setArrayeWorkshop] = useState([]);
 
-  const [btn, setBtn] = useState(false);
+  function Filter(play, structure, workshop, min, max) {
+    play = arrayPlay ? arrayPlay.map((item) => `&play=${item}`).join("") : "";
+    structure = arrayStructure
+      ? arrayStructure.map((item) => `&composition=${item}`).join("")
+      : "";
+    workshop = arrayWorkshop
+      ? arrayWorkshop.map((item) => `&workshop=${item}`).join("")
+      : "";
 
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("");
+    axios
+      .get(
+        `http://localhost:8000/api/cue/?${play}${structure}${workshop}${
+          min ? `price_min=${min}` : ""
+        }${max ? `&price_max=${max}` : ""}`
+      )
+      .then((res) => {
+        setCards(res.data.results);
+      })
+      .catch((err) => console.error(err));
 
-  const [array, setArraye] = useState([]);
+    setCards(cards.filter((item) => item.price <= max && item.price >= min));
+  }
 
-  const priceFilter = () => {
-    setBtn(false);
-    let newArray = [];
-
-    if (min === "" && max === "") {
-      setCards(dataKiyFilter);
-    } else if (
-      (min > 0 && max > 0) ||
-      (min == "" && max > 0) ||
-      (min > 0 && max == "")
-    ) {
-      newArray = [...dataKiyFilter].filter(
-        (item) =>
-          (item.price >= min && item.price <= max) ||
-          item.play === array[0] ||
-          item.play === array[1] ||
-          item.play === array[2] ||
-          item.play === array[3] ||
-          item.play === array[4] ||
-          item.play === array[5] ||
-          item.play === array[6] ||
-          item.play === array[7] ||
-          item.play === array[8] ||
-          item.play === array[9] ||
-          item.play === array[10] ||
-          item.play === array[11] ||
-          item.composition === array[0] ||
-          item.composition === array[1] ||
-          item.composition === array[2] ||
-          item.composition === array[3] ||
-          item.composition === array[4] ||
-          item.composition === array[5] ||
-          item.composition === array[6] ||
-          item.composition === array[7] ||
-          item.composition === array[8] ||
-          item.composition === array[9] ||
-          item.composition === array[10] ||
-          item.composition === array[11] ||
-          item.workshop === array[0] ||
-          item.workshop === array[1] ||
-          item.workshop === array[2] ||
-          item.workshop === array[3] ||
-          item.workshop === array[4] ||
-          item.workshop === array[5] ||
-          item.workshop === array[6] ||
-          item.workshop === array[7] ||
-          item.workshop === array[8] ||
-          item.workshop === array[9] ||
-          item.workshop === array[10] ||
-          item.workshop === array[11]
-      );
-      setCards(
-        newArray.filter((item) => item.price >= min && item.price <= max)
-      );
-    }
-    if (min === "" && max === "" && array.length !== 0) {
-      newArray = [...dataKiyFilter].filter(
-        (item) =>
-          item.play === array[0] ||
-          item.play === array[1] ||
-          item.play === array[2] ||
-          item.play === array[3] ||
-          item.play === array[4] ||
-          item.play === array[5] ||
-          item.play === array[6] ||
-          item.play === array[7] ||
-          item.play === array[8] ||
-          item.play === array[9] ||
-          item.play === array[10] ||
-          item.play === array[11] ||
-          item.composition === array[0] ||
-          item.composition === array[1] ||
-          item.composition === array[2] ||
-          item.composition === array[3] ||
-          item.composition === array[4] ||
-          item.composition === array[5] ||
-          item.composition === array[6] ||
-          item.composition === array[7] ||
-          item.composition === array[8] ||
-          item.composition === array[9] ||
-          item.composition === array[10] ||
-          item.composition === array[11] ||
-          item.workshop === array[0] ||
-          item.workshop === array[1] ||
-          item.workshop === array[2] ||
-          item.workshop === array[3] ||
-          item.workshop === array[4] ||
-          item.workshop === array[5] ||
-          item.workshop === array[6] ||
-          item.workshop === array[7] ||
-          item.workshop === array[8] ||
-          item.workshop === array[9] ||
-          item.workshop === array[10] ||
-          item.workshop === array[11]
-      );
-      setCards(newArray);
-    }
-  };
-
+  
   return (
     <div className="container">
       <Hr title="Кии для бильярда" />
@@ -138,19 +62,22 @@ const KatalogsKiys = () => {
       <div className={s.katalogs}>
         <aside className={s.filter}>
           <FilterKiy
-            array={array}
-            setArraye={setArraye}
-            priceFilter={priceFilter}
+            // array={array}
+            setArrayePlay={setArrayePlay}
+            setArrayeStructure={setArrayeStructure}
+            setArrayeWorkshop={setArrayeWorkshop}
+            // priceFilter={priceFilter}
             min={min}
             setMin={setMin}
             max={max}
             setMax={setMax}
             btn={btn}
             setBtn={setBtn}
+            Filter={Filter}
           />
         </aside>
         <main className={s.kiys}>
-          <KatalogKiy  />
+          <KatalogKiy finall={finall} cards={cards} setCards={setCards} />
         </main>
       </div>
     </div>
