@@ -33,6 +33,7 @@ class Cue(models.Model):
         verbose_name='Принадлежность к игре'
     )
     image = models.ManyToManyField(Image, blank=True, related_name='cues_img')
+    count = models.IntegerField(default=1, verbose_name='Количество кия')
 
     class Meta:
         verbose_name = 'Кий'
