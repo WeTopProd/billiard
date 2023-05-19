@@ -29,6 +29,7 @@ class CueSerializer(serializers.ModelSerializer):
             'price',
             'play',
             'images',
+            'count',
             'is_favorited',
             'is_in_shopping_cart'
         )
