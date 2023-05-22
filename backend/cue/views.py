@@ -15,7 +15,7 @@ from .serializers import CueSerializer, ShortCueSerializer, FavoriteSerializer
 
 class CueViewSet(viewsets.ModelViewSet):
     queryset = Cue.objects.all()
-    # permission_classes = (IsOwnerOrReadOnly,)
+    permission_classes = (IsOwnerOrReadOnly,)
     pagination_class = CustomPagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = CueFilter
