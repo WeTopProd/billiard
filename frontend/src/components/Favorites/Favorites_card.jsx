@@ -1,33 +1,26 @@
 import s from "./Favorites_card.module.scss";
+import { useEffect, useState } from "react";
 
-const Favorites_card = ({
-  number,
-  setNumber,
-  ...card
-}) => {
+const Favorites_card = ({load, ...card }) => {
 
+    const [number, setNumber] = useState(1);
 
-  function increment(id) {
-    
-      if(card.id === +id) {
-
+    function increment(id) {
+      if (id == card.id) {
         setNumber(number + 1);
-        console.log(card.id);
-        console.log(+id);
-      } 
-    
-  }
-
-
-
-  function dicrement(id) {
-
-    if(card.id === +id) {
-      setNumber(number - 1)
+        load()
+      }
     }
-      
-  }
 
+    function dicrement(id) {
+      if (id == card.id) {
+        setNumber(number - 1);
+        load()
+      }
+    }
+
+    
+    
 
   return (
     <div className={s.card}>
@@ -48,14 +41,10 @@ const Favorites_card = ({
             className={s.card_counter_count_dicrement}>
             -
           </button>
-          <span id={card.id} className={s.card_counter_count_number}>
-            {number}
-          </span>
+          <span className={s.card_counter_count_number}>{number}</span>
           <button
             id={card.id}
-            onClick={(event) => {
-              increment(event.currentTarget.id);
-            }}
+            onClick={(event) => {increment(event.currentTarget.id);}}
             className={s.card_counter_count_increment}>
             +
           </button>
