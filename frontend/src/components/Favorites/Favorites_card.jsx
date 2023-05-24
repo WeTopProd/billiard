@@ -1,23 +1,25 @@
 import s from "./Favorites_card.module.scss";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
-const Favorites_card = ({load, ...card }) => {
+const Favorites_card = ({addBascketLocal, load, ...card }) => {
 
     const [number, setNumber] = useState(1);
 
     function increment(id) {
       if (id == card.id) {
         setNumber(number + 1);
-        load()
+        load(number)
       }
     }
 
     function dicrement(id) {
       if (id == card.id) {
         setNumber(number - 1);
-        load()
+        load(number)
       }
     }
+
+
 
     
     
@@ -33,6 +35,7 @@ const Favorites_card = ({load, ...card }) => {
         <p className={s.card_info_description}>{card.description}</p>
       </div>
       <div className={s.card_counter}>
+
         <div className={s.card_counter_count}>
           <button
             id={card.id}
@@ -54,6 +57,7 @@ const Favorites_card = ({load, ...card }) => {
           {card.price * number}РУБ
         </div>
       </div>
+      <button id={card.id} onClick={(event) => addBascketLocal(event.currentTarget.id)} className={s.card_bascket_button}>Добавить в корзину</button>
     </div>
   );
 };
