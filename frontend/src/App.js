@@ -14,9 +14,18 @@ import Favorites from "./components/Favorites/Favorites";
 import TreidIn from "./components/TreidIn/TreidIn";
 import Basket from "./components/Basket/Basket";
 import KatalogsRound from "./components/KatalogsRound/KatalogsRound";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function App() {
+
+  const favorited = useSelector((state) = state.favoritedReducer.value)
+  console.log(favorited)
+  const dispatch = useDispatch()
+
+
+
+
   const [arr, setArr] = useState([]);
   const [bascket, setBascket] = useState([])
 
