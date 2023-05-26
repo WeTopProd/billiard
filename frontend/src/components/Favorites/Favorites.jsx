@@ -3,11 +3,21 @@ import s from "./Favorites.module.scss";
 import { useEffect } from "react";
 import { useState } from "react";
 import Favorites_card from "./Favorites_card";
+import { useSelector } from "react-redux";
+
 
 const Favorites = ({addBascketLocal}) => {
+  const [res, setRes] = useState(JSON.parse(localStorage.getItem("user")));
+  
+
+  const {totalPrice, items} = useSelector((state) => state.favoritedReducer);
+  // const {count} = useSelector(state => state.favoritedReducer.items.find(obj => obj.id === res.id))
+
+  
+  console.log(items)
 
   const [total, setTotal] = useState(null);
-  const [res, setRes] = useState(JSON.parse(localStorage.getItem("user")));
+  
 
   useEffect(() => {
     setRes(res.filter((item) => item.is_favorited == true));
@@ -22,7 +32,7 @@ const Favorites = ({addBascketLocal}) => {
     <div className="container">
       <Hr title="Избранное" />
       <div className={s.section}>
-        {res.map((card) => (
+        {items.map((card) => (
           <>
             <Favorites_card addBascketLocal={addBascketLocal} key={card.id} {...card} load={load} />
           </>
@@ -30,7 +40,7 @@ const Favorites = ({addBascketLocal}) => {
       </div>
       <div className={s.total_container}>
         <p className={s.total}>
-          Итоговая цена: <span className={s.total_final}>{total}</span>
+          Итоговая цена: <span className={s.total_final}>{totalPrice}</span>
         </p>
       </div>
     </div>

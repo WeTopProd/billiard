@@ -4,8 +4,13 @@ import heart from "../../image/heart.svg";
 import basket from "../../image/basket.svg";
 import search from "../../image/search.svg";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Search = () => {
+  const { items} = useSelector(state => state.favoritedReducer)
+
+  // const totalCount = items.reduce((sum, item) => sum + item.count, 0) - Надо взять на заметку, пригодится в корзине
+  
   return (
     <div className="container">
       <div className={s.search}>
@@ -23,7 +28,7 @@ const Search = () => {
             <NavLink to="/favorites">
               <img className={s.heart} src={heart} alt="image" />
             </NavLink>
-            <span className={s.count}>0</span>
+            <span className={s.count}>{items.length}</span>
           </div>
           <div className={s.counters}>
             <NavLink to="/basket">

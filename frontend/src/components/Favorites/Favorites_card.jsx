@@ -1,29 +1,22 @@
+import { useDispatch } from "react-redux";
 import s from "./Favorites_card.module.scss";
 import {  useState } from "react";
+import { addToFavorite, removeToFavorite } from "../../redux/slices/favoritedSlice";
 
 const Favorites_card = ({addBascketLocal, load, ...card }) => {
 
-    const [number, setNumber] = useState(1);
+    const dispatch = useDispatch()
+    
 
     function increment(id) {
-      if (id == card.id) {
-        setNumber(number + 1);
-        load(number)
-      }
+      dispatch(addToFavorite({id}))
     }
 
-    function dicrement(id) {
-      if (id == card.id) {
-        setNumber(number - 1);
-        load(number)
-      }
+    function dicrement() {
+      dispatch(removeToFavorite(card))
     }
 
-
-
-    
-    
-
+     
   return (
     <div className={s.card}>
       <div className={s.card_info}>
@@ -39,22 +32,21 @@ const Favorites_card = ({addBascketLocal, load, ...card }) => {
         <div className={s.card_counter_count}>
           <button
             id={card.id}
-            disabled={number <= 1 ? true : false}
-            onClick={(event) => dicrement(event.currentTarget.id)}
+            onClick={dicrement}
             className={s.card_counter_count_dicrement}>
             -
           </button>
-          <span className={s.card_counter_count_number}>{number}</span>
+          <span className={s.card_counter_count_number}>{card.count}</span>
           <button
             id={card.id}
-            onClick={(event) => {increment(event.currentTarget.id);}}
+            onClick={(event) => increment(event.currentTarget.id)}
             className={s.card_counter_count_increment}>
             +
           </button>
         </div>
         <div className={s.card_counter_price}>
           <span className={s.card_counter_price_title}>Цена:</span>
-          {card.price * number}РУБ
+          {card.price * card.count}РУБ
         </div>
       </div>
       <button id={card.id} onClick={(event) => addBascketLocal(event.currentTarget.id)} className={s.card_bascket_button}>Добавить в корзину</button>

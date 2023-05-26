@@ -3,13 +3,10 @@ import pul from "../../image/filterImage/pul.png";
 import snuker from "../../image/filterImage/snuker.png";
 import ecsclusive from "../../image/filterImage/ecsclusive.png";
 import s from "./KatalogKiy.module.scss";
-import load from "../../image/gif/68882650-download-sign-on-transparent-background-load-icon-data-loading-bar-vector-stock-illustration.webp";
 
 import KatalogCard from "./KatalogKiyCard";
-// import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import axios from "axios";
 
 const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
