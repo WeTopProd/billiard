@@ -17,7 +17,6 @@ import KatalogsRound from "./components/KatalogsRound/KatalogsRound";
 import { useDispatch, useSelector } from "react-redux";
 
 
-
 function App() {
 
 
