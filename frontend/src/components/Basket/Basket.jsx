@@ -5,17 +5,20 @@ import basket from "../../image/basket/basket.svg";
 import { NavLink } from "react-router-dom";
 import BascketCard from "./BascketCard";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Basket = ({ addBascketLocal }) => {
 
   const [bascket, setBascket] = useState(JSON.parse(localStorage.getItem('bascket')))
   
+  const {itemsBascket} = useSelector(state => state.bascketReducer)
   
+  console.log('itemsBascket',itemsBascket)
 
   return (
     <div className="container">
       <Hr title="Корзина" />
-      {bascket.length == 0 ? (
+      {itemsBascket.length == 0 ? (
         <main className={s.basket_empty}>
           <img src={basket} alt="image" />
           <p className={s.basket_empty_title}>Ваша корзина пуста</p>
@@ -24,14 +27,17 @@ const Basket = ({ addBascketLocal }) => {
           </NavLink>
         </main>
       ) : (
-        bascket
-          .filter((item) => item.is_in_shopping_cart == true)
-          .map((card) => (
+        itemsBascket.map((card) => (
             <div className={s.card}>
               <BascketCard addBascketLocal={addBascketLocal} {...card} />
             </div>
           ))
       )}
+      <div className={s.total_container}>
+        <p className={s.total}>
+          Итоговая цена: <span className={s.total_final}>{}</span>
+        </p>
+      </div>
     </div>
   );
 };

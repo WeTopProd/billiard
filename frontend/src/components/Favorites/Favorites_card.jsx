@@ -1,22 +1,22 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Favorites_card.module.scss";
-import {  useState } from "react";
-import { addToFavorite, removeToFavorite } from "../../redux/slices/favoritedSlice";
+import { addToBascket } from "../../redux/slices/bascketSlice";
+import { removeToFavorite } from "../../redux/slices/favoritedSlice";
 
-const Favorites_card = ({addBascketLocal, load, ...card }) => {
+const Favorites_card = ({ addBascketLocal, load, ...card }) => {
+  const { itemsBascket } = useSelector((state) => state.bascketReducer);
 
-    const dispatch = useDispatch()
-    
+  const dispatch = useDispatch();
 
-    function increment(id) {
-      dispatch(addToFavorite({id}))
-    }
+  function addBascket() {
+    dispatch(addToBascket(card));
+  }
 
-    function dicrement() {
-      dispatch(removeToFavorite(card))
-    }
+  function removeToFavorites() {
+    dispatch(removeToFavorite(card));
+  }
 
-     
+
   return (
     <div className={s.card}>
       <div className={s.card_info}>
@@ -27,29 +27,20 @@ const Favorites_card = ({addBascketLocal, load, ...card }) => {
         />
         <p className={s.card_info_description}>{card.description}</p>
       </div>
-      <div className={s.card_counter}>
-
-        <div className={s.card_counter_count}>
-          <button
-            id={card.id}
-            onClick={dicrement}
-            className={s.card_counter_count_dicrement}>
-            -
-          </button>
-          <span className={s.card_counter_count_number}>{card.count}</span>
-          <button
-            id={card.id}
-            onClick={(event) => increment(event.currentTarget.id)}
-            className={s.card_counter_count_increment}>
-            +
-          </button>
-        </div>
-        <div className={s.card_counter_price}>
-          <span className={s.card_counter_price_title}>Цена:</span>
-          {card.price * card.count}РУБ
-        </div>
+      <div className={s.card_button}>
+        <button
+          id={card.id}
+          onClick={addBascket}
+          className={s.card_button_bascket_add}>
+          Добавить в корзину
+        </button>
+        <button
+          id={card.id}
+          onClick={removeToFavorites}
+          className={s.card_button_fabvorited_remove}>
+          Удалить
+        </button>
       </div>
-      <button id={card.id} onClick={(event) => addBascketLocal(event.currentTarget.id)} className={s.card_bascket_button}>Добавить в корзину</button>
     </div>
   );
 };

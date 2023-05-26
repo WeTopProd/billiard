@@ -116,29 +116,60 @@
         }
     }
 
-    &_bascket_button {
-        position: absolute;
-        height: 35px;
-        bottom: 25px;
-        left: 50%;
-        padding: 29px 16px;
-        display: flex;
-        align-items: center;
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 17px;
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
-        cursor: pointer;
-        transition: .3s;
-        box-shadow: 0 0 10px;
-        border: none;
+    &_button {
+        &_bascket_add {
+            position: absolute;
+            height: 35px;
+            bottom: 25px;
+            left: 50%;
+            padding: 29px 16px;
+            display: flex;
+            align-items: center;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 17px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000000;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 10px;
+            border: none;
+            margin-left: 20px;
+        }
+        &_bascket_add:hover {
+            background-color: black;
+            color: white;
+        }
+
+        &_fabvorited_remove {
+            position: absolute;
+            height: 35px;
+            bottom: 25px;
+            left: 40%;
+            padding: 29px 35px;
+            display: flex;
+            align-items: center;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 17px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000000;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 10px;
+            border: none;
+            margin-left: 20px;
+        }
+        &_fabvorited_remove:hover {
+            background-color: black;
+            color: white;
+        }
     }
-    &_bascket_button:hover {
-        background-color: black;
-        color: white;
-    }
+    
 }

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 const Search = () => {
   const { items} = useSelector(state => state.favoritedReducer)
+  const { itemsBascket} = useSelector(state => state.bascketReducer)
 
   // const totalCount = items.reduce((sum, item) => sum + item.count, 0) - Надо взять на заметку, пригодится в корзине
   
@@ -34,7 +35,7 @@ const Search = () => {
             <NavLink to="/basket">
               <img className={s.basket} src={basket} alt="image" />
             </NavLink>
-            <span className={s.count}>0</span>
+            <span className={s.count}>{itemsBascket.length}</span>
           </div>
         </div>
       </div>

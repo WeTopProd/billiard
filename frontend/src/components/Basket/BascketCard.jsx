@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import s from "./BascketCard.module.scss";
+import { useDispatch } from "react-redux";
+import { addToBascket, removeToBascket } from "../../redux/slices/bascketSlice";
 
-
-const BascketCard = ({addBascketLocal, ...card }) => {
+const BascketCard = ({ addBascketLocal, ...card }) => {
   const [number, setNumber] = useState(1);
- 
+  console.log(card);
+  const dispatch = useDispatch();
+
   function increment(id) {
-    if (id == card.id) {
-      setNumber(number + 1);
-    }
+    dispatch(addToBascket({id}));
   }
 
-  function dicrement(id) {
-    if (id == card.id) {
-      setNumber(number - 1);
-    }
+  function dicrement() {
+    dispatch(removeToBascket(card));
   }
 
-  
   return (
     <div>
       <div className={s.card}>
@@ -33,12 +31,11 @@ const BascketCard = ({addBascketLocal, ...card }) => {
           <div className={s.card_counter_count}>
             <button
               id={card.id}
-              disabled={number <= 1 ? true : false}
-              onClick={(event) => dicrement(event.currentTarget.id)}
+              onClick={dicrement}
               className={s.card_counter_count_dicrement}>
               -
             </button>
-            <span className={s.card_counter_count_number}>{number}</span>
+            <span className={s.card_counter_count_number}>{card.count}</span>
             <button
               id={card.id}
               onClick={(event) => {
@@ -50,7 +47,7 @@ const BascketCard = ({addBascketLocal, ...card }) => {
           </div>
           <div className={s.card_counter_price}>
             <span className={s.card_counter_price_title}>Цена:</span>
-            {card.price * number}РУБ
+            {card.price * card.count}РУБ
           </div>
         </div>
         <button

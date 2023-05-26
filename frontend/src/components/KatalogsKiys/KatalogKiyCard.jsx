@@ -11,30 +11,32 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavorite,
   removeToFavorite,
-  
 } from "../../redux/slices/favoritedSlice";
+import { addToBascket } from "../../redux/slices/bascketSlice";
 
 const KatalogKiyCard = ({ arr, setArr, ...item }) => {
-
-
   const [heart, setHeart] = useState(false);
 
+  const { totalPrice, items } = useSelector((state) => state.favoritedReducer);
+  const { totalPriceBascket, itemsBascket } = useSelector(
+    (state) => state.bascketReducer
+  );
 
-  const {totalPrice, items} = useSelector((state) => state.favoritedReducer);
+
   const dispatch = useDispatch();
- 
-
-
 
   useEffect(() => {
     localStorage.setItem("favorited", JSON.stringify(items));
   }, [items]);
 
+  useEffect(() => {
+    localStorage.setItem("bascket", JSON.stringify(itemsBascket));
+  }, [itemsBascket]);
+
   function favorites(id) {
     setHeart(!heart);
     if (id == item.id) {
       dispatch(addToFavorite(item));
-      
     }
 
     // if (heart == true) {
@@ -50,6 +52,12 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
     // if (arr.length !== 0) {
     //   localStorage.setItem("user", JSON.stringify(arr));
     // }
+  }
+
+  function addBascket(id) {
+    if (id == item.id) {
+      dispatch(addToBascket(item));
+    }
   }
 
   return (
@@ -122,7 +130,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
 
         <div className={s.container_price}>
           <p className={s.container_price_info}>Цена: {item.price} руб.</p>
-          <button className={s.container_price_button}>В корзину</button>
+          <button id={item.id} onClick={(event) => addBascket(event.currentTarget.id)} className={s.container_price_button}>В корзину</button>
         </div>
       </div>
     </div>

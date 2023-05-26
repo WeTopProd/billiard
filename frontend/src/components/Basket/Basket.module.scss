@@ -32,3 +32,31 @@
     box-sizing: border-box;
     margin: 50px 0;
 }
+
+.total_container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 50px 100px;
+    box-sizing: border-box;
+
+    & .total {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 45px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #ffffff;
+
+        &_final {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 17px;
+            color: #0a8b6a;
+        }
+    }
+}
