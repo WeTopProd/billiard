@@ -10,6 +10,7 @@ const Context = (props) => {
 
   console.log(favorites);
 
+  const [arrFavorites, setArrFavorites] = useState([]);
 
   function toggleFavorites() {
     setFavorites(!favorites);

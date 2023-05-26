@@ -3,32 +3,29 @@ import pul from "../../image/filterImage/pul.png";
 import snuker from "../../image/filterImage/snuker.png";
 import ecsclusive from "../../image/filterImage/ecsclusive.png";
 import s from "./KatalogKiy.module.scss";
-import load from '../../image/gif/68882650-download-sign-on-transparent-background-load-icon-data-loading-bar-vector-stock-illustration.webp'
+import load from "../../image/gif/68882650-download-sign-on-transparent-background-load-icon-data-loading-bar-vector-stock-illustration.webp";
 
 import KatalogCard from "./KatalogKiyCard";
 // import { dataKiyFilter } from "../data/dataKatalogCard/dataKiyKatalog";
 
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-const KatalogKiy = ({cards, setCards, finall}) => {
-
+const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
   
 
   function filterMini(type) {
     axios
-    .get("http://localhost:8000/api/cue",
-    {
-      params: {
-        play: type
-      }
-    })
-    .then(res => setCards(res.data.results))
-    .catch(err => console.error(err))
+      .get("http://localhost:8000/api/cue", {
+        params: {
+          play: type,
+        },
+      })
+      .then((res) => setCards(res.data.results))
+      .catch((err) => console.error(err));
   }
 
-  
 
   return (
     <div className={s.katalogKiy}>
@@ -59,14 +56,23 @@ const KatalogKiy = ({cards, setCards, finall}) => {
           className={s.katalog_kiy_container_link}
           to="#">
           <img src={ecsclusive} alt="image" />
-          <p>Эксклюзив</p> 
+          <p>Эксклюзив</p>
         </Link>
       </div>
 
       <div className={s.card_container}>
-        {finall ? <span className={s.loading}>...loading</span> : cards.map((item) => (
-          <KatalogCard key={item.id} {...item} />
-        ))}
+        {finall ? (
+          <span className={s.loading}>...loading</span>
+        ) : (
+          cards.map((item) => (
+            <KatalogCard
+              arr={arr}
+              setArr={setArr}
+              key={item.id}
+              {...item}
+            />
+          ))
+        )}
       </div>
     </div>
   );

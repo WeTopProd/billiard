@@ -8,7 +8,7 @@ import FilterKiy from "./FilterKiy";
 import KatalogKiy from "./KatalogKiy";
 
 
-const KatalogsKiys = () => {
+const KatalogsKiys = ({arr, setArr}) => {
   const [cards, setCards] = useState([]);
   const [finall, setFinall] = useState(true);
 
@@ -62,11 +62,9 @@ const KatalogsKiys = () => {
       <div className={s.katalogs}>
         <aside className={s.filter}>
           <FilterKiy
-            // array={array}
             setArrayePlay={setArrayePlay}
             setArrayeStructure={setArrayeStructure}
             setArrayeWorkshop={setArrayeWorkshop}
-            // priceFilter={priceFilter}
             min={min}
             setMin={setMin}
             max={max}
@@ -77,7 +75,7 @@ const KatalogsKiys = () => {
           />
         </aside>
         <main className={s.kiys}>
-          <KatalogKiy finall={finall} cards={cards} setCards={setCards} />
+          <KatalogKiy arr={arr} setArr={setArr} finall={finall} cards={cards} setCards={setCards} />
         </main>
       </div>
     </div>
