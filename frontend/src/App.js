@@ -22,36 +22,6 @@ function App() {
   const [arr, setArr] = useState([]);
   const [bascket, setBascket] = useState([])
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://127.0.0.1:8000/api/cue/`)
-  //     .then((res) => {
-  //       localStorage.setItem("user", JSON.stringify(res.data.results));
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://127.0.0.1:8000/api/cue/`)
-  //     .then((res) => {
-  //       localStorage.setItem("bascket", JSON.stringify(res.data.results));
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // function addBascketLocal(id) {
-  //   setBascket(
-  //     JSON.parse(localStorage.getItem("bascket")).map((item) =>
-  //       item.is_in_shopping_cart == true || item.id == id
-  //         ? { id: (item.is_in_shopping_cart = true), ...item }
-  //         : { id: (item.is_in_shopping_cart = false), ...item }
-  //     )
-  //   );
-  //   if (bascket.length !== 0) {
-  //     localStorage.setItem("bascket", JSON.stringify(bascket))
-  //   }
-  // }
 
 
   return (
@@ -69,10 +39,8 @@ function App() {
               element={<KatalogsKiys arr={arr} setArr={setArr} />}
             />
             <Route path="/favorites" element={<Favorites 
-            // addBascketLocal={addBascketLocal}  
             arr={arr} setArr={setArr} />} />
             <Route path="/basket" element={<Basket 
-            // addBascketLocal={addBascketLocal} 
             bascket={bascket}
              />} />
             <Route path="/redemtion" element={<TreidIn />} />

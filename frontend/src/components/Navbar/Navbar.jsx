@@ -32,14 +32,12 @@ const Navbar = () => {
     .then(res => localStorage.setItem('name', JSON.stringify(res.data[0].first_name)))
     setUserName(JSON.parse(localStorage.getItem('name')))
   }, [autorisation, localStorage.getItem('name')])
-
-  
   
 
   const logOut = () => {
     dispatch(loginState(false));
     localStorage.setItem("auth", JSON.stringify(false));
-   
+    window.location.reload(); 
     
   };
 

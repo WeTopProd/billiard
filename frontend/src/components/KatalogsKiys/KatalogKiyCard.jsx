@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"; 
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavorite,
   removeToFavorite,
@@ -17,24 +17,17 @@ import axios from "axios";
 
 const KatalogKiyCard = ({ arr, setArr, ...item }) => {
 
-
   const [heart, setHeart] = useState(false);
 
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const { totalPrice, items } = useSelector((state) => state.favoritedReducer);
   const { totalPriceBascket, itemsBascket } = useSelector(
     (state) => state.bascketReducer
   );
 
-  function cart(id) {
-    axios.post(`http://127.0.0.1:8000/api/cue/${id}/shopping_cart/`, {
-      headers: {
-        "content-type": "application/json",
-        'authorization': `Token 1a18d8a498ac2b23b686babcb9b0106b761eb066`
-      }
-    }).then((res) => console.log(res.data));
-  }
+  console.log('bascket', itemsBascket);
+
 
   const dispatch = useDispatch();
 
@@ -42,18 +35,6 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
     localStorage.setItem("favorited", JSON.stringify(items));
   }, [items]);
 
-  // useEffect(() => {
-  //   const savedCartItems = localStorage.getItem('bascket');
-  //   if (savedCartItems) {
-  //     dispatch(addToBascket(JSON.parse(savedCartItems)));
-  //   }
-  // }, [dispatch]);
-
-  // Сохранение данных в локальное хранилище при изменении состояния корзины
-
-  useEffect(() => {
-    localStorage.setItem("bascket", JSON.stringify(itemsBascket));
-  }, [itemsBascket]);
 
   function favorites(id) {
     setHeart(!heart);
@@ -61,26 +42,46 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
       dispatch(addToFavorite(item));
     }
 
-    // if (heart == true) {
-    //   setArr(
-    //     JSON.parse(localStorage.getItem("user")).map((item) =>
-    //       item.is_favorited == true || item.id == id
-    //         ? { is_favorited: (item.is_favorited = true), ...item }
-    //         : { is_favorited: (item.is_favorited = false), ...item }
-    //     )
-    //   );
-    // }
-
-    // if (arr.length !== 0) {
-    //   localStorage.setItem("user", JSON.stringify(arr));
-    // }
   }
+
+  // useEffect(() => {
+  //   dispatch(addToBascket(JSON.parse(localStorage.getItem('bascket'))))
+  // }, [localStorage.getItem('bascket')])
+
 
   function addBascket(id) {
-    if (id == item.id) {
-      dispatch(addToBascket(item));
-    }
+    axios
+      .post(`http://127.0.0.1:8000/api/cue/${id}/shopping_cart/`, null, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+      })
+      .catch(err => console.log(err))
+
+      axios.get('http://127.0.0.1:8000/api/cue/?is_in_shopping_cart=1', {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        }
+      })
+      .then(res => {
+        localStorage.setItem('bascket', JSON.stringify(res.data.results))      
+      } )
+
+      dispatch(addToBascket(JSON.parse(localStorage.getItem('bascket'))))
   }
+
+  // function deleteBascket(id) {
+  //   axios
+  //     .delete(`http://127.0.0.1:8000/api/cue/${id}/shopping_cart/`, {
+  //       headers: {
+  //         "content-type": "application/json",
+  //         authorization: `Token ${token}`,
+  //       },
+  //     })
+  //     .then((res) => dispatch(addToBascket(res.data)));
+  // }
 
   return (
     <div className={s.card}>
@@ -109,7 +110,6 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
         </div>
 
         <Swiper
-          // width={594}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           scrollbar={false}
           navigation={true}
@@ -154,8 +154,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
           <p className={s.container_price_info}>Цена: {item.price} руб.</p>
           <button
             id={item.id}
-            // onClick={(event) => addBascket(event.currentTarget.id)}
-            onClick={(event) => cart(event.currentTarget.id)}
+            onClick={(event) => addBascket(event.currentTarget.id)}
             className={s.container_price_button}>
             В корзину
           </button>

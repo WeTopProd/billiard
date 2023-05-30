@@ -11,11 +11,12 @@ export const baskcetSlice = createSlice({
   reducers: {
     addToBascket(state, action) {
       const findItem = state.itemsBascket.find((obj) => obj.id == action.payload.id);
-
+      
       if (findItem) {
         findItem.count++;
       } else {
-        state.itemsBascket.push({ ...action.payload, count: 1 });
+
+        state.itemsBascket.push(...action.payload);
       }
       state.totalPriceBascket = state.itemsBascket.reduce((sum, obj) => {
         return obj.price * obj.count + sum;

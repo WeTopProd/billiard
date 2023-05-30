@@ -4,12 +4,10 @@ import s from "./Basket.module.scss";
 import basket from "../../image/basket/basket.svg";
 import { NavLink } from "react-router-dom";
 import BascketCard from "./BascketCard";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Basket = () => {
 
-  // const [bascket, setBascket] = useState(JSON.parse(localStorage.getItem('bascket')))
   
   const {itemsBascket, totalPriceBascket} = useSelector(state => state.bascketReducer)
 
