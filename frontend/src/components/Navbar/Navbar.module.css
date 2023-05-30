@@ -46,7 +46,7 @@
 .login {
     margin: 0;
     display: flex;
-    align-items: center;
+    align-items: center; 
     gap: 25px;
 }
 
@@ -67,10 +67,35 @@
     cursor: pointer;
 }
 
+.userName{
+    color: white;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+}
 
+.pokupki {
+    text-decoration: none;
+    color: white;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 104.5%;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.pokupki:hover {
+    color: #0a8b6a;
+}
 
 .login__item:hover {
     color: #0a8b6a;
+    
 }
 
 @media screen and (max-width: 1400px) {

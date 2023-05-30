@@ -6,10 +6,13 @@ const useModal = () => {
 
 	function toggle() {
 		setIsShowing(!isShowing);
+		localStorage.removeItem('name')
+		
 	}
-
+ 
 	return [
 		isShowing,
+		setIsShowing,
 		toggle
 	]; 
 }
