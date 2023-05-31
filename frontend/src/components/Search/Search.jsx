@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const Search = () => {
   const { items} = useSelector(state => state.favoritedReducer)
   const { itemsBascket} = useSelector(state => state.bascketReducer)
+  
 
   // const totalCount = items.reduce((sum, item) => sum + item.count, 0) - Надо взять на заметку, пригодится в корзине
   

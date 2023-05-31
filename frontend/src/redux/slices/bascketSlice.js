@@ -35,13 +35,18 @@ export const baskcetSlice = createSlice({
         );
       }
     },
+    deleteCart(state, action) {
+      state.itemsBascket = state.itemsBascket.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
     clearBascket(state) {
       state.itemsBascket = [];
     },
   },
-});
+}); 
 
-export const { addToBascket, removeToBascket, clearBascket } =
+export const { addToBascket, removeToBascket, clearBascket, deleteCart } =
   baskcetSlice.actions;
 
 export default baskcetSlice.reducer;

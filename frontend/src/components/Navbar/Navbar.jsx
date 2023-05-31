@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isShowingModal, setIsShowing, toggleModal] = useModal();
 
   const { autorisation } = useSelector((state) => state.autorisationReducer);
-  console.log(autorisation);
+ 
 
   const dispatch = useDispatch();
   const token = JSON.parse(localStorage.getItem('token'))

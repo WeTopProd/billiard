@@ -2,23 +2,35 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./Favorites_card.module.scss";
 import { addToBascket } from "../../redux/slices/bascketSlice";
 import { removeToFavorite } from "../../redux/slices/favoritedSlice";
+import axios from 'axios';
+import { current } from '@reduxjs/toolkit';
+
 
 const Favorites_card = ({ addBascketLocal, load, ...card }) => {
-  const { itemsBascket } = useSelector((state) => state.bascketReducer);
 
   const dispatch = useDispatch();
+  const token = JSON.parse(localStorage.getItem('token'))
 
   function addBascket() {
     dispatch(addToBascket(card));
   }
 
-  function removeToFavorites() {
-    dispatch(removeToFavorite(card));
+
+  const favoritesDelete = (id) => {
+    dispatch(removeToFavorite(card))
+
+    axios
+    .delete(`http://127.0.0.1:8000/api/cue/${id}/favorite/`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Token ${token}`,
+      },
+    })    
   }
 
 
   return (
-    <div className={s.card}>
+    <div className={s.card}> 
       <div className={s.card_info}>
         <img
           className={s.card_info_image}
@@ -36,7 +48,7 @@ const Favorites_card = ({ addBascketLocal, load, ...card }) => {
         </button>
         <button
           id={card.id}
-          onClick={removeToFavorites}
+          onClick={(event => favoritesDelete(event.currentTarget.id))}
           className={s.card_button_fabvorited_remove}>
           Удалить
         </button>

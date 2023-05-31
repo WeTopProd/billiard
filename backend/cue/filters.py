@@ -1,6 +1,5 @@
-from django_filters.rest_framework import FilterSet, filters, RangeFilter, MultipleChoiceFilter
-
-from users.models import User
+from django_filters.rest_framework import (FilterSet, filters, RangeFilter,
+                                           MultipleChoiceFilter)
 
 from .models import Cue
 

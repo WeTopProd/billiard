@@ -14,7 +14,6 @@ const Favorites = () => {
   // const {count} = useSelector(state => state.favoritedReducer.items.find(obj => obj.id === res.id))
 
   
-  console.log(items)
 
   const [total, setTotal] = useState(null);
   
@@ -24,7 +23,7 @@ const Favorites = () => {
   }, []);
 
 
-  function load(num) {
+  function load(num) { 
     setTotal(res && res.map((f) => f.price).reduce((a, b) => a + b));
   }
 

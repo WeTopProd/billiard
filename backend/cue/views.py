@@ -10,7 +10,7 @@ from .pagination import CustomPagination
 from .filters import CueFilter
 from .models import Cue, ShoppingCart, Favorite
 from .permissions import IsOwnerOrReadOnly
-from .serializers import CueSerializer, ShortCueSerializer, FavoriteSerializer
+from .serializers import CueSerializer, ShortCueSerializer, FavoriteSerializer, ShoppingCartSerializer
 
 
 class CueViewSet(viewsets.ModelViewSet):
@@ -23,23 +23,41 @@ class CueViewSet(viewsets.ModelViewSet):
 
     @action(
         detail=True,
-        methods=('post', 'delete'),
+        methods=('post', 'delete', 'patch'),
         permission_classes=(IsAuthenticated,)
     )
     def shopping_cart(self, request, pk):
         if request.method == 'POST':
             return self.add_cue(ShoppingCart, request, pk)
-        else:
+        if request.method == 'DELETE':
             return self.delete_cue(ShoppingCart, request, pk)
+        if request.method == 'PATCH':
+            return self.change_count(ShoppingCart, request, pk)
 
     def add_cue(self, model, request, pk):
         cue = get_object_or_404(Cue, pk=pk)
         user = self.request.user
         if model.objects.filter(cue=cue, user=user).exists():
             raise ValidationError('Кий уже добавлен')
-        model.objects.create(cue=cue, user=user)
+        model.objects.create(cue=cue, user=user, price=cue.price)
         serializer = ShortCueSerializer(cue)
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+
+    def change_count(self, model, request, pk):
+        cue = get_object_or_404(Cue, pk=pk)
+        user = self.request.user
+        shopping_cart = get_object_or_404(model, cue=cue, user=user)
+        if 'count' in request.data:
+            new_count = request.data['count']
+            price = cue.price
+            new_price = new_count * price
+            shopping_cart.count = new_count
+            shopping_cart.price = new_price
+            shopping_cart.save()
+        else:
+            return ValidationError('поле сount не найдено')
+        serializer = ShoppingCartSerializer(shopping_cart)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def delete_cue(self, model, request, pk):
         cue = get_object_or_404(Cue, pk=pk)

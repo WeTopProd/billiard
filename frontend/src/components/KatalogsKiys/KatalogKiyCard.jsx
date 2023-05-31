@@ -10,9 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavorite,
-  removeToFavorite,
 } from "../../redux/slices/favoritedSlice";
-import { addToBascket } from "../../redux/slices/bascketSlice";
 import axios from "axios";
 
 const KatalogKiyCard = ({ arr, setArr, ...item }) => {
@@ -21,32 +19,28 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
 
   const token = JSON.parse(localStorage.getItem("token"));
 
-  const { totalPrice, items } = useSelector((state) => state.favoritedReducer);
-  const { totalPriceBascket, itemsBascket } = useSelector(
-    (state) => state.bascketReducer
-  );
-
-  console.log('bascket', itemsBascket);
-
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem("favorited", JSON.stringify(items));
-  }, [items]);
-
-
+ 
   function favorites(id) {
     setHeart(!heart);
-    if (id == item.id) {
-      dispatch(addToFavorite(item));
-    }
+    axios
+      .post(`http://127.0.0.1:8000/api/cue/${id}/favorite/`, null, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+      })
+      .catch(err => console.error(err))
+
+      axios.get('http://127.0.0.1:8000/api/cue/?is_favorited=1', {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        }
+      })
+      .then(res => console.log(res))
 
   }
 
-  // useEffect(() => {
-  //   dispatch(addToBascket(JSON.parse(localStorage.getItem('bascket'))))
-  // }, [localStorage.getItem('bascket')])
 
 
   function addBascket(id) {
@@ -57,7 +51,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
           authorization: `Token ${token}`,
         },
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
 
       axios.get('http://127.0.0.1:8000/api/cue/?is_in_shopping_cart=1', {
         headers: {
@@ -65,23 +59,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
           authorization: `Token ${token}`,
         }
       })
-      .then(res => {
-        localStorage.setItem('bascket', JSON.stringify(res.data.results))      
-      } )
-
-      dispatch(addToBascket(JSON.parse(localStorage.getItem('bascket'))))
   }
-
-  // function deleteBascket(id) {
-  //   axios
-  //     .delete(`http://127.0.0.1:8000/api/cue/${id}/shopping_cart/`, {
-  //       headers: {
-  //         "content-type": "application/json",
-  //         authorization: `Token ${token}`,
-  //       },
-  //     })
-  //     .then((res) => dispatch(addToBascket(res.data)));
-  // }
 
   return (
     <div className={s.card}>

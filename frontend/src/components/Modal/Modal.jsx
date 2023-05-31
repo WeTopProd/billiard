@@ -68,7 +68,6 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
       )
       .then((res) => {
         if (res.request.status == 200) {
-          console.log(res)
           setIsShowing(false);
           dispatch(loginState(true));
           dispatch(tokenState(res.data.auth_token));
