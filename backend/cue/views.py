@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.validators import ValidationError
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from .pagination import CustomPagination
 from .filters import CueFilter
@@ -89,3 +90,16 @@ class FavoriteView(views.APIView):
         cue = get_object_or_404(Cue, id=favorite_id)
         Favorite.objects.filter(user=user, cue=cue).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+def shopping_cart_data(request):
+    user = request.user
+    shopping_cart = ShoppingCart.objects.filter(user=user).first()
+    if shopping_cart:
+        data = {
+            'count': shopping_cart.count,
+            'price': shopping_cart.price,
+            'user': shopping_cart.user,
+            'cue': shopping_cart.cue
+        }
+    return JsonResponse(data)
