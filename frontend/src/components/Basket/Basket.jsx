@@ -7,13 +7,12 @@ import BascketCard from "./BascketCard";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const Basket = ({ addBascketLocal }) => {
+const Basket = () => {
 
-  const [bascket, setBascket] = useState(JSON.parse(localStorage.getItem('bascket')))
+  // const [bascket, setBascket] = useState(JSON.parse(localStorage.getItem('bascket')))
   
-  const {itemsBascket} = useSelector(state => state.bascketReducer)
-  
-  console.log('itemsBascket',itemsBascket)
+  const {itemsBascket, totalPriceBascket} = useSelector(state => state.bascketReducer)
+
 
   return (
     <div className="container">
@@ -29,13 +28,13 @@ const Basket = ({ addBascketLocal }) => {
       ) : (
         itemsBascket.map((card) => (
             <div className={s.card}>
-              <BascketCard addBascketLocal={addBascketLocal} {...card} />
+              <BascketCard  {...card} />
             </div>
           ))
       )}
       <div className={s.total_container}>
         <p className={s.total}>
-          Итоговая цена: <span className={s.total_final}>{}</span>
+          Итоговая цена: <span className={s.total_final}>{totalPriceBascket}</span>
         </p>
       </div>
     </div>

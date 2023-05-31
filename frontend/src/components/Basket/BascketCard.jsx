@@ -3,13 +3,13 @@ import s from "./BascketCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addToBascket, removeToBascket } from "../../redux/slices/bascketSlice";
 
-const BascketCard = ({ addBascketLocal, ...card }) => {
-  const [number, setNumber] = useState(1);
-  console.log(card);
+const BascketCard = ({  ...card }) => {
   const dispatch = useDispatch();
 
   function increment(id) {
-    dispatch(addToBascket({id}));
+    if (id == card.id) {
+      dispatch(addToBascket(card));
+    }
   }
 
   function dicrement() {
@@ -22,7 +22,7 @@ const BascketCard = ({ addBascketLocal, ...card }) => {
         <div className={s.card_info}>
           <img
             className={s.card_info_image}
-            src={card.images[0].images}
+            src={ card.images[0].images}  
             alt="image"
           />
           <p className={s.card_info_description}>{card.description}</p>
@@ -38,9 +38,7 @@ const BascketCard = ({ addBascketLocal, ...card }) => {
             <span className={s.card_counter_count_number}>{card.count}</span>
             <button
               id={card.id}
-              onClick={(event) => {
-                increment(event.currentTarget.id);
-              }}
+              onClick={(event) => increment(event.currentTarget.id)}
               className={s.card_counter_count_increment}>
               +
             </button>
@@ -52,7 +50,7 @@ const BascketCard = ({ addBascketLocal, ...card }) => {
         </div>
         <button
           id={card.id}
-          onClick={(event) => addBascketLocal(event.currentTarget.id)}
+          
           className={s.card_bascket_button}>
           Оформить заказ
         </button>

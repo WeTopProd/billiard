@@ -7,27 +7,49 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import {
   addToFavorite,
   removeToFavorite,
 } from "../../redux/slices/favoritedSlice";
 import { addToBascket } from "../../redux/slices/bascketSlice";
+import axios from "axios";
 
 const KatalogKiyCard = ({ arr, setArr, ...item }) => {
+
+
   const [heart, setHeart] = useState(false);
+
+  const token = JSON.parse(localStorage.getItem('token'))
 
   const { totalPrice, items } = useSelector((state) => state.favoritedReducer);
   const { totalPriceBascket, itemsBascket } = useSelector(
     (state) => state.bascketReducer
   );
 
+  function cart(id) {
+    axios.post(`http://127.0.0.1:8000/api/cue/${id}/shopping_cart/`, {
+      headers: {
+        "content-type": "application/json",
+        'authorization': `Token 1a18d8a498ac2b23b686babcb9b0106b761eb066`
+      }
+    }).then((res) => console.log(res.data));
+  }
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     localStorage.setItem("favorited", JSON.stringify(items));
   }, [items]);
+
+  // useEffect(() => {
+  //   const savedCartItems = localStorage.getItem('bascket');
+  //   if (savedCartItems) {
+  //     dispatch(addToBascket(JSON.parse(savedCartItems)));
+  //   }
+  // }, [dispatch]);
+
+  // Сохранение данных в локальное хранилище при изменении состояния корзины
 
   useEffect(() => {
     localStorage.setItem("bascket", JSON.stringify(itemsBascket));
@@ -130,7 +152,13 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
 
         <div className={s.container_price}>
           <p className={s.container_price_info}>Цена: {item.price} руб.</p>
-          <button id={item.id} onClick={(event) => addBascket(event.currentTarget.id)} className={s.container_price_button}>В корзину</button>
+          <button
+            id={item.id}
+            // onClick={(event) => addBascket(event.currentTarget.id)}
+            onClick={(event) => cart(event.currentTarget.id)}
+            className={s.container_price_button}>
+            В корзину
+          </button>
         </div>
       </div>
     </div>

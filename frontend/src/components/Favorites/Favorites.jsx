@@ -6,7 +6,7 @@ import Favorites_card from "./Favorites_card";
 import { useSelector } from "react-redux";
 
 
-const Favorites = ({addBascketLocal}) => {
+const Favorites = () => {
   const [res, setRes] = useState(JSON.parse(localStorage.getItem("user")));
   
 
@@ -34,7 +34,7 @@ const Favorites = ({addBascketLocal}) => {
       <div className={s.section}>
         {items.map((card) => (
           <>
-            <Favorites_card addBascketLocal={addBascketLocal} key={card.id} {...card} load={load} />
+            <Favorites_card  key={card.id} {...card} load={load} />
           </>
         ))}
       </div>
