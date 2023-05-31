@@ -76,6 +76,14 @@ class CueViewSet(viewsets.ModelViewSet):
         user = request.user
         shopping_cart = ShoppingCart.objects.filter(user=user)
         serializer = ShoppingCartSerializer(shopping_cart, many=True)
+
+        # Добавляем данные о кие в каждый объект корзины
+        for item in serializer.data:
+            cue_id = item['cue']
+            cue = get_object_or_404(Cue, id=cue_id)
+            cue_serializer = CueSerializer(cue)
+            item['cue'] = cue_serializer.data
+
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
