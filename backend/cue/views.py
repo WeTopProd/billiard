@@ -67,6 +67,17 @@ class CueViewSet(viewsets.ModelViewSet):
         obj.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    @action(
+        detail=False,
+        methods=['get'],
+        permission_classes=[IsAuthenticated]
+    )
+    def basket(self, request):
+        user = request.user
+        shopping_cart = ShoppingCart.objects.filter(user=user)
+        serializer = ShoppingCartSerializer(shopping_cart, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
 
 class FavoriteView(views.APIView):
     permission_classes = (IsAuthenticated, )
@@ -90,16 +101,3 @@ class FavoriteView(views.APIView):
         cue = get_object_or_404(Cue, id=favorite_id)
         Favorite.objects.filter(user=user, cue=cue).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-def shopping_cart_data(request):
-    user = request.user
-    shopping_cart = ShoppingCart.objects.filter(user=user).first()
-    if shopping_cart:
-        data = {
-            'count': shopping_cart.count,
-            'price': shopping_cart.price,
-            'user': shopping_cart.user,
-            'cue': shopping_cart.cue
-        }
-    return JsonResponse(data)
