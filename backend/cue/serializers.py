@@ -55,6 +55,19 @@ class ShortCueSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'image',
+            'count',
+            'price'
+        )
+
+
+class ShoppingCartSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ShoppingCart
+        fields = (
+            'cue',
+            'user',
+            'count',
             'price'
         )
 

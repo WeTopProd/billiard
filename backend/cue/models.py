@@ -83,6 +83,8 @@ class ShoppingCart(models.Model):
         related_name='shopping_cart',
         on_delete=models.CASCADE
     )
+    count = models.IntegerField(default=1, verbose_name='Количество кия')
+    price = models.FloatField(verbose_name='Цена кия')
 
     class Meta:
         verbose_name = 'Покупка'
