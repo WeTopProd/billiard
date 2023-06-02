@@ -51,8 +51,8 @@ class GoodsFilter(FilterSet):
         lookup_expr='icontains',
         field_name='play'
     )
-    type = filters.CharFilter(
-        lookup_expr='icontains',
+    type = ChoiceFilter(
+        choices=Goods.CHOICES_TYPE,
         field_name='type'
     )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
