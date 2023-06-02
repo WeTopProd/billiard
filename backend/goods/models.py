@@ -82,7 +82,9 @@ class Goods(models.Model):
     )
     type = models.CharField(
         verbose_name='Тип аксессуара',
-        max_length=150
+        max_length=150,
+        blank=True,
+        null=True
     )
 
     class Meta:
