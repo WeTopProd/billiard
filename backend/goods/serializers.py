@@ -18,6 +18,7 @@ class GoodsSerializer(serializers.ModelSerializer):
         model = Goods
         fields = (
             'id',
+            'goods_type',
             'title',
             'description',
             'workshop',
@@ -30,6 +31,7 @@ class GoodsSerializer(serializers.ModelSerializer):
             'composition',
             'structure',
             'weight',
+            'type',
             'is_favorited',
             'is_in_shopping_cart'
         )
@@ -54,6 +56,7 @@ class ShortGoodsSerializer(serializers.ModelSerializer):
         model = Goods
         fields = (
             'id',
+            'goods_type',
             'title',
             'images',
             'count',
