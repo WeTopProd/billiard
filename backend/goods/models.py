@@ -27,6 +27,12 @@ class Goods(models.Model):
         ('2', 'Шары'),
         ('3', 'Аксессуары'),
     )
+    CHOICES_TYPE = (
+        ('case', 'Чехол'),
+        ('sticker', 'Наклейка'),
+        ('chalk', 'Мел'),
+        ('glove', 'Перчатки')
+    )
     goods_type = models.CharField(
         verbose_name='Тип товара',
         max_length=50,
@@ -83,6 +89,7 @@ class Goods(models.Model):
     type = models.CharField(
         verbose_name='Тип аксессуара',
         max_length=150,
+        choices=CHOICES_TYPE,
         blank=True,
         null=True
     )
