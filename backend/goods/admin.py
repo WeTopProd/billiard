@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from .models import Cue, Image
+from .models import Goods, Image
 
 
 class PostImageAdmin(admin.StackedInline):
     model = Image
 
 
-class CueAdmin(admin.ModelAdmin):
+class GoodsAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
         'title',
@@ -30,4 +30,4 @@ class ImageAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Cue, CueAdmin)
+admin.site.register(Goods, GoodsAdmin)

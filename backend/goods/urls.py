@@ -1,12 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import CueViewSet, FavoriteView
+from .views import GoodsViewSet, FavoriteView
 
 router = DefaultRouter()
-router.register('cue', CueViewSet)
+router.register('goods', GoodsViewSet, basename='goods')
+
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('cue/<int:favorite_id>/favorite/', FavoriteView.as_view()),
+    path('goods/<int:favorite_id>/favorite/', FavoriteView),
 ]

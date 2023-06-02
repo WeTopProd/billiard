@@ -1,17 +1,20 @@
 from django_filters.rest_framework import (FilterSet, filters, RangeFilter,
                                            MultipleChoiceFilter)
 
-from .models import Cue
+from .models import Goods
 
 
-class CueFilter(FilterSet):
+class GoodsFilter(FilterSet):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        workshops = Cue.objects.values_list('workshop', 'workshop').distinct()
+        workshops = Goods.objects.values_list(
+            'workshop',
+            'workshop'
+        ).distinct()
         self.filters['workshop'].extra['choices'] = workshops
 
-        plays = Cue.objects.values_list('play', 'play').distinct()
+        plays = Goods.objects.values_list('play', 'play').distinct()
         self.filters['play'].extra['choices'] = plays
 
     title = filters.CharFilter(lookup_expr='icontains', field_name='title')
@@ -21,6 +24,7 @@ class CueFilter(FilterSet):
         lookup_expr='icontains',
         field_name='workshop'
     )
+    diameter = filters.NumberFilter(lookup_expr='exact', field_name='diameter')
     weight = filters.NumberFilter(lookup_expr='exact', field_name='weight')
     article = filters.NumberFilter(lookup_expr='exact', field_name='article')
     price = RangeFilter(field_name='price')
@@ -34,7 +38,7 @@ class CueFilter(FilterSet):
     )
 
     class Meta:
-        model = Cue
+        model = Goods
         fields = (
             'title',
             'composition',
