@@ -1,5 +1,5 @@
 from django_filters.rest_framework import (FilterSet, filters, RangeFilter,
-                                           MultipleChoiceFilter)
+                                           MultipleChoiceFilter, ChoiceFilter)
 
 from .models import Goods
 
@@ -17,20 +17,43 @@ class GoodsFilter(FilterSet):
         plays = Goods.objects.values_list('play', 'play').distinct()
         self.filters['play'].extra['choices'] = plays
 
-    title = filters.CharFilter(lookup_expr='icontains', field_name='title')
-    composition = filters.NumberFilter(lookup_expr='exact',
-                                       field_name='composition')
+    goods_type = ChoiceFilter(
+        choices=Goods.CHOICES_GOODS,
+        field_name='goods_type'
+    )
+    title = filters.CharFilter(
+        lookup_expr='icontains',
+        field_name='title'
+    )
+    composition = filters.NumberFilter(
+        lookup_expr='exact',
+        field_name='composition'
+    )
     workshop = MultipleChoiceFilter(
         lookup_expr='icontains',
         field_name='workshop'
     )
-    diameter = filters.NumberFilter(lookup_expr='exact', field_name='diameter')
-    weight = filters.NumberFilter(lookup_expr='exact', field_name='weight')
-    article = filters.NumberFilter(lookup_expr='exact', field_name='article')
+    diameter = filters.NumberFilter(
+        lookup_expr='exact',
+        field_name='diameter'
+    )
+    weight = filters.NumberFilter(
+        lookup_expr='exact',
+        field_name='weight'
+    )
+    article = filters.NumberFilter(
+        lookup_expr='exact',
+        field_name='article'
+    )
     price = RangeFilter(field_name='price')
 
     play = MultipleChoiceFilter(
+        lookup_expr='icontains',
         field_name='play'
+    )
+    type = filters.CharFilter(
+        lookup_expr='icontains',
+        field_name='type'
     )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(
@@ -40,13 +63,16 @@ class GoodsFilter(FilterSet):
     class Meta:
         model = Goods
         fields = (
+            'goods_type',
             'title',
             'composition',
             'workshop',
+            'diameter',
             'weight',
             'article',
             'price',
             'play',
+            'type',
             'is_favorited',
             'is_in_shopping_cart'
         )

@@ -12,6 +12,8 @@ class Image(models.Model):
         "Goods",
         related_name='images',
         on_delete=models.CASCADE,
+
+
         verbose_name='Товар'
     )
 
@@ -20,8 +22,18 @@ class Image(models.Model):
 
 
 class Goods(models.Model):
+    CHOICES_GOODS = (
+        ('1', 'Кии'),
+        ('2', 'Шары'),
+        ('3', 'Аксессуары'),
+    )
+    goods_type = models.CharField(
+        verbose_name='Тип товара',
+        max_length=50,
+        choices=CHOICES_GOODS
+    )
     title = models.CharField(
-        max_length=100,
+        max_length=150,
         verbose_name='Название товара'
     )
     description = models.CharField(
@@ -29,7 +41,7 @@ class Goods(models.Model):
         verbose_name='Описание товара'
     )
     workshop = models.CharField(
-        max_length=100,
+        max_length=150,
         verbose_name='Мастерская товара'
     )
     diameter = models.FloatField(
@@ -40,7 +52,7 @@ class Goods(models.Model):
     article = models.IntegerField(verbose_name='Артикул товара')
     price = models.FloatField(verbose_name='Цена товара')
     play = models.CharField(
-        max_length=100,
+        max_length=150,
         verbose_name='Принадлежность к игре'
     )
     image = models.ManyToManyField(
@@ -67,6 +79,10 @@ class Goods(models.Model):
         verbose_name='Вес товара',
         blank=True,
         null=True
+    )
+    type = models.CharField(
+        verbose_name='Тип аксессуара',
+        max_length=150
     )
 
     class Meta:
