@@ -6,28 +6,25 @@ import axios from "axios";
 
 import { loginState, tokenState } from "../../redux/slices/autorisation";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
+  const { autorisation, token } = useSelector(
+    (state) => state.autorisationReducer
+  );
+  const [error, setError] = useState(false);
 
-  const { autorisation, token } = useSelector((state) => state.autorisationReducer);
-  
-
+  const [recovery, setRecovery] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     if (autorisation) {
-
-      localStorage.setItem("auth", JSON.stringify(autorisation));
       localStorage.setItem("token", JSON.stringify(token));
-
-    } 
-    else if (localStorage.getItem("auth") !== 'undefined') {
-
+      localStorage.setItem("auth", JSON.stringify(autorisation));
+    } else if (localStorage.getItem("auth") !== "undefined") {
       dispatch(loginState(JSON.parse(localStorage.getItem("auth"))));
       dispatch(tokenState(JSON.parse(localStorage.getItem("token"))));
-      
     }
   }, [autorisation]);
 
@@ -76,7 +73,10 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
           dispatch(loginState(false));
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        // setError(true);
+        console.error(err);
+      });
   };
 
   const formRegister = (event) => {
@@ -99,8 +99,11 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
           },
         }
       )
-      .then((res) =>
+      .then((res) =>{
+        console.log(res)
+
         res.request.status == 201 ? setRegister(false) : setRegister(true)
+      }
       )
       .catch((err) => console.error(err));
   };
@@ -185,6 +188,48 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
             </form>
           </div>
         </div>
+      ) : recovery ? (
+        <div className={s.modal_wrapper}>
+          <div className={s.modal}>
+            <form onSubmit={logIn}>
+              <div onClick={() => setRegister(false)} className={s.modal_close}>
+                <span onClick={onCloseButtonClick}>&#10006;</span>
+              </div>
+              <p className={s.modal_title}>Восстановление пароля</p>
+              <div className={s.modal_body}>
+                <input
+                  value={login}
+                  onChange={(event) => setLogin(event.target.value)}
+                  className={s.modal_body_input}
+                  type="text"
+                  placeholder="Введите почту"
+                />
+              </div>
+              <div className={s.modal_footer}>
+                <div className={s.modal_footer_info}>
+                  {error ? (
+                    <p className={s.modal_footer_info_error}>
+                      Неверные логин или пароль!
+                    </p>
+                  ) : (
+                    <button
+                      onClick={() => setRegister(true)}
+                      className={s.modal_footer_info_item}>
+                      Зарегестрируйтесь
+                    </button>
+                  )}
+
+                  <Link
+                    onClick={() => setRecovery(true)}
+                    className={s.modal_footer_info_item}>
+                    Забыли пароль?
+                  </Link>
+                </div>
+                <button className={s.modal_footer_button}>Восстановить</button>
+              </div>
+            </form>
+          </div>
+        </div>
       ) : (
         <div className={s.modal_wrapper}>
           <div className={s.modal}>
@@ -211,14 +256,23 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
               </div>
               <div className={s.modal_footer}>
                 <div className={s.modal_footer_info}>
-                  <button
-                    onClick={() => setRegister(true)}
+                  {error ? (
+                    <p className={s.modal_footer_info_error}>
+                      Неверные логин или пароль!
+                    </p>
+                  ) : (
+                    <button
+                      onClick={() => setRegister(true)}
+                      className={s.modal_footer_info_item}>
+                      Зарегестрируйтесь
+                    </button>
+                  )}
+
+                  <Link
+                    onClick={() => setRecovery(true)}
                     className={s.modal_footer_info_item}>
-                    Зарегестрируйтесь
-                  </button>
-                  <button className={s.modal_footer_info_item}>
                     Забыли пароль?
-                  </button>
+                  </Link>
                 </div>
                 <button className={s.modal_footer_button}>Войти</button>
               </div>

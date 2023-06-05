@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import s from "./Favorites_card.module.scss";
-import { addToBascket } from "../../redux/slices/bascketSlice";
 import { removeToFavorite } from "../../redux/slices/favoritedSlice";
 import axios from 'axios';
-import { current } from '@reduxjs/toolkit';
 
 
 const Favorites_card = ({ addBascketLocal, load, ...card }) => {
@@ -11,8 +9,24 @@ const Favorites_card = ({ addBascketLocal, load, ...card }) => {
   const dispatch = useDispatch();
   const token = JSON.parse(localStorage.getItem('token'))
 
-  function addBascket() {
-    dispatch(addToBascket(card));
+  
+  async function addBascket(id) {
+    await axios
+      .post(`http://127.0.0.1:8000/api/goods
+      /${id}/shopping_cart/`, null, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+      })
+      .catch(err => console.error(err))
+
+      // await axios.get('http://127.0.0.1:8000/api/cue/?is_in_shopping_cart=1', {
+      //   headers: {
+      //     "content-type": "application/json",
+      //     authorization: `Token ${token}`,
+      //   }
+      // })
   }
 
 
@@ -20,7 +34,8 @@ const Favorites_card = ({ addBascketLocal, load, ...card }) => {
     dispatch(removeToFavorite(card))
 
     axios
-    .delete(`http://127.0.0.1:8000/api/cue/${id}/favorite/`, {
+    .delete(`http://127.0.0.1:8000/api/goods
+    /${id}/favorite/`, {
       headers: {
         "content-type": "application/json",
         authorization: `Token ${token}`,
@@ -42,7 +57,7 @@ const Favorites_card = ({ addBascketLocal, load, ...card }) => {
       <div className={s.card_button}>
         <button
           id={card.id}
-          onClick={addBascket}
+          onClick={(event) => addBascket(event.currentTarget.id)}
           className={s.card_button_bascket_add}>
           Добавить в корзину
         </button>

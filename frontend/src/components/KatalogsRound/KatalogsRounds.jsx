@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import s from "./KatalogsKiys.module.scss";
+import s from "./KatalogsRounds.module.scss";
 import Hr from "../HomePage/Hr/Hr";
-import FilterKiy from "./FilterKiy";
-import KatalogKiy from "./KatalogKiy";
+import FilterRound from './FilterRound'
+import KatalogRound from './KatalogRound'
 
 
 const KatalogsKiys = ({arr, setArr}) => {
@@ -57,11 +57,11 @@ const KatalogsKiys = ({arr, setArr}) => {
   
   return (
     <div className="container">
-      <Hr title="Кии для бильярда" />
+      <Hr title="Шары для бильярда" />
 
       <div className={s.katalogs}>
         <aside className={s.filter}>
-          <FilterKiy
+          <FilterRound
             setArrayePlay={setArrayePlay}
             setArrayeStructure={setArrayeStructure}
             setArrayeWorkshop={setArrayeWorkshop}
@@ -75,7 +75,7 @@ const KatalogsKiys = ({arr, setArr}) => {
           />
         </aside>
         <main className={s.kiys}>
-          <KatalogKiy arr={arr} setArr={setArr} finall={finall} cards={cards} setCards={setCards} />
+          <KatalogRound arr={arr} setArr={setArr} finall={finall} cards={cards} setCards={setCards} />
         </main>
       </div>
     </div>

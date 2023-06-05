@@ -60,6 +60,16 @@
             display: flex;
             gap: 43px;
 
+            &_error {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 48px;
+                color: red;
+                background-color: inherit;
+            }
+
             &_item {
                 font-family: "Poppins";
                 font-style: normal;

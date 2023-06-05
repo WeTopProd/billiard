@@ -1,0 +1,172 @@
+.card {
+    display: flex;
+    max-width: 1190px;
+    border: 1px solid white;
+    padding: 30px;
+    gap: 86px;
+    box-sizing: border-box;
+    margin: 0;
+
+    @media screen and (max-width: 1650px) {
+        flex-direction: column;
+        width: 800px;
+    }
+
+    @media screen and (max-width: 1280px) {
+        max-width: 600px;
+    }
+
+    @media screen and (max-width: 1070px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 640px) {
+        width: auto;
+    }
+
+    & .swiperWrapper {
+        overflow: hidden;
+        position: relative;
+
+        @media screen and (max-width: 1650px) {
+            width: 100%;
+        }
+
+        & .heart {
+            position: absolute;
+            z-index: 10;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        & .heart:hover {
+            & svg {
+                fill: rgba(30, 105, 75, 1);
+                z-index: 10;
+            }
+        }
+
+        & .swiper {
+            width: 100%;
+            max-width: 594px;
+
+            @media screen and (max-width: 1650px) {
+                width: 100%;
+            }
+
+            @media screen and (max-width: 650px) {
+                width: 100%;
+            }
+
+         
+        }
+    }
+
+
+    @media screen and (max-width: 1650px) {
+        .image {
+          width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .image {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .image {
+            width: 100%;
+        }
+    }
+  
+    
+
+    & .container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 394px;
+        box-sizing: border-box;
+        margin: 0;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        &_info {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin: 0;
+
+            &_title {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 30px;
+                line-height: 41px;
+                color: #ffffff;
+                margin: 0;
+                z-index: 10;
+            }
+
+            &_description,
+            &_structure,
+            &_workshop,
+            &_weight {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 27px;
+                color: #ffffff;
+            }
+
+            &_article {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15.8783px;
+                line-height: 29px;
+                color: #888888;
+            }
+        }
+
+        &_price {
+            display: flex;
+            gap: 40px;
+
+            &_info {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 23px;
+                line-height: 31px;
+                color: #ffffff;
+            }
+
+            &_button {
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+                color: #ffffff;
+                background-color: rgba(0, 78, 58, 1);
+                border: none;
+                padding: 5px 12px;
+                cursor: pointer;
+                transition: .5s;
+            }
+
+            &_button:hover {
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}

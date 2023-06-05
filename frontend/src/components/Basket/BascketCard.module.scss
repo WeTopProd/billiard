@@ -116,7 +116,7 @@
         }
     }
 
-    &_bascket_button {
+    &_bascket_button_delete {
         position: absolute;
         height: 35px;
         bottom: 25px;
@@ -124,6 +124,7 @@
         padding: 29px 16px;
         display: flex;
         align-items: center;
+        justify-content: center;
         font-family: "Poppins";
         font-style: normal;
         font-weight: 700;
@@ -136,31 +137,10 @@
         transition: .3s;
         box-shadow: 0 0 10px;
         border: none;
+        min-width: 200px;
     }
-    &_bascket_button:hover {
+    &_bascket_button_delete:hover {
         background-color: black;
         color: white;
-    }
-
-    &_bascket_button_delete {
-        position: absolute;
-        height: 35px;
-        bottom: 25px;
-        left: 63%;
-        padding: 29px 16px;
-        display: flex;
-        align-items: center;
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 17px;
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
-        cursor: pointer;
-        transition: .3s;
-        box-shadow: 0 0 10px;
-        border: none;
     }
 }

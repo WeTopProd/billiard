@@ -2,13 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import s from "./KatalogsKiys.module.scss";
+import s from "./KatalogsAccsessuars.module.scss";
 import Hr from "../HomePage/Hr/Hr";
-import FilterKiy from "./FilterKiy";
-import KatalogKiy from "./KatalogKiy";
+import KatalogAccsessuar from "./KatalogAccsessuar";
+import FilterAccsessuar from "./FilterAccsessuar";
 
 
-const KatalogsKiys = ({arr, setArr}) => {
+const KatalogsAccsessuars = ({arr, setArr}) => {
   const [cards, setCards] = useState([]);
   const [finall, setFinall] = useState(true);
 
@@ -57,11 +57,11 @@ const KatalogsKiys = ({arr, setArr}) => {
   
   return (
     <div className="container">
-      <Hr title="Кии для бильярда" />
+      <Hr title="Аксессуары для бильярда" />
 
       <div className={s.katalogs}>
         <aside className={s.filter}>
-          <FilterKiy
+          <FilterAccsessuar
             setArrayePlay={setArrayePlay}
             setArrayeStructure={setArrayeStructure}
             setArrayeWorkshop={setArrayeWorkshop}
@@ -75,11 +75,11 @@ const KatalogsKiys = ({arr, setArr}) => {
           />
         </aside>
         <main className={s.kiys}>
-          <KatalogKiy arr={arr} setArr={setArr} finall={finall} cards={cards} setCards={setCards} />
+          <KatalogAccsessuar arr={arr} setArr={setArr} finall={finall} cards={cards} setCards={setCards} />
         </main>
       </div>
     </div>
   );
 };
 
-export default KatalogsKiys;
+export default KatalogsAccsessuars;

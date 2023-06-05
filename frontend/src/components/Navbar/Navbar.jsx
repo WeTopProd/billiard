@@ -37,6 +37,7 @@ const Navbar = () => {
   const logOut = () => {
     dispatch(loginState(false));
     localStorage.setItem("auth", JSON.stringify(false));
+    // localStorage.setItem('token', null)
     window.location.reload(); 
     
   };

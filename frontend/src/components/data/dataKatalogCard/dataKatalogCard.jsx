@@ -1,7 +1,6 @@
 import round from '../../../image/BilliardRounds.jpg'
 import acsessuar from '../../../image/Acsessuar.jpg'
 import services from '../../../image/services.jpg'
-import imageOpacity from '../../../image/RectangleOpacity.jpg'
 import { v4 as uuidv4 } from 'uuid';
 
 const dataKatalog = [

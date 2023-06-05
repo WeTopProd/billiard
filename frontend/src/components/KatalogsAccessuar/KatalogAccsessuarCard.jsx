@@ -1,4 +1,4 @@
-import s from "./KatalogKiyCard.module.scss";
+import s from "./KatalogAccsessuarCard.module.scss";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,13 +10,12 @@ import { useState } from "react";
 
 import axios from "axios";
 
-const KatalogKiyCard = ({ arr, setArr, ...item }) => {
+const KatalogAccsessuarCard = ({ arr, setArr, ...item }) => {
 
   const [heart, setHeart] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));
 
-  console.log(item)
  
   async function favorites(id) {
     setHeart(!heart);
@@ -49,6 +48,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
         },
       })
       .catch(err => console.error(err))
+
   }
 
   return (
@@ -110,12 +110,6 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
         <div className={s.container_info}>
           <p className={s.container_info_title}>{item.title}</p>
           <p className={s.container_info_description}>{item.description}</p>
-          <p className={s.container_info_structure}>Состав: {item.structure}</p>
-          <p className={s.container_info_workshop}>
-            Мастерская: {item.workshop}
-          </p>
-          <p className={s.container_info_weight}>Вес кия: {item.weight} гр.</p>
-          <p className={s.container_info_article}>Артикул: {item.article}</p>
         </div>
 
         <div className={s.container_price}>
@@ -132,4 +126,4 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
   );
 };
 
-export default KatalogKiyCard;
+export default KatalogAccsessuarCard;

@@ -4,15 +4,13 @@ import s from "./Basket.module.scss";
 import basket from "../../image/basket/basket.svg";
 import { NavLink } from "react-router-dom";
 import BascketCard from "./BascketCard";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { addToBascket } from "../../redux/slices/bascketSlice";
-import axios from "axios";
+import { useSelector } from "react-redux";
+
 
 const Basket = () => {
 
   const {itemsBascket, totalPriceBascket} = useSelector(state => state.bascketReducer)
-
+  
   return (
     <div className="container">
       <Hr title="Корзина" />
@@ -26,12 +24,13 @@ const Basket = () => {
         </main>
       ) : (
         itemsBascket.map((card) => (
-            <div className={s.card}>
-              <BascketCard  {...card} />
+            <div className={s.card} key={card.goods.id}>
+              <BascketCard   {...card} />
             </div>
           ))
       )}
       <div className={s.total_container}>
+        <button className={s.total_container_order}>Оформить заказ</button>
         <p className={s.total}>
           Итоговая цена: <span className={s.total_final}>{totalPriceBascket}</span>
         </p>

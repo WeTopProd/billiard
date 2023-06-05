@@ -1,16 +1,15 @@
 import piramida from "../../image/filterImage/piramida.png";
 import pul from "../../image/filterImage/pul.png";
 import snuker from "../../image/filterImage/snuker.png";
-import ecsclusive from "../../image/filterImage/ecsclusive.png";
-import s from "./KatalogKiy.module.scss";
+import s from "./KatalogRound.module.scss";
 
-import KatalogCard from "./KatalogKiyCard";
+import KatalogCard from "./KatalogRoundCard";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
-  
+const KatalogRound = ({ arr, setArr, cards, setCards, finall }) => {
+
 
   function filterMini(type) {
     axios
@@ -22,7 +21,6 @@ const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
       .then((res) => setCards(res.data.results))
       .catch((err) => console.error(err));
   }
-
 
   return (
     <div className={s.katalogKiy}>
@@ -48,20 +46,13 @@ const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
           <img src={snuker} alt="image" />
           <p>Снукер</p>
         </Link>
-        <Link
-          onClick={() => filterMini("Эксклюзив")}
-          className={s.katalog_kiy_container_link}
-          to="#">
-          <img src={ecsclusive} alt="image" />
-          <p>Эксклюзив</p>
-        </Link>
       </div>
 
       <div className={s.card_container}>
         {finall ? (
           <span className={s.loading}>...loading</span>
         ) : (
-          cards.filter(item => item.goods_type == '1').map((item) => (
+          cards.filter(item => item.goods_type == '2').map((item) => (
             <KatalogCard
               arr={arr}
               setArr={setArr}
@@ -75,4 +66,4 @@ const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
   );
 };
 
-export default KatalogKiy;
+export default KatalogRound;
