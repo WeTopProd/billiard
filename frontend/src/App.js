@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { addToBascket } from "./redux/slices/bascketSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 
@@ -22,6 +22,10 @@ import { addToFavorite } from "./redux/slices/favoritedSlice";
 import KatalogsAccsessuars from "./components/KatalogsAccessuar/KatalogsAccsessuars";
 import Services from "./components/Services/Services";
 import { deleteCart } from "./redux/slices/bascketSlice";
+import Modal from "./components/Modal/Modal";
+import Recovery from "./components/Modal/Recovery";
+import RecoveryOk from "./components/Modal/RecoveryOk";
+import RegisterCode from "./components/Modal/RegisterCode";
 
 
 function App() {
@@ -84,6 +88,10 @@ function App() {
             <Route path="/accessories" element={<KatalogsAccsessuars />} />
             <Route path="/services" element={<Services />} />
             <Route path="/making" element={<Making />} />
+            <Route path="/modal"  element={<Modal />}/>
+            <Route path="/recovery" element={<Recovery />} />
+            <Route path="/recoveryOk" element={<RecoveryOk />} />
+            <Route path="/registerCode" element={<RegisterCode />} />
           </Routes>
           <Footer />
         </div>

@@ -77,14 +77,14 @@ const Navbar = () => {
               <>
                 <p className={s.userName}>{userName}</p>
                 <NavLink className={s.pokupki} to="#">Мои покупки</NavLink>
-                <button onClick={logOut} className={s.login__item}>
+                <NavLink to="/" onClick={logOut} className={s.login__item}>
                   Выйти
-                </button>
+                </NavLink>
               </>
             ) : (
-              <button onClick={toggleModal} className={s.login__item}>
+              <NavLink to="/modal" onClick={toggleModal} className={s.login__item}>
                 Войти
-              </button>
+              </NavLink>
             )}
           </div>
         </div>

@@ -106,6 +106,62 @@
     }
 }
 
+.modal_recovery {
+    background-color: #004e3a;
+    position: relative;
+    overflow: hidden;
+    padding: 110px 86px;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    transition: 1s;
+    animation: modal 1s ease-in-out;
+    min-height: 300px;
+
+    &_close {
+        position: absolute;
+        top: 30px;
+        right: 60px;
+        font-size: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
+
+    &_title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 80px;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+    }
+
+    &_body {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        &_input {
+            filter: drop-shadow(0px 15px 30px rgba(0, 0, 0, 0.15));
+            padding: 15px 46px;
+            width: 684px;
+            border: none;
+            border-radius: 45px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 32px;
+            color: #595959;
+            outline: none;
+        }
+    }
+}
+
 .modal_wrapper {
     display: flex;
     position: absolute;
@@ -121,15 +177,14 @@
     min-height: 100vh;
 }
 
-
 @keyframes modal {
     0% {
-        transform:scaleY(.005) scaleX(0);
-      }
-      50% {
-        transform:scaleY(.005) scaleX(1);
-      }
-      100% {
-        transform:scaleY(1) scaleX(1);
-      }
+        transform: scaleY(0.005) scaleX(0);
+    }
+    50% {
+        transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+        transform: scaleY(1) scaleX(1);
+    }
 }
