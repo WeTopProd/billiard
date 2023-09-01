@@ -8,22 +8,24 @@ import { useSelector } from "react-redux";
 
 const Favorites = () => {
   const [res, setRes] = useState(JSON.parse(localStorage.getItem("user")));
-  
 
-  const {totalPrice, items} = useSelector((state) => state.favoritedReducer);
+
+  const { totalPrice, items } = useSelector((state) => state.favoritedReducer);
   // const {count} = useSelector(state => state.favoritedReducer.items.find(obj => obj.id === res.id))
 
-  
+
 
   const [total, setTotal] = useState(null);
-  
+
 
   useEffect(() => {
-    setRes(res.filter((item) => item.is_favorited == true));
+    if (res && res.length > 0) {
+      setRes(res.filter((item) => item.is_favorited == true));
+    }
   }, []);
 
 
-  function load(num) { 
+  function load(num) {
     setTotal(res && res.map((f) => f.price).reduce((a, b) => a + b));
   }
 
@@ -33,7 +35,7 @@ const Favorites = () => {
       <div className={s.section}>
         {items.map((card) => (
           <>
-            <Favorites_card  key={card.id} {...card} load={load} />
+            <Favorites_card key={card.id} {...card} load={load} />
           </>
         ))}
       </div>

@@ -68,7 +68,7 @@ const NavbarMenu = () => {
         На заказ
       </HashLink>
       <HashLink scroll={scrollWithOffset}  to="/#delivery" className={s.link__item}>
-        Оплата и Доставка
+        Оплата и доставка
       </HashLink>
       <HashLink scroll={scrollWithOffset}  to="/#footer" className={s.link__item}>
         Контакты
