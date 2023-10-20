@@ -19,7 +19,7 @@ const KatalogsKiys = ({arr, setArr}) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/goods/")
+      .get("http://frantsuz-shop.ru/api/goods/")
       .then((res) => {
         setCards(res.data.results);
       })
@@ -42,7 +42,7 @@ const KatalogsKiys = ({arr, setArr}) => {
 
     axios
       .get(
-        `http://localhost:8000/api/goods/?${play}${structure}${workshop}${
+        `http://frantsuz-shop.ru/api/goods/?${play}${structure}${workshop}${
           min ? `price_min=${min}` : ""
         }${max ? `&price_max=${max}` : ""}`
       )
