@@ -111,6 +111,22 @@
     transition: .3s;
 }
 
+.div_two {
+    flex: 0 1 45%;
+    height: 64px;
+    border: 1px solid white;
+    background-color: rgb(243, 243, 243);
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #f1efee;
+    cursor: pointer;
+    transition: .3s;
+}
 .button_two {
     flex: 0 1 45%;
     height: 64px;

@@ -1,9 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { addToBascket } from "./redux/slices/bascketSlice";
-import { useDispatch } from "react-redux";
+import { useState, useEffect, useContext } from "react";
+import { addToCart, initCart, counter } from "./redux/slices/bascketSlice";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { loginState, tokenState } from "./redux/slices/autorisation";
 
 
 
@@ -18,14 +19,17 @@ import TreidIn from "./components/TreidIn/TreidIn";
 import Basket from "./components/Basket/Basket";
 import KatalogsRounds from "./components/KatalogsRound/KatalogsRounds";
 import Making from './components/Making/Making';
-import { addToFavorite } from "./redux/slices/favoritedSlice";
+import { addToFavorite, initfavorite, initfavoriteIn } from "./redux/slices/favoritedSlice";
 import KatalogsAccsessuars from "./components/KatalogsAccessuar/KatalogsAccsessuars";
 import Services from "./components/Services/Services";
-import { deleteCart } from "./redux/slices/bascketSlice";
+
 import Modal from "./components/Modal/Modal";
 import Recovery from "./components/Modal/Recovery";
 import RecoveryOk from "./components/Modal/RecoveryOk";
 import RegisterCode from "./components/Modal/RegisterCode";
+import basketApi from "./api/basketApi/basket";
+import favorite from "./api/FavoriteApi/Favorite"
+
 
 
 function App() {
@@ -34,68 +38,89 @@ function App() {
 
   const [bascket, setBascket] = useState([])
 
-  const token = JSON.parse(localStorage.getItem("token"));
+  const [count, setCount] = useState('')
+
+  const token = localStorage.getItem('token');
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/goods/basket/", {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data)
-        dispatch(addToBascket(res.data));
-      });
-  }, [deleteCart]);
+
+  var stopper = 0
+
+  const basketItemsX = useSelector(state => state.cartSlice.items)
+
+
+  const favoriteItems = useSelector(state => state.favoritedSlice.items)
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/goods/?is_favorited=1", {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        },
-      })
-      .then((res) => {
-        dispatch(addToFavorite(res.data.results));
-      });
-  }, []);
+    {
 
+      basketItemsX.length == 0 && basketApi.get(token).then((data) => {
+        dispatch(initCart(data))
+
+      }).then(() => stopper = 1).catch((err) => console.log(err))
+
+      favoriteItems.length == 0 && favorite.get(token).then((data) => {
+        dispatch(initfavoriteIn(data))
+      }).then(() => stopper = 1).catch((err) => console.log(err))
+
+    }
+
+  }, [])
+
+  useEffect(() => {
+    {
+      favoriteItems.length == 0 && favorite.get(token).then((data) => {
+        dispatch(initfavoriteIn(data))
+      }).then(() => stopper = 1).catch((err) => console.log(err))
+
+    }
+
+    if (localStorage.getItem("token")) {
+      dispatch(loginState(true));
+      dispatch(tokenState(localStorage.getItem("token")));
+    }
+
+  }, [])
+ 
+
+  const counterValue = useSelector(state => state.cartSlice.counter);
+
+  useEffect(() => {
+    dispatch(counter)
+  }, [basketItemsX])
   return (
-      <BrowserRouter>
-        <div className="App">
-          <Navbar />
-          <Search />
-          <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/katalogsKiys"
-              element={<KatalogsKiys arr={arr} setArr={setArr} />}
-            />
-            <Route path="/favorites" element={<Favorites 
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Search />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/katalogsKiys"
+            element={<KatalogsKiys arr={arr} setArr={setArr} />}
+          />
+          <Route path="/favorites" element={<Favorites
             arr={arr} setArr={setArr} />} />
-            <Route path="/basket" element={<Basket 
+          <Route path="/basket" element={<Basket
             bascket={bascket}
-             />} />
-            <Route path="/redemtion" element={<TreidIn />} />
-            <Route path="/round" element={<KatalogsRounds />} />
-            <Route path="/accessories" element={<KatalogsAccsessuars />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/making" element={<Making />} />
-            <Route path="/modal"  element={<Modal />}/>
-            <Route path="/recovery" element={<Recovery />} />
-            <Route path="/recoveryOk" element={<RecoveryOk />} />
-            <Route path="/registerCode" element={<RegisterCode />} />
-          </Routes>
-          <Footer />
-        </div>
-      </BrowserRouter>
+          />} />
+          <Route path="/redemtion" element={<TreidIn />} />
+          <Route path="/round" element={<KatalogsRounds />} />
+          <Route path="/accessories" element={<KatalogsAccsessuars />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/making" element={<Making />} />
+          <Route path="/modal" element={<Modal />} />
+          <Route path="/recovery" element={<Recovery />} />
+          <Route path="/recoveryOk" element={<RecoveryOk />} />
+          <Route path="/registerCode" element={<RegisterCode />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

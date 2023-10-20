@@ -12,7 +12,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
   const navigate = useNavigate()
 
-  
+
 
   const { autorisation, token } = useSelector(
     (state) => state.autorisationReducer
@@ -23,15 +23,16 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (autorisation) {
-      localStorage.setItem("token", JSON.stringify(token));
-      localStorage.setItem("auth", JSON.stringify(autorisation));
-    } else if (localStorage.getItem("auth") !== "undefined") {
-      dispatch(loginState(JSON.parse(localStorage.getItem("auth"))));
-      dispatch(tokenState(JSON.parse(localStorage.getItem("token"))));
-    }
-  }, [autorisation]);
+  // useEffect(() => {
+  //   console.log(token);
+  //   if (autorisation) {
+  //     localStorage.setItem("token", token);
+  //     localStorage.setItem("auth", autorisation);
+  //   } else if (localStorage.getItem("auth") !== "undefined") {
+  //     dispatch(loginState(localStorage.getItem("auth")));
+  //     dispatch(tokenState(localStorage.getItem("token")));
+  //   }
+  // }, [autorisation]);
 
   const [register, setRegister] = useState(false);
 
@@ -53,8 +54,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        `http://localhost:8000/api/auth/${
-          emailRegex.test(login) ? "token-email" : "token-phone"
+        `http://localhost:8000/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
         }/`,
 
         {
@@ -74,8 +74,9 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
           setIsShowing(false);
           dispatch(loginState(true));
           dispatch(tokenState(res.data.auth_token));
+          localStorage.setItem("token", res.data.auth_token);
         } else {
-          setIsShowing(true);
+          setIsShowing(false);
           dispatch(loginState(false));
         }
       })
@@ -84,7 +85,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
         console.error(err);
       });
 
-      navigate('/')
+    navigate('/')
   };
 
   const formRegister = (event) => {
@@ -107,10 +108,9 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
           },
         }
       )
-      .then((res) =>{
-        console.log(res)
+      .then((res) => {
 
-        res.request.status == 201 ? navigate('/registerCode') && setRegister(false): setRegister(true)
+        res.request.status == 201 ? navigate('/registerCode') && setRegister(false) : setRegister(true)
       }
       )
       .catch((err) => console.error(err));
@@ -120,17 +120,16 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
     event.preventDefault()
 
     axios.post('http://localhost:8000/api/users/reset_password/',
-    {
-      email: recoveryEmail
-    })
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
+      {
+        email: recoveryEmail
+      })
+      .catch(err => console.error(err))
 
     onCloseButtonClick()
 
   }
 
- 
+
 
   if (!isShowingModal) {
     return null;
@@ -139,173 +138,174 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   return (
     <>
       {register ?
-      
-      
-      (
-        <div className={r.modal_wrapper}>
-          <div className={r.modal}>
-            <form onSubmit={formRegister}>
-              <Link to="/" onClick={() => setRegister(false)} className={s.modal_close}>
-                <span onClick={onCloseButtonClick}>&#10006;</span>
-              </Link>
-              <p className={r.modal_title}>Регистрация</p>
-              <div className={r.registration}>
-                <div className={r.modal_body}>
-                  <input
-                    value={emailValue}
-                    onChange={(event) => setEmailValue(event.target.value)}
-                    className={r.modal_body_input}
-                    type="email"
-                    placeholder="Почта"
-                  />
-                  <input
-                    value={passwordValue1}
-                    onChange={(event) => setPasswordValue1(event.target.value)}
-                    className={r.modal_body_input}
-                    type="password"
-                    placeholder="Пароль"
-                  />
-                  <input
-                    value={passwordValue2}
-                    onChange={(event) => setPasswordValue2(event.target.value)}
-                    className={r.modal_body_input}
-                    type="password"
-                    placeholder="Повторите пароль"
-                  />
+
+
+        (
+          <div className={r.modal_wrapper}>
+            <div className={r.modal}>
+              <form onSubmit={formRegister}>
+                <Link to="/" onClick={() => setRegister(false)} className={s.modal_close}>
+                  <span onClick={onCloseButtonClick}>&#10006;</span>
+                </Link>
+                <p className={r.modal_title}>Регистрация</p>
+                <div className={r.registration}>
+                  <div className={r.modal_body}>
+                    <input
+                      value={emailValue}
+                      onChange={(event) => setEmailValue(event.target.value)}
+                      className={r.modal_body_input}
+                      type="email"
+                      placeholder="Почта"
+                    />
+                    <input
+                      value={passwordValue1}
+                      onChange={(event) => setPasswordValue1(event.target.value)}
+                      className={r.modal_body_input}
+                      type="password"
+                      placeholder="Пароль"
+                    />
+                    <input
+                      value={passwordValue2}
+                      onChange={(event) => setPasswordValue2(event.target.value)}
+                      className={r.modal_body_input}
+                      type="password"
+                      placeholder="Повторите пароль"
+                    />
+                  </div>
+
+                  <div className={r.modal_body}>
+                    <input
+                      value={firstNameValue}
+                      onChange={(event) => setFirstNameValue(event.target.value)}
+                      className={r.modal_body_input}
+                      type="text"
+                      placeholder="Имя"
+                    />
+                    <input
+                      value={lastNameValue}
+                      onChange={(event) => setLastNameValue(event.target.value)}
+                      className={r.modal_body_input}
+                      type="text"
+                      placeholder="Фамилия"
+                    />
+                    <input
+                      value={phoneValue}
+                      onChange={(event) => setPhoneValue(event.target.value)}
+                      className={r.modal_body_input}
+                      type="tel"
+                      placeholder="Телефон"
+                    />
+                  </div>
                 </div>
 
-                <div className={r.modal_body}>
-                  <input
-                    value={firstNameValue}
-                    onChange={(event) => setFirstNameValue(event.target.value)}
-                    className={r.modal_body_input}
-                    type="text"
-                    placeholder="Имя"
-                  />
-                  <input
-                    value={lastNameValue}
-                    onChange={(event) => setLastNameValue(event.target.value)}
-                    className={r.modal_body_input}
-                    type="text"
-                    placeholder="Фамилия"
-                  />
-                  <input
-                    value={phoneValue}
-                    onChange={(event) => setPhoneValue(event.target.value)}
-                    className={r.modal_body_input}
-                    type="tel"
-                    placeholder="Телефон"
-                  />
-                </div>
-              </div>
-
-              <div className={r.modal_footer}>
-                <div className={r.modal_footer_info}>
-                  <p className={r.modal_footer_info_text}>Есть аккаунт?</p>
-                  <button
-                    onClick={() => setRegister(false)}
-                    className={r.modal_footer_info_item}>
-                    Войти
+                <div className={r.modal_footer}>
+                  <div className={r.modal_footer_info}>
+                    <p className={r.modal_footer_info_text}>Есть аккаунт?</p>
+                    <button
+                      onClick={() => setRegister(false)}
+                      className={r.modal_footer_info_item}>
+                      Войти
+                    </button>
+                  </div>
+                  <button className={r.modal_footer_button}>
+                    Зарегестрироваться
                   </button>
                 </div>
-                <button className={r.modal_footer_button}>
-                  Зарегестрироваться
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
-      )
-      
-      : recovery ?
-      
-      (
-        <div className={s.modal_wrapper}>
-          <div className={s.modal}>
-            <form onSubmit={recoveryFunc}>
-              <Link to="/" onClick={() => setRegister(false)} className={s.modal_close}>
-                <span onClick={onCloseButtonClick}>&#10006;</span>
-              </Link>
-              <p className={s.modal_title}>Восстановление пароля</p>
-              <div className={s.modal_body}>
-                <input
-                  value={recoveryEmail}
-                  onChange={(event) => setRecoveryEmail(event.target.value)}
-                  className={s.modal_body_input}
-                  type="text"
-                  placeholder="Введите почту"
-                />
-              </div>
-              <div className={s.modal_footer}>
-                <div className={s.modal_footer_info}>
-                </div>
-                <button onClick={() => navigate('/recoveryOk')} className={s.modal_footer_button}>Восстановить</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
-      
-      : 
-      
-      
-      (
-        <div className={s.modal_wrapper}>
-          <div className={s.modal}>
-            <form onSubmit={logIn}>
-              <Link to='/' onClick={() => setRegister(false)} className={s.modal_close}>
-                <span onClick={onCloseButtonClick}>&#10006;</span>
-              </Link>
-              <p className={s.modal_title}>Вход в личный кабинет</p>
-              <div className={s.modal_body}>
-                <input
-                  value={login}
-                  onChange={(event) => setLogin(event.target.value)}
-                  className={s.modal_body_input}
-                  type="text"
-                  placeholder="Почта или телефон"
-                />
-                <input
-                  value={passwordLog}
-                  onChange={(event) => setPasswordLog(event.target.value)}
-                  className={s.modal_body_input}
-                  type="password"
-                  placeholder="Пароль"
-                />
-              </div>
-              <div className={s.modal_footer}>
-                <div className={s.modal_footer_info}>
-                  {error ? (
-                    <p className={s.modal_footer_info_error}>
-                      Неверные логин или пароль!
-                    </p>
-                  )
-                  
-                  
-                  :
-                  
-                  (
-                    <button
-                      onClick={() => setRegister(true)}
-                      className={s.modal_footer_info_item}>
-                      Зарегестрируйтесь
-                    </button>
-                  )}
+        )
 
-                  <Link
-                     onClick={() => {
-                      setError(false)
-                      setRecovery(true)}}
-                    className={s.modal_footer_info_item}>
-                    Забыли пароль?
+        : recovery ?
+
+          (
+            <div className={s.modal_wrapper}>
+              <div className={s.modal}>
+                <form onSubmit={recoveryFunc}>
+                  <Link to="/" onClick={() => setRegister(true)} className={s.modal_close}>
+                    <span onClick={onCloseButtonClick}>&#10006;</span>
                   </Link>
-                </div>
-                <button className={s.modal_footer_button}>Войти</button>
+                  <p className={s.modal_title}>Восстановление пароля</p>
+                  <div className={s.modal_body}>
+                    <input
+                      value={recoveryEmail}
+                      onChange={(event) => setRecoveryEmail(event.target.value)}
+                      className={s.modal_body_input}
+                      type="text"
+                      placeholder="Введите почту"
+                    />
+                  </div>
+                  <div className={s.modal_footer}>
+                    <div className={s.modal_footer_info}>
+                    </div>
+                    <button onClick={() => navigate('/recoveryOk')} className={s.modal_footer_button}>Восстановить</button>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
-        </div>
-      )}
+            </div>
+          )
+
+          :
+
+
+          (
+            <div className={s.modal_wrapper}>
+              <div className={s.modal}>
+                <form onSubmit={logIn}>
+                  <Link to='/' onClick={() => setRegister(false)} className={s.modal_close}>
+                    <span onClick={onCloseButtonClick}>&#10006;</span>
+                  </Link>
+                  <p className={s.modal_title}>Вход в личный кабинет</p>
+                  <div className={s.modal_body}>
+                    <input
+                      value={login}
+                      onChange={(event) => setLogin(event.target.value)}
+                      className={s.modal_body_input}
+                      type="text"
+                      placeholder="Почта или телефон"
+                    />
+                    <input
+                      value={passwordLog}
+                      onChange={(event) => setPasswordLog(event.target.value)}
+                      className={s.modal_body_input}
+                      type="password"
+                      placeholder="Пароль"
+                    />
+                  </div>
+                  <div className={s.modal_footer}>
+                    <div className={s.modal_footer_info}>
+                      {error ? (
+                        <p className={s.modal_footer_info_error}>
+                          Неверный логин или пароль!
+                        </p>
+                      )
+
+
+                        :
+
+                        (
+                          <button
+                            onClick={() => setRegister(true)}
+                            className={s.modal_footer_info_item}>
+                            Зарегестрируйтесь
+                          </button>
+                        )}
+
+                      <Link
+                        onClick={() => {
+                          setError(false)
+                          setRecovery(true)
+                        }}
+                        className={s.modal_footer_info_item}>
+                        Забыли пароль?
+                      </Link>
+                    </div>
+                    <button className={s.modal_footer_button}>Войти</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
     </>
   );
 };

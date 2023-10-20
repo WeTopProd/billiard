@@ -18,7 +18,7 @@ const Home = () => {
       <Billiard />
       <Katalogs />
       <Hr title="Хиты продаж" />
-      <Hits />
+      <Hits  />
       <Hr title="Акции" />
       <Stoks />
       <Hr title="Выкуп" />

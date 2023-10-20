@@ -2,6 +2,8 @@
     padding: 70px 0px;
     background-color: #1d1d1d;
     margin: 0;
+    display: flex;
+    
 
     @media screen and (max-width: 550px) {
         padding: 40px 0px;
@@ -43,11 +45,11 @@
 
             &_item {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 margin: 0;
-                text-align: left;
-                gap: 30px;
+                text-align: center;
+                gap: 45px;
+                flex-wrap: wrap;
 
                 &_title {
                     font-family: "Poppins";
@@ -57,7 +59,7 @@
                     line-height: 28px;
                     color: rgba(0, 78, 58, 1);
                     text-align: left;
-                    margin: 0;
+                    margin-top: 30px;
 
                     @media screen and (max-width: 900px) {
                         text-align: left;
@@ -72,12 +74,12 @@
                     font-family: "Poppins";
                     font-style: normal;
                     font-weight: 600;
-                    font-size: 23px;
+                    font-size: 18px;
                     line-height: 28px;
                     text-align: center;
                     color: #ffffff;
                     margin: 0;
-                    margin-top: 80px;
+                   
                 }
 
                 &_contacts {
@@ -155,7 +157,7 @@
                         font-family: "Poppins";
                         font-style: normal;
                         font-weight: 400;
-                        font-size: 20px;
+                        font-size: 18px;
                         line-height: 28px;
                         text-align: center;
                         color: #ffffff;
@@ -171,8 +173,9 @@
                 &_geo {
                     display: flex;
                     align-items: center;
-                    gap: 23px;
+                    gap: 10px;
                     margin: 0;
+                    
 
                     @media screen and (max-width: 550px) {
                         gap: 10px;
@@ -182,10 +185,11 @@
                         font-family: "Poppins";
                         font-style: normal;
                         font-weight: 400;
-                        font-size: 20px;
-                        line-height: 0px;
+                        font-size: 18px;
+                        line-height: 20px;
                         text-align: center;
                         color: #ffffff;
+                        flex-wrap: wrap;
                     }
                 }
 
@@ -193,7 +197,7 @@
                     font-family: "Poppins";
                     font-style: normal;
                     font-weight: 700;
-                    font-size: 20px;
+                    font-size: 18px;
                     line-height: 28px;
                     text-align: center;
                     margin: 0;
@@ -216,7 +220,7 @@
                 align-items: flex-start;
                 flex-direction: column;
                 flex-wrap: wrap;
-                max-width: 1000px;
+                max-width: 1445px;
                 margin: 0;
                 justify-content: baseline;
 

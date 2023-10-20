@@ -1,0 +1,52 @@
+.modal_recovery {
+  background-color: #004e3a;
+  position: relative;
+  overflow: hidden;
+  padding: 110px 86px;
+  border-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  transition: 1s;
+  animation: modal 1s ease-in-out;
+  min-height: 300px;
+}
+.modal_recovery_close {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  font-size: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+.modal_recovery_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 80px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+}
+.modal_recovery_body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.modal_wrapper {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(107, 114, 128, 0.7);
+  z-index: 9;
+  width: 100%;
+  min-height: 100vh;
+}/*# sourceMappingURL=RecoveryOk.module.css.map */

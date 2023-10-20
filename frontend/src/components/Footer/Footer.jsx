@@ -21,6 +21,8 @@ import img7 from "../../image/footer__img7.png";
 import img8 from "../../image/footer__img8.png";
 import img9 from "../../image/footer__img9.png";
 import img10 from "../../image/footer__img10.png";
+import img11 from "../../image/dalikhinkali.png";
+import img12 from "../../image/khleb.png";
 
 function Footer() {
   return (
@@ -33,43 +35,7 @@ function Footer() {
               <img src={Logo2} alt="logo" className={f.footer__logo} />
             </div>
 
-            <div className={f.footer__info}>
-              <div className={f.footer__info_item}>
-                <p className={f.footer__info_item_title}>Контакты</p>
-
-                <p className={f.footer__info_item_mode}>
-                  <img src={icon_time} alt="icon" /> Режим работы с 11:00 до
-                  23:00
-                </p>
-                <p className={f.footer__info_item_text}>
-                  Развлекательный комплекс “Француз”
-                </p>
-
-                <div className={f.footer__info_item_geo}>
-                  <img src={Geol} alt="svg" />
-                  <p className={f.footer__info_item_geo_text}>
-                    г. Москва ул. Сталеваров, 14к1
-                  </p>
-                </div>
-
-                <div className={f.footer__info_item_contacts}>
-                  <div className={f.footer__info_item_contacts_tel}>
-                    <img src={tel} alt="svg" />
-                    <Link to="tel:+7(968)091-55-51">+7(968)091-55-51</Link>
-                  </div>
-                </div>
-
-                <div className={f.footer__info_item_mail}>
-                  <img src={Mail} alt="svg" />
-                  <Link
-                    className={f.footer__info_item_mail_text}
-                    to="mailto:frantsuz-shop.ru">
-                    frantsuz-shop.ru
-                  </Link>
-                </div>
-
-                
-              </div>
+            
 
               <div className={f.footer__info_port}>
                 <p className={f.footer__info_item_title}>Наши проекты</p>
@@ -146,6 +112,20 @@ function Footer() {
                       className={f.footer__info_port_imgs_img}
                     />
                   </Link>
+                  <Link to="">
+                    <img
+                      src={img11}
+                      alt="img"
+                      className={f.footer__info_port_imgs_img}
+                    />
+                  </Link>
+                  <Link to="">
+                    <img
+                      src={img12}
+                      alt="img"
+                      className={f.footer__info_port_imgs_img}
+                    />
+                  </Link>
 
                   <Link to="">
                     <img
@@ -156,6 +136,45 @@ function Footer() {
                   </Link>
                 </div>
               </div>
+            <p className={f.footer__info_item_title}>Контакты</p>
+            <div className={f.footer__info}>
+              
+              <div className={f.footer__info_item}>
+                
+
+
+                <p className={f.footer__info_item_text}>
+                  Развлекательный комплекс “Француз”
+                </p>
+
+                <div className={f.footer__info_item_geo}>
+                  <img src={Geol} alt="svg" />
+                  <p className={f.footer__info_item_geo_text}>
+                    г. Москва ул. Сталеваров, 14к1
+                  </p>
+                </div>
+
+                <div className={f.footer__info_item_contacts}>
+                  <div className={f.footer__info_item_contacts_tel}>
+                    <img src={tel} alt="svg" />
+                    <Link to="tel:+7(968)091-55-50">+7(968)091-55-50</Link>
+                  </div>
+                </div>
+                <p className={f.footer__info_item_mode}>
+                  <img src={icon_time} alt="icon" /> Режим работы с 11:00 до
+                  23:00
+                </p>
+                <div className={f.footer__info_item_mail}>
+                  <img src={Mail} alt="svg" />
+                  <Link
+                    className={f.footer__info_item_mail_text}
+                    to="mailto:frantsuz-shop.ru">
+                    frantsuz-shop.ru
+                  </Link>
+                </div>
+
+
+              </div>
             </div>
           </div>
         </div>
@@ -164,12 +183,12 @@ function Footer() {
       <div className={f.footer__bottom}>
         <div className="container">
           <div className={f.bottom}>
-            <p className={f.bottom_left}>ИП Авалян. В .Г ИНН: 502807103555</p>
+            <p className={f.bottom_left}>ИП Авалян. В. Г.<br/> ИНН: 502807103555</p>
 
             <p className={f.bottom_right}>
               <span> Политика конфиденциальности</span>
               <span>Не является публичной офертой</span>
-              <span>©Все права защищены</span>
+              <span>© Все права защищены</span>
             </p>
 
             <p className={f.bottom_center}>Сделано WeTop digital agency 2023</p>

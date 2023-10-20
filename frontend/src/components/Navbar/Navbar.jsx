@@ -7,42 +7,37 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import useModal from "../../useModal";
 import { useDispatch, useSelector } from "react-redux";
-import { loginState } from "../../redux/slices/autorisation";
+import { loginState, logoutState } from "../../redux/slices/autorisation";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isShowingModal, setIsShowing, toggleModal] = useModal();
-
-  const { autorisation } = useSelector((state) => state.autorisationReducer);
- 
-
   const dispatch = useDispatch();
-  const token = JSON.parse(localStorage.getItem('token'))
-  const [userName, setUserName] = useState('')
+  const { autorisation, token } = useSelector(
+    (state) => state.autorisationReducer
+  );
+  const [userName, setUserName] = useState('');
+  const [Header, setNavbar] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/users/', {
-      
-        headers: {
-          "Content-Type": "application/json",
-          'authorization': `Token ${token}`
-        },
-      
+    token.length > 0 && axios.get('http://localhost:8000/api/users/', {
+      headers: {
+        "Content-Type": "application/json",
+        'authorization': `Token ${token}`
+      },
     })
-    .then(res => localStorage.setItem('name', JSON.stringify(res.data[0].first_name)))
-    setUserName(JSON.parse(localStorage.getItem('name')))
-  }, [autorisation, localStorage.getItem('name')])
-  
+      .then(res => {
+        localStorage.setItem('name', res.data[0].first_name)
+        setUserName(res.data[0].first_name);
+      })
+
+  }, [autorisation])
 
   const logOut = () => {
-    dispatch(loginState(false));
-    localStorage.setItem("auth", JSON.stringify(false));
-    // localStorage.setItem('token', null)
-    window.location.reload(); 
-    
+    dispatch(logoutState());
   };
 
-  const [Header, setNavbar] = useState(false);
+
 
   const changeBackground = () => {
     if (window.scrollY >= 100) {
@@ -57,6 +52,10 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeBackground);
   }, []);
+
+  useEffect(() => {
+    console.log(autorisation)
+  }, [autorisation]);
 
   return (
     <nav className={Header ? `${s.header} ${s.header_active}` : `${s.header}`}>

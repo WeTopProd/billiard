@@ -1,0 +1,161 @@
+.card {
+  width: 100%;
+  height: 351px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 25px;
+  position: relative;
+}
+.card_info {
+  display: flex;
+  margin: 0;
+  gap: 45px;
+  width: 100%;
+}
+.card_info_image {
+  margin: 0;
+}
+.card_info_description {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 40px;
+  color: #ffffff;
+  max-width: 400px;
+}
+.card_counter {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  gap: 70px;
+  padding: 20px 0;
+}
+.card_counter_count {
+  display: flex;
+  width: 156px;
+  justify-content: center;
+  align-items: center;
+}
+.card_counter_count_dicrement {
+  border: 1px solid white;
+  flex: 0 1 32%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 17px;
+  padding: 10px 0;
+  cursor: pointer;
+  background-color: inherit;
+  margin: 0;
+}
+.card_counter_count_number {
+  border: 1px solid white;
+  flex: 0 1 36%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 17px;
+  padding: 10px 0;
+}
+.card_counter_count_increment {
+  border: 1px solid white;
+  flex: 0 1 32%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 17px;
+  padding: 10px 0;
+  cursor: pointer;
+  background-color: inherit;
+  margin: 0;
+}
+.card_counter_price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 17px;
+  color: #0a8b6a;
+}
+.card_counter_price_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 17px;
+  color: #ffffff;
+}
+.card_button_bascket_add {
+  position: absolute;
+  height: 35px;
+  bottom: 25px;
+  left: 35%;
+  padding: 29px 16px;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px;
+  border: none;
+  margin: 0 !important;
+  margin-left: 20px;
+}
+.card_button_bascket_add:hover {
+  background-color: black;
+  color: white;
+}
+.card_button_fabvorited_remove {
+  position: absolute;
+  height: 35px;
+  bottom: 25px;
+  left: 74%;
+  padding: 29px 35px;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px;
+  border: none;
+  margin-left: 20px;
+}
+.card_button_fabvorited_remove:hover {
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=Favorites_card.module.css.map */

@@ -1,0 +1,77 @@
+.basket_empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin: 100px 0;
+}
+.basket_empty_title {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #bababa;
+}
+.basket_empty_link {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: #18563d;
+  text-decoration: none;
+}
+
+.card {
+  box-sizing: border-box;
+  margin: 50px 0;
+}
+
+.total_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 50px 100px;
+  box-sizing: border-box;
+}
+.total_container_order {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px;
+  border: none;
+}
+.total_container_order:hover {
+  background-color: black;
+  color: white;
+}
+.total_container .total {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.total_container .total_final {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 17px;
+  color: #0a8b6a;
+}/*# sourceMappingURL=Basket.module.css.map */

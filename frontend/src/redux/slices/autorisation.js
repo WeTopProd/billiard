@@ -10,11 +10,12 @@ export const autorisationSlice = createSlice({
   initialState,
   reducers: {
     loginState(state, action) {
-      
       state.autorisation = action.payload;
+      state.autorisation = true
     },
     logoutState(state) {
       state.autorisation = false;
+      state.token = ''
     },
     tokenState(state, action) {
       state.token = action.payload

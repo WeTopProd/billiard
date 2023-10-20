@@ -1,0 +1,177 @@
+.services {
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.services_title {
+  background-image: url("../../image/services/IMAGE.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 363px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 90px;
+  color: white;
+  margin: 100px 0;
+}
+.services_sticker {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  gap: 70px;
+  position: relative;
+  box-sizing: border-box;
+}
+.services_sticker_image {
+  flex: 0 1 25%;
+  margin: 0;
+}
+.services_sticker_container {
+  flex: 0 1 75%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+.services_sticker_container_title {
+  color: white;
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22.6526px;
+  line-height: 31px;
+}
+.services_sticker_container_info {
+  color: white;
+  margin: 0;
+  border: 1px solid white;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.8211px;
+  line-height: 31px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.services_sticker_container_info_block {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+}
+.services_sticker_container_info_block_subtitle {
+  margin: 0;
+  max-height: content;
+}
+.services_sticker_container_info_block_hr {
+  border: 0.5px solid white;
+  flex: 0 1 80%;
+  height: 0;
+}
+.services_sticker_button {
+  position: absolute;
+  right: 30%;
+  bottom: -20px;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 0 10px;
+  border-radius: 0px;
+  padding: 15px 23px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.services_sticker_button:hover {
+  background-color: black;
+  color: white;
+}
+.services_hr {
+  width: 100%;
+}
+.services_repair {
+  background-image: url(../../image/services/repairCue.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 100px;
+}
+.services_repair_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 90px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+.services_repair_subtitle {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+.services_repair_logo {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+}
+.services_repair_button {
+  position: absolute;
+  right: 30%;
+  bottom: -80px;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 0 10px;
+  border-radius: 0px;
+  padding: 15px 23px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.services_repair_button:hover {
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=Services.module.css.map */

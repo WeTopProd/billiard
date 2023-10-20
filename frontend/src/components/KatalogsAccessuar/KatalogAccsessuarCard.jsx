@@ -14,7 +14,7 @@ const KatalogAccsessuarCard = ({ arr, setArr, ...item }) => {
 
   const [heart, setHeart] = useState(false);
 
-  const token = JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
 
  
   async function favorites(id) {

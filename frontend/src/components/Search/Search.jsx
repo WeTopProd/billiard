@@ -4,15 +4,41 @@ import heart from "../../image/heart.svg";
 import basket from "../../image/basket.svg";
 import search from "../../image/search.svg";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { basketApi } from '../../api/basketApi/basket.js'
+import favorite from "../../api/FavoriteApi/Favorite";
+import { initfavoriteIn } from "../../redux/slices/favoritedSlice";
+import { counter, initCart } from "../../redux/slices/bascketSlice";
 
 const Search = () => {
-  const { items} = useSelector(state => state.favoritedReducer)
-  const { itemsBascket} = useSelector(state => state.bascketReducer)
-  
+  const dispatch = useDispatch()
+  const token = localStorage.getItem('token');
+  const counterValue = useSelector(state => state.cartSlice.counter);
 
-  // const totalCount = items.reduce((sum, item) => sum + item.count, 0) - Надо взять на заметку, пригодится в корзине
-  
+  var stopper = 0
+
+  const basketItemsX = useSelector(state => state.cartSlice.items)
+
+
+  const favoriteItems = useSelector(state => state.favoritedSlice.items)
+
+  useEffect(() =>  {
+    {
+      
+      basketApi.get(token).then((data) => {
+        dispatch(initCart(data))
+        dispatch(counter())
+      }).then(() => stopper = 1).catch((err) => console.log(err))
+
+       favorite.get(token).then((data) => {
+        dispatch(initfavoriteIn(data))
+      }).then(() => stopper = 1).catch((err) => console.log(err))
+
+    }
+
+  }, [])
+  console.log(counterValue,'ijinmkm')
   return (
     <div className="container">
       <div className={s.search}>
@@ -30,13 +56,13 @@ const Search = () => {
             <NavLink to="/favorites">
               <img className={s.heart} src={heart} alt="image" />
             </NavLink>
-            <span className={s.count}>{items.length}</span>
+            <span className={s.count}>{favoriteItems.count}</span>
           </div>
           <div className={s.counters}>
             <NavLink to="/basket">
               <img className={s.basket} src={basket} alt="image" />
             </NavLink>
-            <span className={s.count}>{itemsBascket.length}</span>
+            <span className={s.count}>{counterValue}</span>
           </div>
         </div>
       </div>

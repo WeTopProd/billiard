@@ -1,12 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import favoritedReducer from './slices/favoritedSlice';
-import bascketReducer from './slices/bascketSlice';
+import favoritedSlice from './slices/favoritedSlice';
+import cartSlice from './slices/bascketSlice';
 import autorisationReducer from './slices/autorisation';
+import goodsSlice from './slices/GoodsSlice';
 
-export const store = configureStore({
+export const makeStore = configureStore({
   reducer: {
-    favoritedReducer,
-    bascketReducer,
+    goodsSlice,
+    favoritedSlice,
+    cartSlice,
     autorisationReducer
   },
 })
+
+export const store = makeStore;
+
+
+
+export default store;

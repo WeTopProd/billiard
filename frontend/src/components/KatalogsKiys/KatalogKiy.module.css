@@ -63,4 +63,10 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+}
+
+.loading {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
 }/*# sourceMappingURL=KatalogKiy.module.css.map */

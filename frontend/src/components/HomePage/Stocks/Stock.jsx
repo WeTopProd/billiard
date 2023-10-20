@@ -1,10 +1,43 @@
+import { useDispatch } from "react-redux";
+import { addToCart, increment } from "../../../redux/slices/bascketSlice";
 import s from "./Stock.module.css";
+import { initfavoriteIn } from "../../../redux/slices/favoritedSlice";
+import favorite from "../../../api/FavoriteApi/Favorite";
+import basketApi from "../../../api/basketApi/basket";
 
-const Stock = ({ imageHit, description, price, sale }) => {
+const Stock = ({ id, description, price, images, sale }) => {
+  const [isAdded, setIsadded] = useState(false)
+  
+  const dispatch = useDispatch();
+  const token = localStorage.getItem('token');
+  const allItemsCount = localStorage.getItem('allItemsCount');
+
+  const addToBasket = () => {
+    basketApi.post(token, id).then(data => {
+      dispatch(addToCart({ ...data }))
+      dispatch(increment());
+
+      allItemsCount
+        ?
+        localStorage.setItem('allItemsCount', JSON.stringify([...JSON.parse(allItemsCount), { ...data, itemCount: 1 }]))
+        :
+        localStorage.setItem('allItemsCount', JSON.stringify([{ ...data, itemCount: 1 }]))
+
+      console.log(JSON.parse(localStorage.getItem('allItemsCount')));
+    })
+    setIsadded(true)
+  }
+  const addFavorite = async () => {
+    favorite.post(token, id).then(data => {
+
+      dispatch(initfavoriteIn({ data }))
+    });
+    await favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)))
+  }
   return (
-    <div className={s.card}>
+    <div className={s.card} key={id}>
       <div className={s.imageHit_container}>
-        <img className={s.imageHit} src={imageHit} alt="image" />
+        <img className={s.imageHit} src={images[0] || null} alt="image" />
       </div>
       <div className={s.iconHit}>
         <svg
@@ -41,13 +74,14 @@ const Stock = ({ imageHit, description, price, sale }) => {
       </div>
       <p className={s.description}>{description}</p>
       <div className={s.sales}>
-      <p className={s.price}>{price}РУБ</p>
-      <p className={s.sale}>{sale}РУБ</p>
+      <p className={s.price}>{price} РУБ</p>
+      <p className={s.sale}>{sale} РУБ</p>
       </div>
       <div className={s.buttons}>
         <div className={s.buttons_item}>
           <button className={s.button_one}>Подробнее</button>
-          <button className={s.button_two}>Добавить в корзину</button>
+          {isAdded ? <div className={s.div_two}>уже добавлено в корзину</div> :
+            <button className={s.button_two} onClick={addToBasket}>Добавить в корзину</button>}
         </div>
         <div className={s.buttonOneClick_container}>
           <button className={s.buttonOneClick}>Купить в один клик</button>

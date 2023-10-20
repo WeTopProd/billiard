@@ -1,3 +1,4 @@
+import Hits from '../SalesHits/Hits';
 import s from './Hr.module.css'
 
 const Hr = ({title}) => {
