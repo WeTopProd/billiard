@@ -55,6 +55,10 @@ class GoodsFilter(FilterSet):
         choices=Goods.CHOICES_TYPE,
         field_name='type'
     )
+    affiliation_goods = ChoiceFilter(
+        choices=Goods.AFFILIATION_GOODS,
+        field_name='affiliation_goods'
+    )
     is_favorited = filters.BooleanFilter(method='get_is_favorited')
     is_in_shopping_cart = filters.BooleanFilter(
         method='get_is_in_shopping_cart'
@@ -73,6 +77,7 @@ class GoodsFilter(FilterSet):
             'price',
             'play',
             'type',
+            'affiliation_goods',
             'is_favorited',
             'is_in_shopping_cart'
         )

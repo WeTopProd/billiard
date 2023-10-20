@@ -31,7 +31,11 @@ class Goods(models.Model):
         ('case', 'Чехол'),
         ('sticker', 'Наклейка'),
         ('chalk', 'Мел'),
-        ('glove', 'Перчатки')
+        ('glove', 'Перчатки'),
+    )
+    AFFILIATION_GOODS = (
+        ('promotion', 'Акция'),
+        ('bestseller', 'Хит продаж'),
     )
     goods_type = models.CharField(
         verbose_name='Тип товара',
@@ -90,6 +94,13 @@ class Goods(models.Model):
         verbose_name='Тип аксессуара',
         max_length=150,
         choices=CHOICES_TYPE,
+        blank=True,
+        null=True
+    )
+    affiliation_goods = models.CharField(
+        verbose_name='Принадлежность товара',
+        max_length=50,
+        choices=AFFILIATION_GOODS,
         blank=True,
         null=True
     )
