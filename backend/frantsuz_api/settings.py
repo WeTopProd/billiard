@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-u3cj2p@gd4&pzj7br(5jq_*3z^oz3k-k!y=l^@r6nq*-58wpc5'
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -19,8 +19,8 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = [
-        'frantsuz.ru',
-        '37.140.195.3',
+        'frantsuz-shop.ru',
+        '194.58.118.40',
     ]
 
 INSTALLED_APPS = [
@@ -85,10 +85,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'academy',
-            'USER': 'academy_user',
-            'PASSWORD': '20031956tAA',
-            'HOST': 'db',
+            'NAME': 'billiard',
+            'USER': 'billiard_user',
+            'PASSWORD': '20031956',
+            'HOST': '194.58.118.40',
             'PORT': '5432'
         }
     }
@@ -142,15 +142,7 @@ REST_FRAMEWORK = {
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
-if DEBUG:
-    CORS_ORIGIN_ALLOW_ALL = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'https://frantsuz.ru',
-        'https://37.140.195.3',
-        'https://37.140.195.3:3000',
-        'https://37.140.195.3:8000',
-    ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
