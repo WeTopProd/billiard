@@ -4,7 +4,11 @@ import s from "./Stock.module.css";
 import { initfavoriteIn } from "../../../redux/slices/favoritedSlice";
 import favorite from "../../../api/FavoriteApi/Favorite";
 import basketApi from "../../../api/basketApi/basket";
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import { useEffect, useState } from 'react';
+>>>>>>> 5ecb4392a85db71c6eff8cdbc01dbe1e5edc8c74
 
 const Stock = ({ id, description, price, images, sale }) => {
   const [isAdded, setIsadded] = useState(false)

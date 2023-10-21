@@ -28,7 +28,7 @@ const KatalogAccsessuarCard = ({ arr, setArr, id,...item }) => {
   async function favorites(id) {
     setHeart(!heart);
     await axios
-      .post(`http://127.0.0.1:8000/api/goods/${id}/favorite/`, null, {
+      .post(`http://frantsuz-shop.ru/api/goods/${id}/favorite/`, null, {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,
@@ -36,7 +36,7 @@ const KatalogAccsessuarCard = ({ arr, setArr, id,...item }) => {
       })
       .catch(err => console.error(err))
 
-      await axios.get('http://127.0.0.1:8000/api/goods/?is_favorited=1', {
+      await axios.get('http://frantsuz-shop.ru/api/goods/?is_favorited=1', {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,
@@ -47,18 +47,16 @@ const KatalogAccsessuarCard = ({ arr, setArr, id,...item }) => {
 
 
 
-  const addToBasket = () => {
-    basketApi.post(token, id).then(data => {
-      dispatch(addToCart({ ...data }))
-      dispatch(increment());
+  async function addBascket(id) {
+    await axios
+      .post(`http://127.0.0.1:8000/api/goods/${id}/shopping_cart/`, null, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Token ${token}`,
+        },
+      })
+      .catch(err => console.error(err))
 
-      allItemsCount
-        ?
-        localStorage.setItem('allItemsCount', JSON.stringify([...JSON.parse(allItemsCount), { ...data, itemCount: 1 }]))
-        :
-        localStorage.setItem('allItemsCount', JSON.stringify([{ ...data, itemCount: 1 }]));
-    })
-    setIsadded(true)
   }
 
   return (
