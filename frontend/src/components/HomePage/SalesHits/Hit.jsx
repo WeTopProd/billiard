@@ -80,7 +80,7 @@ const Hit = ({ id, description, price, images }) => {
 				<div className={s.buttons}>
 					<div className={s.buttons_item}>
 						<button className={s.button_one}>Подробнее</button>
-						{isAdded ? <div className={s.div_two}>уже добавлено в корзину</div> :
+						{isAdded ? <div className={s.div_two}><p>уже добавлено в корзину</p></div> :
 						<button className={s.button_two} onClick={addToBasket}>Добавить в корзину</button>}
 					</div>
 					<div className={s.buttonOneClick_container}>

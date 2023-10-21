@@ -35,17 +35,18 @@ const Hits = () => {
       workshop: null,
     }])
 
-  const [useEffectStop, setUseEffectStop] = useState(0)
-
-
-  const goodsItem = useSelector(state => state.goodsSlice.items)
+  
+  
+  const [goodsItem, setGoodsItem] = useState()
 
   useEffect(() => {
     {
-      goodsApi.get(token).then((data) => {
-        dispatch(initGoods(data))
+      goodsApi.getBestseller(token).then((data) => {
+        setGoodsItem(data)
         SetLoading(false)
+        
       })
+      
     }
   }, []);
 

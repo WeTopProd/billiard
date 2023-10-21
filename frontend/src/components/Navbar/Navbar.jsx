@@ -53,9 +53,7 @@ const Navbar = () => {
     window.addEventListener("scroll", changeBackground);
   }, []);
 
-  useEffect(() => {
-    console.log(autorisation)
-  }, [autorisation]);
+  
 
   return (
     <nav className={Header ? `${s.header} ${s.header_active}` : `${s.header}`}>

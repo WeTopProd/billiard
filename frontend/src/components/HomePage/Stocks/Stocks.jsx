@@ -13,20 +13,21 @@ const Stoks = () => {
 
   const dispatch = useDispatch()
 
-  const goodsItem = useSelector(state => state.goodsSlice.items)
-
   const [loading, SetLoading] = useState(true)
 
+  const [goodsItem, setGoodsItem] = useState()
   
   useEffect(() => {
     {
-      goodsApi.get(token).then((data) => {
-        dispatch(initGoods(data))
+      goodsApi.getPromotion(token).then((data) => {
+        setGoodsItem(data)
         SetLoading(false)
+
       })
+
     }
   }, []);
-
+  
   return (
     (loading ?
       (
@@ -36,7 +37,7 @@ const Stoks = () => {
       (
         <div className="container">
           <div id='stoks' className={s.cards}>
-            {goodsItem?.length != 0 && goodsItem.map((item) => {
+            {goodsItem?.length !== 0 && goodsItem.map((item) => {
               return <Stock key={item.id} description={item.description} price={item.price} images={item.images} id={item.id} item={item.sale} />
             }
             )}

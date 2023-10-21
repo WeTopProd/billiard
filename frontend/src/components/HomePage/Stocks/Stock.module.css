@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 26px;
+    
 }
 
 .imageHit_container {
@@ -131,10 +132,12 @@
     transition: .3s;
 }
 .div_two {
+    display: flex;
     flex: 0 1 45%;
     height: 64px;
     border: 1px solid white;
-    background-color: rgb(243, 243, 243);
+    background-color: #004E3A;
+    color: white;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
@@ -142,9 +145,12 @@
     line-height: 21px;
     text-align: center;
     text-transform: uppercase;
-    color: #f1efee;
     cursor: pointer;
     transition: .3s;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 
 .buttonOneClick_container {

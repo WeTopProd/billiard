@@ -9,13 +9,21 @@ import "swiper/css/scrollbar";
 import { useState } from "react";
 
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import basketApi from "../../api/basketApi/basket";
+import { addToCart, increment } from "../../redux/slices/bascketSlice";
 
-const KatalogAccsessuarCard = ({ arr, setArr, ...item }) => {
+const KatalogAccsessuarCard = ({ arr, setArr, id,...item }) => {
 
   const [heart, setHeart] = useState(false);
 
   const token = localStorage.getItem("token");
+  
+  const dispatch = useDispatch();
 
+  const allItemsCount = localStorage.getItem('allItemsCount');
+
+  const [isAdded, setIsadded] = useState(false)
  
   async function favorites(id) {
     setHeart(!heart);
@@ -39,20 +47,22 @@ const KatalogAccsessuarCard = ({ arr, setArr, ...item }) => {
 
 
 
-  async function addBascket(id) {
-    await axios
-      .post(`http://127.0.0.1:8000/api/goods/${id}/shopping_cart/`, null, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        },
-      })
-      .catch(err => console.error(err))
+  const addToBasket = () => {
+    basketApi.post(token, id).then(data => {
+      dispatch(addToCart({ ...data }))
+      dispatch(increment());
 
+      allItemsCount
+        ?
+        localStorage.setItem('allItemsCount', JSON.stringify([...JSON.parse(allItemsCount), { ...data, itemCount: 1 }]))
+        :
+        localStorage.setItem('allItemsCount', JSON.stringify([{ ...data, itemCount: 1 }]));
+    })
+    setIsadded(true)
   }
 
   return (
-    <div className={s.card}>
+    <div className={s.card} key={id}>
       <div className={s.swiperWrapper}>
         <div className={s.heart}>
           <svg
@@ -114,12 +124,14 @@ const KatalogAccsessuarCard = ({ arr, setArr, ...item }) => {
 
         <div className={s.container_price}>
           <p className={s.container_price_info}>Цена: {item.price} руб.</p>
-          <button
+          {isAdded ? <div className={s.container_price_button}><p className={s.div_two}>уже добавлено в корзину</p></div> :
+            <button className={s.container_price_button} onClick={addToBasket}>Добавить в корзину</button>}
+          {/* <button
             id={item.id}
-            onClick={(event) => addBascket(event.currentTarget.id)}
-            className={s.container_price_button}>
+            onClick={addToBasket}
+            >
             В корзину
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

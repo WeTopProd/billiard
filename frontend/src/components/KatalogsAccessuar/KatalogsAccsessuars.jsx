@@ -53,7 +53,7 @@ const KatalogsAccsessuars = ({arr, setArr}) => {
 
     setCards(cards.filter((item) => item.price <= max && item.price >= min));
   }
-
+  
   
   return (
     <div className="container">

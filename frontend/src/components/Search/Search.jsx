@@ -38,7 +38,7 @@ const Search = () => {
     }
 
   }, [])
-  console.log(counterValue,'ijinmkm')
+  
   return (
     <div className="container">
       <div className={s.search}>

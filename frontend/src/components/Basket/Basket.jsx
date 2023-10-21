@@ -17,10 +17,6 @@ const Basket = () => {
 	const totalPrice = useSelector(state => state.cartSlice.totalPrice)
 	const [total, setTotal] = useState(calcTotal(basketItemsX))
 
-	useEffect(() => {
-		console.log(basketItemsX,'sasasasa');
-	}, [basketItemsX])
-
 	return (
 		<div className="container">
 			<Hr title="Корзина" />
