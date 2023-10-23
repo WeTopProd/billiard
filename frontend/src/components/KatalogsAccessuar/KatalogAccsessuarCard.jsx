@@ -12,6 +12,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import basketApi from "../../api/basketApi/basket";
 import { addToCart, increment } from "../../redux/slices/bascketSlice";
+import favorite from "../../api/FavoriteApi/Favorite";
+import { initfavoriteIn } from "../../redux/slices/favoritedSlice";
 
 const KatalogAccsessuarCard = ({ arr, setArr, id,...item }) => {
 
