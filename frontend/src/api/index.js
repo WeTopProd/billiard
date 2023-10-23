@@ -237,4 +237,4 @@ class Api {
   }
 }
 
-export default new Api(process.env.API_URL || 'http://frantsuz-shop.ru', { 'content-type': 'application/json' })
+export default new Api(process.env.API_URL || 'https://frantsuz-shop.ru', { 'content-type': 'application/json' })

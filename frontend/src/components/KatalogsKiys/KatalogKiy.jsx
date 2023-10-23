@@ -14,7 +14,7 @@ const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
 
   function filterMini(type) {
     axios
-      .get("http://frantsuz-shop.ru/api/goods", {
+      .get("https://frantsuz-shop.ru/api/goods", {
         params: {
           play: type,
         },

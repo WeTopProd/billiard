@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = `http://frantsuz-shop.ru/api/goods/`
+const url = `https://frantsuz-shop.ru/api/goods/`
 
 export const goodsApi = {
     get: async (token) => {
