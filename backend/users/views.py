@@ -1,6 +1,6 @@
 import base64
-
 from datetime import datetime
+
 import requests
 from django.conf import settings
 from django.contrib.auth import authenticate
@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
+from goods.models import Goods
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
@@ -16,7 +17,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .backends import PhoneBackend
-from goods.models import Goods
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class TokenCreateByPhoneView(APIView):
@@ -78,7 +79,8 @@ def send_email(request):
         f"ЗАКАЗ ОТ {last_name} {first_name}",
         message,
         settings.DEFAULT_FROM_EMAIL,
-        [settings.DEFAULT_FROM_EMAIL], # тут меняешь почту на settings.MAIN_EMAIL
+        [settings.DEFAULT_FROM_EMAIL],
+        # тут меняешь почту на settings.MAIN_EMAIL
         fail_silently=False,
     )
     return Response({'success': 'Сообщение успешно отправлено'})

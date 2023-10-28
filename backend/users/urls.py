@@ -1,7 +1,7 @@
 from django.urls import include, path
 from djoser.views import TokenCreateView
 
-from .views import TokenCreateByPhoneView, send_email, payment
+from .views import TokenCreateByPhoneView, payment, send_email
 
 urlpatterns = [
     path('', include('djoser.urls')),
