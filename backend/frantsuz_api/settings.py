@@ -185,3 +185,4 @@ EMAIL_HOST_PASSWORD = 'wE6aN6lC6e'
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'academy@frantsuz.ru'
 SERVER_EMAIL = 'academy@frantsuz.ru'
+# MAIN_EMAIL = 'bcf2018inbox.ru'

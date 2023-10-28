@@ -19,7 +19,11 @@ const KatalogsKiys = ({ arr, setArr }) => {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get("http://127.0.0.1:8000/api/goods/")
+=======
+      .get("https://frantsuz-shop.ru/api/goods/")
+>>>>>>> c9818edb5c2cd749dffbc75392a37dbc54bf6f04
       .then((res) => {
         setCards(res.data.results);
       })
@@ -42,7 +46,12 @@ const KatalogsKiys = ({ arr, setArr }) => {
 
     axios
       .get(
+<<<<<<< HEAD
         `http://127.0.0.1:8000/api/goods/?${play}${structure}${workshop}${min ? `price_min=${min}` : ""
+=======
+        `https://frantsuz-shop.ru/api/goods/?${play}${structure}${workshop}${
+          min ? `price_min=${min}` : ""
+>>>>>>> c9818edb5c2cd749dffbc75392a37dbc54bf6f04
         }${max ? `&price_max=${max}` : ""}`
       )
       .then((res) => {
