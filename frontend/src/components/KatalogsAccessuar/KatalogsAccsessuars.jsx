@@ -8,7 +8,7 @@ import KatalogAccsessuar from "./KatalogAccsessuar";
 import FilterAccsessuar from "./FilterAccsessuar";
 
 
-const KatalogsAccsessuars = ({arr, setArr}) => {
+const KatalogsAccsessuars = ({ arr, setArr }) => {
   const [cards, setCards] = useState([]);
   const [finall, setFinall] = useState(true);
 
@@ -19,7 +19,7 @@ const KatalogsAccsessuars = ({arr, setArr}) => {
 
   useEffect(() => {
     axios
-      .get("http://frantsuz-shop.ru/api/goods/")
+      .get("http://127.0.0.1:8000/api/goods/")
       .then((res) => {
         setCards(res.data.results);
       })
@@ -42,8 +42,7 @@ const KatalogsAccsessuars = ({arr, setArr}) => {
 
     axios
       .get(
-        `http://frantsuz-shop.ru/api/goods/?${play}${structure}${workshop}${
-          min ? `price_min=${min}` : ""
+        `http://127.0.0.1:8000/api/goods/?${play}${structure}${workshop}${min ? `price_min=${min}` : ""
         }${max ? `&price_max=${max}` : ""}`
       )
       .then((res) => {
@@ -53,8 +52,8 @@ const KatalogsAccsessuars = ({arr, setArr}) => {
 
     setCards(cards.filter((item) => item.price <= max && item.price >= min));
   }
-  
-  
+
+
   return (
     <div className="container">
       <Hr title="Аксессуары для бильярда" />

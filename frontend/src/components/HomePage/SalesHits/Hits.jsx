@@ -4,6 +4,8 @@ import Hit from "./Hit";
 import s from "./Hits.module.css";
 import { goodsApi } from '../../../api/goodsApi';
 import { useSelector, useDispatch } from 'react-redux';
+import basketApi from '../../../api/basketApi/basket.js';
+import { initCart } from '../../../redux/slices/bascketSlice.js';
 
 
 const Hits = () => {
@@ -13,32 +15,10 @@ const Hits = () => {
   const [loading, SetLoading] = useState(true)
 
   const dispatch = useDispatch()
-
-  const [data, setData] = useState(
-    [{
-      article: null,
-      composition: null,
-      count: null,
-      description: null,
-      diameter: null,
-      goods_type: null,
-      id: null,
-      images: [],
-      is_favorited: null,
-      is_in_shopping_cart: null,
-      play: null,
-      price: null,
-      structure: null,
-      title: null,
-      type: null,
-      weight: null,
-      workshop: null,
-    }])
-
-  
   
   const [goodsItem, setGoodsItem] = useState()
 
+  const basketItemsX = useSelector(state => state.cartSlice.items)
   useEffect(() => {
     {
       goodsApi.getBestseller(token).then((data) => {

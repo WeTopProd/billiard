@@ -15,12 +15,7 @@ const Search = () => {
   const dispatch = useDispatch()
   const token = localStorage.getItem('token');
   const counterValue = useSelector(state => state.cartSlice.counter);
-
   var stopper = 0
-
-  const basketItemsX = useSelector(state => state.cartSlice.items)
-
-
   const favoriteItems = useSelector(state => state.favoritedSlice.items)
 
   useEffect(() =>  {

@@ -9,12 +9,12 @@ import KatalogCard from "./KatalogKiyCard";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const KatalogKiy = ({arr, setArr, cards, setCards, finall }) => {
-  
+const KatalogKiy = ({ arr, setArr, cards, setCards, finall }) => {
+
 
   function filterMini(type) {
     axios
-      .get("http://frantsuz-shop.ru/api/goods", {
+      .get("http://127.0.0.1:8000/api/goods", {
         params: {
           play: type,
         },

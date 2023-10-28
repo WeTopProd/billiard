@@ -10,7 +10,7 @@ import tel from "../../image/tel.svg";
 import Mail from "../../image/mail.svg";
 import Geol from "../../image/bi_geo-alt-fill.svg";
 import icon_time from "../../image/icon_time.svg";
-
+import jur from '../../image/011.svg'
 import img1 from "../../image/footer__img1.png";
 import img2 from "../../image/footer__img2.png";
 import img3 from "../../image/footer__img3.png";
@@ -49,15 +49,9 @@ function Footer() {
                     />
                   </Link>
 
-                  <Link to="">
-                    <img
-                      src={img1}
-                      alt="img"
-                      className={f.footer__info_port_imgs_img}
-                    />
-                  </Link>
+                  
 
-                  <Link to="">
+                <Link to="https://tyteda.ru/">
                     <img
                       src={img6}
                       alt="img"
@@ -65,13 +59,13 @@ function Footer() {
                     />
                   </Link>
 
-                  <Link to="">
-                    <img
-                      src={img8}
-                      alt="img"
-                      className={f.footer__info_port_imgs_img}
-                    />
-                  </Link>
+                <Link to="">
+                  <img
+                    src={img11}
+                    alt="img"
+                    className={f.footer__info_port_imgs_img}
+                  />
+                </Link>
 
                   <Link to="">
                     <img
@@ -96,6 +90,13 @@ function Footer() {
                       className={f.footer__info_port_imgs_img}
                     />
                   </Link>
+                <Link to="">
+                  <img
+                    src={img1}
+                    alt="img"
+                    className={f.footer__info_port_imgs_img}
+                  />
+                </Link>
 
                   <Link to="">
                     <img
@@ -104,7 +105,13 @@ function Footer() {
                       className={f.footer__info_port_imgs_img}
                     />
                   </Link>
-
+                <Link to="https://corp-pitanie.tyteda.ru/">
+                  <img
+                    src={img8}
+                    alt="img"
+                    className={f.footer__info_port_imgs_img}
+                  />
+                </Link>
                   <Link to="">
                     <img
                       src={img10}
@@ -112,13 +119,7 @@ function Footer() {
                       className={f.footer__info_port_imgs_img}
                     />
                   </Link>
-                  <Link to="">
-                    <img
-                      src={img11}
-                      alt="img"
-                      className={f.footer__info_port_imgs_img}
-                    />
-                  </Link>
+                  
                   <Link to="">
                     <img
                       src={img12}
@@ -130,6 +131,13 @@ function Footer() {
                   <Link to="">
                     <img
                       src={img3}
+                      alt="img"
+                      className={f.footer__info_port_imgs_img}
+                    />
+                  </Link>
+                  <Link to="">
+                    <img
+                    src={jur}
                       alt="img"
                       className={f.footer__info_port_imgs_img}
                     />
@@ -157,7 +165,7 @@ function Footer() {
                 <div className={f.footer__info_item_contacts}>
                   <div className={f.footer__info_item_contacts_tel}>
                     <img src={tel} alt="svg" />
-                    <Link to="tel:+7(968)091-55-50">+7(968)091-55-50</Link>
+                    <Link to="tel:+7(968)091-55-50">+7(968) 091-55-50</Link>
                   </div>
                 </div>
                 <p className={f.footer__info_item_mode}>
@@ -186,7 +194,7 @@ function Footer() {
             <p className={f.bottom_left}>ИП Авалян. В. Г.<br/> ИНН: 502807103555</p>
 
             <p className={f.bottom_right}>
-              <span> Политика конфиденциальности</span>
+              <Link to={'/policy'}> Политика конфиденциальности</Link>
               <span>Не является публичной офертой</span>
               <span>© Все права защищены</span>
             </p>

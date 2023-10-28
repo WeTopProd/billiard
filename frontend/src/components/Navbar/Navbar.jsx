@@ -20,7 +20,7 @@ const Navbar = () => {
   const [Header, setNavbar] = useState(false);
 
   useEffect(() => {
-    token.length > 0 && axios.get('http://frantsuz-shop.ru/api/users/', {
+    token.length > 0 && axios.get('http://127.0.0.1:8000/api/users/', {
       headers: {
         "Content-Type": "application/json",
         'authorization': `Token ${token}`
@@ -53,7 +53,7 @@ const Navbar = () => {
     window.addEventListener("scroll", changeBackground);
   }, []);
 
-  
+
 
   return (
     <nav className={Header ? `${s.header} ${s.header_active}` : `${s.header}`}>

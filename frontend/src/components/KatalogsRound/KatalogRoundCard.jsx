@@ -21,7 +21,7 @@ const KatalogCard = ({ arr, setArr, ...item }) => {
   async function favorites(id) {
     setHeart(!heart);
     await axios
-      .post(`http://frantsuz-shop.ru/api/goods/${id}/favorite/`, null, {
+      .post(`http://127.0.0.1:8000/api/goods/${id}/favorite/`, null, {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,
@@ -29,12 +29,12 @@ const KatalogCard = ({ arr, setArr, ...item }) => {
       })
       .catch(err => console.error(err))
 
-      await axios.get('http://frantsuz-shop.ru/api/goods/?is_favorited=1', {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        }
-      })
+    await axios.get('http://127.0.0.1:8000/api/goods/?is_favorited=1', {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Token ${token}`,
+      }
+    })
       .catch(err => console.error(err))
   }
 
@@ -42,7 +42,7 @@ const KatalogCard = ({ arr, setArr, ...item }) => {
 
   async function addBascket(id) {
     await axios
-      .post(`http://frantsuz-shop.ru/api/goods/${id}/shopping_cart/`, null, {
+      .post(`http://127.0.0.1:8000/api/goods/${id}/shopping_cart/`, null, {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,

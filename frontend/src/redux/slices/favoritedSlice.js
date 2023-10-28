@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   totalPrice: 0,
-  items: [],
-};
-
+  items: [
+    {
+    count: 0,
+  },
+]
+}
+  
 export const favoritedSlice = createSlice({
   name: "favorited",
   initialState: initialState,

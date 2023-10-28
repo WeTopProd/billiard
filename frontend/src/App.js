@@ -11,7 +11,7 @@ import { loginState, tokenState } from "./redux/slices/autorisation";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/HomePage/Home/Home";
-
+import { Konfid } from "./components/Footer/Konfid";
 import Search from "./components/Search/Search";
 import KatalogsKiys from "./components/KatalogsKiys/KatalogsKiys";
 import Favorites from "./components/Favorites/Favorites";
@@ -116,7 +116,9 @@ function App() {
           <Route path="/modal" element={<Modal />} />
           <Route path="/recovery" element={<Recovery />} />
           <Route path="/recoveryOk" element={<RecoveryOk />} />
+          <Route path='/policy' element={<Konfid />} />
           <Route path="/registerCode" element={<RegisterCode />} />
+          
         </Routes>
         <Footer />
       </div>

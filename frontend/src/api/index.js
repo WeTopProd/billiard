@@ -1,10 +1,10 @@
 class Api {
-  constructor (url, headers) {
+  constructor(url, headers) {
     this._url = url
     this._headers = headers
   }
 
-  checkResponse (res) {
+  checkResponse(res) {
     return new Promise((resolve, reject) => {
       if (res.status === 204) {
         return resolve(res)
@@ -14,7 +14,7 @@ class Api {
     })
   }
 
-  checkFileDownloadResponse (res) {
+  checkFileDownloadResponse(res) {
     return new Promise((resolve, reject) => {
       if (res.status < 400) {
         return res.blob().then(blob => {
@@ -23,7 +23,7 @@ class Api {
           a.href = url;
           a.download = "shopping-list";
           document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-          a.click();    
+          a.click();
           a.remove();  //afterwards we remove the element again 
         })
       }
@@ -31,7 +31,7 @@ class Api {
     })
   }
 
-  signin ({ email, password }) {
+  signin({ email, password }) {
     return fetch(
       '/api/auth/token/login/',
       {
@@ -44,7 +44,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  signout () {
+  signout() {
     const token = localStorage.getItem('token')
     return fetch(
       '/api/auth/token/logout/',
@@ -58,7 +58,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  signup ({ email, password, username, first_name, last_name }) {
+  signup({ email, password, username, first_name, last_name }) {
     return fetch(
       `/api/users/`,
       {
@@ -71,7 +71,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  getUserData () {
+  getUserData() {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/users/me/`,
@@ -85,7 +85,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  changePassword ({ current_password, new_password }) {
+  changePassword({ current_password, new_password }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/users/set_password/`,
@@ -103,28 +103,28 @@ class Api {
 
   // recipes
 
-  getCue ({
+  getCue({
     page = 1,
     limit = 6,
     is_favorited = 0,
     is_in_shopping_cart = 0,
   } = {}) {
-      const token = localStorage.getItem('token')
-      const authorization = token ? { 'authorization': `Token ${token}` } : {}
-    
-      return fetch(
-        `/api/cue/?page=${page}&limit=${limit}${is_favorited ? `&is_favorited=${is_favorited}` : ''}${is_in_shopping_cart ? `&is_in_shopping_cart=${is_in_shopping_cart}` : ''}`,
-        {
-          method: 'GET',
-          headers: {
-            ...this._headers,
-            ...authorization
-          }
+    const token = localStorage.getItem('token')
+    const authorization = token ? { 'authorization': `Token ${token}` } : {}
+
+    return fetch(
+      `/api/cue/?page=${page}&limit=${limit}${is_favorited ? `&is_favorited=${is_favorited}` : ''}${is_in_shopping_cart ? `&is_in_shopping_cart=${is_in_shopping_cart}` : ''}`,
+      {
+        method: 'GET',
+        headers: {
+          ...this._headers,
+          ...authorization
         }
-      ).then(this.checkResponse)
+      }
+    ).then(this.checkResponse)
   }
 
-  getRecipe ({
+  getRecipe({
     recipe_id
   }) {
     const token = localStorage.getItem('token')
@@ -141,11 +141,11 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  
 
-  
 
-  addToFavorites ({ id }) {
+
+
+  addToFavorites({ id }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/recipes/${id}/favorite/`,
@@ -159,7 +159,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  removeFromFavorites ({ id }) {
+  removeFromFavorites({ id }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/recipes/${id}/favorite/`,
@@ -173,7 +173,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  getUser ({ id }) {
+  getUser({ id }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/users/${id}/`,
@@ -187,7 +187,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  getUsers ({
+  getUsers({
     page = 1,
     limit = 6
   }) {
@@ -204,11 +204,11 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  
 
-  
 
-  addToOrders ({ id }) {
+
+
+  addToOrders({ id }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/recipes/${id}/shopping_cart/`,
@@ -222,7 +222,7 @@ class Api {
     ).then(this.checkResponse)
   }
 
-  removeFromOrders ({ id }) {
+  removeFromOrders({ id }) {
     const token = localStorage.getItem('token')
     return fetch(
       `/api/recipes/${id}/shopping_cart/`,
@@ -237,4 +237,4 @@ class Api {
   }
 }
 
-export default new Api(process.env.API_URL || 'http://frantsuz-shop.ru', { 'content-type': 'application/json' })
+export default new Api(process.env.API_URL || 'http://127.0.0.1:8000', { 'content-type': 'application/json' })

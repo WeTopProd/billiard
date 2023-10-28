@@ -1,21 +1,21 @@
 import axios from "axios";
 
-const url = `http://frantsuz-shop.ru/api/goods/`
+const url = `http://127.0.0.1:8000/api/goods/`
 
 export const goodsApi = {
     get: async (token) => {
-        const res = await axios.request(`${url}`,{
+        const res = await axios.request(`${url}`, {
             method: 'GET',
-            body:{},
-            headers:{
+            body: {},
+            headers: {
                 "content-type": "application/json",
-                authorization: `Token ${token}`,   
+                authorization: `Token ${token}`,
             },
         })
-        return  res.data.results
+        return res.data.results
     },
-    getPromotion:async(token) =>{
-        const res = await axios.request(`${url}?affiliation_goods=promotion`,{
+    getPromotion: async (token) => {
+        const res = await axios.request(`${url}?affiliation_goods=promotion`, {
             method: 'GET',
             body: {},
             headers: {
@@ -26,8 +26,8 @@ export const goodsApi = {
         })
         return res.data.results
     },
-    getBestseller:async(token) =>{
-        const res = await axios.request(`${url}?affiliation_goods=bestseller`,{
+    getBestseller: async (token) => {
+        const res = await axios.request(`${url}?affiliation_goods=bestseller`, {
             method: 'GET',
             body: {},
             headers: {

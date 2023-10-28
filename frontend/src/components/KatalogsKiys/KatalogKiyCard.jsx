@@ -9,18 +9,26 @@ import "swiper/css/scrollbar";
 import { useState } from "react";
 
 import axios from "axios";
+import basketApi from "../../api/basketApi/basket";
+import { addToCart, increment } from "../../redux/slices/bascketSlice";
+import { useDispatch } from "react-redux";
 
-const KatalogKiyCard = ({ arr, setArr, ...item }) => {
+const KatalogKiyCard = ({ arr, setArr, id, ...item }) => {
 
   const [heart, setHeart] = useState(false);
 
-  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
 
- 
+  const token = localStorage.getItem('token');
+
+  const allItemsCount = localStorage.getItem('allItemsCount');
+
+  const [isAdded, setIsadded] = useState(false)
+
   async function favorites(id) {
     setHeart(!heart);
     await axios
-      .post(`http://frantsuz-shop.ru/api/goods/${id}/favorite/`, null, {
+      .post(`http://127.0.0.1:8000/api/goods/${id}/favorite/`, null, {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,
@@ -28,30 +36,36 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
       })
       .catch(err => console.error(err))
 
-      await axios.get('http://frantsuz-shop.ru/api/goods/?is_favorited=1', {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        }
-      })
+    await axios.get('http://127.0.0.1:8000/api/goods/?is_favorited=1', {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Token ${token}`,
+      }
+    })
       .catch(err => console.error(err))
   }
 
 
 
-  async function addBascket(id) {
-    await axios
-      .post(`http://frantsuz-shop.ru/api/goods/${id}/shopping_cart/`, null, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Token ${token}`,
-        },
-      })
-      .catch(err => console.error(err))
+  const addToBasket = () => {
+    basketApi.post(token, id).then(data => {
+      dispatch(addToCart({ ...data }))
+      dispatch(increment());
+
+      allItemsCount
+        ?
+        localStorage.setItem('allItemsCount', JSON.stringify([...JSON.parse(allItemsCount), { ...data, itemCount: 1 }]))
+        :
+        localStorage.setItem('allItemsCount', JSON.stringify([{ ...data, itemCount: 1 }]))
+
+      console.log(JSON.parse(localStorage.getItem('allItemsCount')));
+    })
+    setIsadded(true)
   }
+
 
   return (
-    <div className={s.card}>
+    <div className={s.card} key={id}>
       <div className={s.swiperWrapper}>
         <div className={s.heart}>
           <svg
@@ -121,7 +135,7 @@ const KatalogKiyCard = ({ arr, setArr, ...item }) => {
           <p className={s.container_price_info}>Цена: {item.price} руб.</p>
           <button
             id={item.id}
-            onClick={(event) => addBascket(event.currentTarget.id)}
+            onClick={addToBasket}
             className={s.container_price_button}>
             В корзину
           </button>

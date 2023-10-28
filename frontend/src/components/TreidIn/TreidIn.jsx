@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
-
+import ScrollToTop from "../ScrollToTop";
 import s from "./TreidIn.module.scss";
 
 const TreidIn = () => {
+
+  
   return (
     <div className="container">
       <section className={s.section_treydIn}>
-
-
+        <ScrollToTop/>
         <div className={s.section_treydIn_card}>
           <p className={s.section_treydIn_card_title}>Продать свой кий</p>
           <div className={s.section_treydIn_card_info}>
@@ -24,7 +25,7 @@ const TreidIn = () => {
 
 
         <div className={s.section_treydIn_card}>
-          <p className={s.section_treydIn_card_title}>Обменять свой кий в трейд ин</p>
+          <p className={s.section_treydIn_card_title}>Обменять свой кий в Trade-In</p>
           <div className={s.section_treydIn_card_info}>
             <p className={s.section_treydIn_card_info_subtitle}>Трейд Ин</p>
             <ul className={s.section_treydIn_card_info_list}>

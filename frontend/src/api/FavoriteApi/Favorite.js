@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const url = `http://frantsuz-shop.ru/api/goods`
+const url = `http://127.0.0.1:8000/api/goods`
 export const favorite = {
     get: async (token) => {
         const res = await axios.get(`${url}/?is_favorited=1`, {
@@ -26,13 +26,13 @@ export const favorite = {
                 authorization: `Token ${token}`,
             }
         })
-        return  res
+        return res
     },
-    delete: async (token,favorite_id) => {
-        const res =await axios.request(`${url}/${favorite_id}/favorite/`,{
+    delete: async (token, favorite_id) => {
+        const res = await axios.request(`${url}/${favorite_id}/favorite/`, {
             method: "DELETE",
-            body:{},
-            headers:{
+            body: {},
+            headers: {
                 "content-type": "application/json",
                 authorization: `Token ${token}`,
             }

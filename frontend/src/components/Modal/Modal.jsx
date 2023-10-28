@@ -27,9 +27,9 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   //   console.log(token);
   //   if (autorisation) {
   //     localStorage.setItem("token", token);
-  //     localStorage.setItem("auth", autorisation);
+  //     // localStorage.setItem("auth", autorisation);
   //   } else if (localStorage.getItem("auth") !== "undefined") {
-  //     dispatch(loginState(localStorage.getItem("auth")));
+  //     // dispatch(loginState(localStorage.getItem("auth")));
   //     dispatch(tokenState(localStorage.getItem("token")));
   //   }
   // }, [autorisation]);
@@ -54,7 +54,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        `http://frantsuz-shop.ru/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
+        `http://127.0.0.1:8000/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
         }/`,
 
         {
@@ -93,7 +93,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        "http://frantsuz-shop.ru/api/users/",
+        "http://127.0.0.1:8000/api/users/",
         {
           phone: phoneValue,
           first_name: firstNameValue,
@@ -119,7 +119,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   const recoveryFunc = (event) => {
     event.preventDefault()
 
-    axios.post('http://frantsuz-shop.ru/api/users/reset_password/',
+    axios.post('http://127.0.0.1:8000/api/users/reset_password/',
       {
         email: recoveryEmail
       })

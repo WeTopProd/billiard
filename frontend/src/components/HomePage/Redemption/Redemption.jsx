@@ -2,13 +2,17 @@ import s from "./Redemption.module.css";
 import kiys from "../../../image/Kiys.jpg";
 import wave1 from "../../../image/wave1.svg";
 import wave2 from "../../../image/wave2.svg";
+import React, { Component, createRef } from 'react';
 
 import { NavLink } from "react-router-dom";
 
 const Redemption = () => {
+  
+
+
   return (
     <section id="redemtion" className={s.section}>
-      <div className="container">
+      <div className="container"  >
         <div className={s.block_info}>
           <figure className={s.KiyRedmetion}>
             <img className={s.image_kiys} src={kiys} alt="image" />
@@ -20,7 +24,7 @@ const Redemption = () => {
             </span>
 
             <p className={s.info_text}>
-              Продай или обменяй свой кий на новый по программе Трейд инн
+              Продай или обменяй свой кий на новый по программе<br/>Trade-In
             </p>
 
             <NavLink to="/redemtion" className={s.button_detailed} >Подробнее</NavLink>
