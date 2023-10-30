@@ -9,7 +9,7 @@ import {
 import basketApi from "../../../api/basketApi/basket.js";
 import favorite from "../../../api/FavoriteApi/Favorite";
 import { addToFavorite, initfavorite, initfavoriteIn } from "../../../redux/slices/favoritedSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -42,10 +42,17 @@ const Hit = ({ id, description, price, images }) => {
 	const addFavorite = async () => {
 		favorite.post(token, id).then(data => {
 			
-			dispatch(initfavoriteIn({data}))
+			
 		});
 		await favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)))
 	}
+
+	useEffect(()=>{
+		favorite.get(token, id).then(data => {
+
+			
+		});
+	}, [favorite])
 
 	return (
 		<div id="hits" className={a.cards}>

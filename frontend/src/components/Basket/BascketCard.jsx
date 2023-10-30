@@ -18,7 +18,15 @@ const BascketCard = ({ id, description, price, images, count }) => {
 	useEffect(() =>  {
 	var ActionElement = JSON.parse(localStorage.getItem('allItemsCount'));
 	 setItemCount(ActionElement.find(element => element.id == id).itemCount);
+		
 	}, []);
+	
+	useEffect(() =>  {
+	
+		basketApi.get(token, id)
+	}, [basketApi]);
+
+
 
 	const deletFromBasket =  () => {
 		basketApi.delete(token, id).then(data => dispatch(removeFromCart(id)))

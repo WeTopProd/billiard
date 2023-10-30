@@ -21,14 +21,9 @@ const Search = () => {
   useEffect(() =>  {
     {
       
-      basketApi.get(token).then((data) => {
-        dispatch(initCart(data))
-        dispatch(counter())
-      }).then(() => stopper = 1).catch((err) => console.log(err))
+      basketApi.get(token)
 
-       favorite.get(token).then((data) => {
-        dispatch(initfavoriteIn(data))
-      }).then(() => stopper = 1).catch((err) => console.log(err))
+      favorite.get(token)
 
     }
 
