@@ -9,14 +9,12 @@ from rest_framework.response import Response
 from .pagination import CustomPagination
 from .filters import GoodsFilter
 from .models import Goods, ShoppingCart, Favorite
-from .permissions import IsAdminOrReadOnly
 from .serializers import (GoodsSerializer, ShortGoodsSerializer,
                           FavoriteSerializer, ShoppingCartSerializer)
 
 
 class GoodsViewSet(viewsets.ModelViewSet):
     queryset = Goods.objects.all()
-    permission_classes = (IsAdminOrReadOnly,)
     pagination_class = CustomPagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = GoodsFilter
