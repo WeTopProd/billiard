@@ -54,7 +54,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        `http://frantsuz-shop/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
+        `https://frantsuz-shop/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
         }/`,
 
         {
@@ -93,7 +93,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        "http://frantsuz-shop/api/users/",
+        "https://frantsuz-shop/api/users/",
         {
           phone: phoneValue,
           first_name: firstNameValue,
@@ -119,7 +119,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   const recoveryFunc = (event) => {
     event.preventDefault()
 
-    axios.post('http://frantsuz-shop/api/users/reset_password/',
+    axios.post('https://frantsuz-shop/api/users/reset_password/',
       {
         email: recoveryEmail
       })

@@ -28,7 +28,7 @@ const KatalogKiyCard = ({ arr, setArr, id, ...item }) => {
   async function favorites(id) {
     setHeart(!heart);
     await axios
-      .post(`http://frantsuz-shop/api/goods/${id}/favorite/`, null, {
+      .post(`https://frantsuz-shop/api/goods/${id}/favorite/`, null, {
         headers: {
           "content-type": "application/json",
           authorization: `Token ${token}`,
@@ -36,7 +36,7 @@ const KatalogKiyCard = ({ arr, setArr, id, ...item }) => {
       })
       .catch(err => console.error(err))
 
-    await axios.get('http://frantsuz-shop/api/goods/?is_favorited=1', {
+    await axios.get('https://frantsuz-shop/api/goods/?is_favorited=1', {
       headers: {
         "content-type": "application/json",
         authorization: `Token ${token}`,

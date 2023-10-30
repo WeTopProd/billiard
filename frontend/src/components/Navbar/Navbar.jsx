@@ -20,7 +20,7 @@ const Navbar = () => {
   const [Header, setNavbar] = useState(false);
 
   useEffect(() => {
-    token.length > 0 && axios.get('http://frantsuz-shop/api/users/', {
+    token.length > 0 && axios.get('https://frantsuz-shop/api/users/', {
       headers: {
         "Content-Type": "application/json",
         'authorization': `Token ${token}`

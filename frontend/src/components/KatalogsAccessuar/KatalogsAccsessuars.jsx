@@ -19,7 +19,7 @@ const KatalogsAccsessuars = ({ arr, setArr }) => {
 
   useEffect(() => {
     axios
-      .get("http://frantsuz-shop/api/goods/")
+      .get("https://frantsuz-shop/api/goods/")
       .then((res) => {
         setCards(res.data.results);
       })
@@ -42,7 +42,7 @@ const KatalogsAccsessuars = ({ arr, setArr }) => {
 
     axios
       .get(
-        `http://frantsuz-shop/api/goods/?${play}${structure}${workshop}${min ? `price_min=${min}` : ""
+        `https://frantsuz-shop/api/goods/?${play}${structure}${workshop}${min ? `price_min=${min}` : ""
         }${max ? `&price_max=${max}` : ""}`
       )
       .then((res) => {

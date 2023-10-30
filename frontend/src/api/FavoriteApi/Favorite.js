@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const url = `http://frantsuz-shop/api/goods`
+const url = `https://frantsuz-shop/api/goods`
 export const favorite = {
     get: async (token) => {
         const res = await axios.get(`${url}/?is_favorited=1`, {

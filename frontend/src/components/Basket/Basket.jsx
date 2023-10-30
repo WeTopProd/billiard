@@ -54,7 +54,7 @@ const Basket = () => {
 		
 		
 		axios.request({
-			url: 'http://frantsuz-shop/api/send-order/',
+			url: 'https://frantsuz-shop/api/send-order/',
 			data: {
 				decription: `${goodDisc}`,
 				goods_id: goodId,
@@ -71,7 +71,7 @@ const Basket = () => {
 		})
 		.then(response => {
 			axios.request({
-				url: 'http://frantsuz-shop/api/payment/',
+				url: 'https://frantsuz-shop/api/payment/',
 				method: 'POST',
 				data: {
 					"service_name": `${goodDisc}`,
