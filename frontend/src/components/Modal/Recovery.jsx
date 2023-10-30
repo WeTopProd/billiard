@@ -23,11 +23,7 @@ const Recovery = () => {
     event.preventDefault();
 
     axios
-<<<<<<< HEAD
-      .post("http://127.0.0.1:8000/api/users/reset_password_confirm/", {
-=======
       .post("https://frantsuz-shop.ru/api/users/reset_password_confirm/", {
->>>>>>> c9818edb5c2cd749dffbc75392a37dbc54bf6f04
         uid: id,
         token: token,
         new_password: password,
