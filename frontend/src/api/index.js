@@ -237,8 +237,4 @@ class Api {
   }
 }
 
-<<<<<<< HEAD
-export default new Api(process.env.API_URL || 'http://127.0.0.1:8000', { 'content-type': 'application/json' })
-=======
 export default new Api(process.env.API_URL || 'https://frantsuz-shop.ru', { 'content-type': 'application/json' })
->>>>>>> c9818edb5c2cd749dffbc75392a37dbc54bf6f04
