@@ -32,7 +32,7 @@ const Basket = () => {
 
 	const [finalPrice, setFinalPrice] = useState('')
 
-	const [priceCount, setPriceCount] = useState([])
+	
 
 
 	useEffect(() => {

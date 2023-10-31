@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 
 
 
-const Hit = ({ id, description, price, images }) => {
+const Hit = ({ id, description, price, image, item }) => {
 
 	const dispatch = useDispatch();
 	const token = localStorage.getItem('token');
@@ -58,7 +58,11 @@ const Hit = ({ id, description, price, images }) => {
 		<div id="hits" className={a.cards}>
 			<div className={s.card} key={id}>
 				<div className={s.imageHit_container}>
-					<img className={s.imageHit} src={images[0]} alt="image" />
+					{item && item.images && item.images[0] && item.images[0].images ? (
+						<img src={item.images[0].images} alt="img" />
+					) : (
+						<p>No image available</p>
+					)}
 				</div>
 				<p className={s.iconHit}>Хит</p>
 				<div className={s.heart}>

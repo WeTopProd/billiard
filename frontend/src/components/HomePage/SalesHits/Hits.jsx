@@ -39,7 +39,7 @@ const Hits = () => {
       (
         <div className={s.container}>
           {goodsItem?.length != 0 ? goodsItem.map((item) => {
-            return <Hit key={item.id} description={item.description} price={item.price} images={item.images} id={item.id} />
+            return <Hit key={item.id} description={item.description} price={item.price} images={item.images} id={item.id} item={item} />
           }
           ) : <></>}
         </div>
