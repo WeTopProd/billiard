@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 
 const Stock = ({ id, description, price, images, sale , item}) => {
   const [isAdded, setIsadded] = useState(false)
-  
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
   const allItemsCount = localStorage.getItem('allItemsCount');
@@ -34,13 +33,14 @@ const Stock = ({ id, description, price, images, sale , item}) => {
 
       dispatch(initfavoriteIn({ data }))
     });
-    await favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)))
+
+    favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)))
   }
   return (
     <div className={s.card} key={id}>
       <div className={s.imageHit_container}>
         {item && item.images && item.images[0] && item.images[0].images ? (
-          <img src={item.images[0].images} alt="img" style={{maxWidth:'297px'}}/>
+          <img src={item.images[0].images} alt="img" style={{maxWidth:'300px'}}/>
         ) : (
           <p>No image available</p>
         )}
