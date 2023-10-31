@@ -7,7 +7,7 @@ import basketApi from "../../../api/basketApi/basket";
 import { useEffect, useState } from 'react';
 
 
-const Stock = ({ id, description, price, images, sale }) => {
+const Stock = ({ id, description, price, images, sale , item}) => {
   const [isAdded, setIsadded] = useState(false)
   
   const dispatch = useDispatch();
@@ -39,7 +39,11 @@ const Stock = ({ id, description, price, images, sale }) => {
   return (
     <div className={s.card} key={id}>
       <div className={s.imageHit_container}>
-        <img className={s.imageHit} src={images[0] || null} alt="image" />
+        {item && item.images && item.images[0] && item.images[0].images ? (
+          <img src={item.images[0].images} alt="img" style={{maxWidth:'297px'}}/>
+        ) : (
+          <p>No image available</p>
+        )}
       </div>
       <div className={s.iconHit}>
         <svg

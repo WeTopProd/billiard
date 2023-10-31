@@ -38,7 +38,7 @@ const Stoks = () => {
         <div className="container">
           <div id='stoks' className={s.cards}>
             {goodsItem?.length !== 0 && goodsItem.map((item) => {
-              return <Stock key={item.id} description={item.description} price={item.price} images={item.images} id={item.id} item={item.sale} />
+              return <Stock key={item.id} description={item.description} price={item.price} images={item.images} id={item.id} sale={item.sale} item={item}/>
             }
             )}
           </div>
