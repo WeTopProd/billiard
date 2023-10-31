@@ -32,7 +32,7 @@ export const goodsApi = {
             body: {},
             headers: {
                 "content-type": "application/json",
-                authorization: `Token ${token}`,
+                
             },
 
         })

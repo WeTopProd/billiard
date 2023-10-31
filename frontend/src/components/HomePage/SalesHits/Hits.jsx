@@ -19,6 +19,7 @@ const Hits = () => {
   const [goodsItem, setGoodsItem] = useState()
 
   const basketItemsX = useSelector(state => state.cartSlice.items)
+  
   useEffect(() => {
     {
       goodsApi.getBestseller(token).then((data) => {
