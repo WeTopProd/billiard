@@ -23,6 +23,7 @@ else:
         '194.58.118.40',
     ]
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
