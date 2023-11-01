@@ -23,7 +23,7 @@ const Basket = () => {
 	const [total, setTotal] = useState(calcTotal(basketItemsX))
 
 	const [goodDisc, setGoodsDisc] = useState('')
-	
+
 	const [goodId, setGoodId] = useState([])
 
 	const [countGood, setCountGood] = useState([])
@@ -32,7 +32,7 @@ const Basket = () => {
 
 	const [finalPrice, setFinalPrice] = useState('')
 
-	
+
 
 
 	useEffect(() => {
@@ -44,17 +44,17 @@ const Basket = () => {
 		let priceGood = basketItemsX.map(el => el.price * el.count)
 		setPriceGood(priceGood)
 
-		let totalPrice = priceGood.reduce((prev, curr) => prev + curr, 0) 
+		let totalPrice = priceGood.reduce((prev, curr) => prev + curr, 0)
 		setFinalPrice(totalPrice)
 
 	}, [basketItemsX])
 
 
 	const handleSubmit = () => {
-		
-		
+
+
 		axios.request({
-			url: 'https://frantsuz-shop.ru/api/send-order/',
+			url: 'http://127.0.0.1:8000/api/send-order/',
 			data: {
 				decription: `${goodDisc}`,
 				goods_id: goodId,
@@ -69,36 +69,36 @@ const Basket = () => {
 			method: 'POST',
 
 		})
-		.then(response => {
-			axios.request({
-				url: 'https://frantsuz-shop.ru/api/payment/',
-				method: 'POST',
-				data: {
-					"service_name": `${goodDisc}`,
-					"num_order": goodId,
-					"price": `${finalPrice}`
-				},
-				headers: {
-					authorization: `Token ${token}`,
-					'Content-Type': 'application/json',
-				},
-			})
-				.then(response => {
-
-					const redirectUrl = response.data.success;
-					if (redirectUrl) {
-						window.location.href = redirectUrl;
-					}
+			.then(response => {
+				axios.request({
+					url: 'http://127.0.0.1:8000/api/payment/',
+					method: 'POST',
+					data: {
+						"service_name": `${goodDisc}`,
+						"num_order": goodId,
+						"price": `${finalPrice}`
+					},
+					headers: {
+						authorization: `Token ${token}`,
+						'Content-Type': 'application/json',
+					},
 				})
+					.then(response => {
 
-		}).catch((err) => {
-			
-			
-		});
+						const redirectUrl = response.data.success;
+						if (redirectUrl) {
+							window.location.href = redirectUrl;
+						}
+					})
+
+			}).catch((err) => {
+
+
+			});
 
 	}
 	return (
-		
+
 		<div className="container">
 			<Hr title="Корзина" />
 			{

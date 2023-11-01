@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addToCart, increment } from "../../../redux/slices/bascketSlice";
 import s from "./Stock.module.css";
-import { initfavoriteIn } from "../../../redux/slices/favoritedSlice";
+import { initfavoriteIn, addCountToFavorite, incrementf } from "../../../redux/slices/favoritedSlice";
 import favorite from "../../../api/FavoriteApi/Favorite";
 import basketApi from "../../../api/basketApi/basket";
 import { useEffect, useState } from 'react';
@@ -32,9 +32,11 @@ const Stock = ({ id, description, price, images, sale , item}) => {
     favorite.post(token, id).then(data => {
 
       dispatch(initfavoriteIn({ data }))
+      dispatch(incrementf(data))
     });
 
-    favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)))
+    favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)
+    ))
   }
   return (
     <div className={s.card} key={id}>

@@ -17,17 +17,24 @@ const Search = () => {
   const counterValue = useSelector(state => state.cartSlice.counter);
   var stopper = 0
   const favoriteItems = useSelector(state => state.favoritedSlice.items)
-
+  const [counterFavorite, setCounterFavorite] = useState("")
+  
   useEffect(() =>  {
-    {
-      
-      basketApi.get(token)
+    
+    {}  
+    basketApi.get(token)
 
-      favorite.get(token)
-
-    }
+    favorite.get(token) 
 
   }, [])
+  
+  useEffect(() =>  {
+    favorite.get(token).then(
+      setCounterFavorite(favoriteItems.count)
+    )
+    console.log(favoriteItems.count
+, 'dsds')
+  }, [favoriteItems])
   
   return (
     <div className="container">
@@ -46,7 +53,7 @@ const Search = () => {
             <NavLink to="/favorites">
               <img className={s.heart} src={heart} alt="image" />
             </NavLink>
-            <span className={s.count}>{favoriteItems.count}</span>
+            <span className={s.count}>{counterFavorite}</span>
           </div>
           <div className={s.counters}>
             <NavLink to="/basket">

@@ -52,6 +52,18 @@ function App() {
 
 
   const favoriteItems = useSelector(state => state.favoritedSlice.items)
+  
+  useEffect(() => {
+    {
+
+      favoriteItems.length == 0 && favorite.get(token).then((data) => {
+        dispatch(initfavoriteIn(data))
+
+      });
+      favorite.get(token).then(data => dispatch(initfavoriteIn(data)))
+
+    }
+  }, [])
 
   useEffect(() => {
     {

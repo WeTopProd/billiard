@@ -53,6 +53,10 @@ const Favorites_card = ({ addBascketLocal, load, id, ...card }) => {
     }
 
   }, [])
+  useEffect(() => {
+    favorite.get(token)
+
+  }, [favoriteItems])
 
   return (
     <div className={s.card}>
