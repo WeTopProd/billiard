@@ -29,6 +29,7 @@ import RecoveryOk from "./components/Modal/RecoveryOk";
 import RegisterCode from "./components/Modal/RegisterCode";
 import basketApi from "./api/basketApi/basket";
 import favorite from "./api/FavoriteApi/Favorite"
+import ScrollToTop from "./components/ScrollToTop";
 
 
 
@@ -94,6 +95,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Search />
+        <ScrollToTop/>
         <Routes>
           <Route
             path="/"

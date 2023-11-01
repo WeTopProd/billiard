@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 
 
 
-const Hit = ({ id, description, price, image, item }) => {
+const Hit = ({ id, description, price, images, item }) => {
 
 	const dispatch = useDispatch();
 	const token = localStorage.getItem('token');
