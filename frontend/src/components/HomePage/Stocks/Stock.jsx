@@ -82,7 +82,7 @@ const Stock = ({ id, description, price, images, sale , item}) => {
       <p className={s.description}>{description}</p>
       <div className={s.sales}>
       <p className={s.price}>{price} РУБ</p>
-      <p className={s.sale}>{sale} РУБ</p>
+        <p className={s.sale}>{price * 1.3} РУБ</p>
       </div>
       <div className={s.buttons}>
         <div className={s.buttons_item}>
