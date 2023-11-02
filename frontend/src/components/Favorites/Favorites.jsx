@@ -47,7 +47,7 @@ const Favorites = () => {
         {
           _allFavor && _allFavor.length > 0 ?
             _allFavor.map((card) => (
-              <Favorites_card key={card.id} {...card} load={load} />
+              <Favorites_card key={card.id} {...card} load={load} card={card}/>
             )
             ) :
             <></>

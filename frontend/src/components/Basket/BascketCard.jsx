@@ -8,7 +8,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { initfavoriteIn } from "../../redux/slices/favoritedSlice";
 
-const BascketCard = ({ id, description, price, images, count }) => {
+const BascketCard = ({ id, description, price, images, count ,item }) => {
 
 	const dispatch = useDispatch()
 	const token = localStorage.getItem("token");
@@ -93,11 +93,12 @@ const BascketCard = ({ id, description, price, images, count }) => {
 		<div className={s.cardGap} key={id}>
 			<div className={s.card}>
 				<div className={s.card_info}>
-					<img
-						className={s.card_info_image}
-						src={null && images[0]}
-						alt="image"
-					/>
+					
+					{item && item.images && item.images[0] && item.images[0].images ? (
+						<img className={s.card_info_image} src={item.images[0].images} alt="img"/>
+					) : (
+						<p>No image available</p>
+					)}
 					<p className={s.card_info_description}>{description}</p>
 
 				</div>

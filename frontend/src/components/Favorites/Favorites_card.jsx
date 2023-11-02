@@ -61,12 +61,12 @@ const Favorites_card = ({ addBascketLocal, load, id, ...card }) => {
   return (
     <div className={s.card}>
       <div className={s.card_info}>
-        <img
-          className={s.card_info_image}
-          src={card.images && card.images.length > 0 ? card.images[0].images : null}
-          alt="image"
-    
-        />
+        
+        {card && card.images && card.images[0] && card.images[0].images ? (
+          <img className={s.card_info_image} src={card.images[0].images} alt="img" />
+        ) : (
+          <p>No image available</p>
+        )}
         <p className={s.card_info_description}>{card.description}</p>
       </div>
       <div className={s.card_button}>
