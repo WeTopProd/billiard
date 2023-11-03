@@ -27,7 +27,7 @@ import img12 from "../../image/khleb.png";
 function Footer() {
   return (
     <>
-      <div className={f.section__footer} id="footer">
+      <div className={f.section__footer} >
         <div className="container">
           <div className={f.footer}>
             <div className={f.footer__logos}>
@@ -145,7 +145,7 @@ function Footer() {
                 </div>
               </div>
             <p className={f.footer__info_item_title}>Контакты</p>
-            <div className={f.footer__info}>
+            <div className={f.footer__info} id="footer">
               
               <div className={f.footer__info_item}>
                 
