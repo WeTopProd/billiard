@@ -6,7 +6,7 @@ const Billiard = () => {
     <section className={s.section}>
       <div className="container">
         <div className={s.kiy}>
-          <p className={s.title}>Кии для бильярда</p>
+          <p className={s.title}>Кии для Бильярда</p>
           <p className={s.text}>Ручной работы</p>
           <p className={s.text}>От опытных мастеров</p>
 
