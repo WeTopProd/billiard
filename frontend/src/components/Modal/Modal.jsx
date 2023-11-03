@@ -23,16 +23,15 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log(token);
-  //   if (autorisation) {
-  //     localStorage.setItem("token", token);
-  //     // localStorage.setItem("auth", autorisation);
-  //   } else if (localStorage.getItem("auth") !== "undefined") {
-  //     // dispatch(loginState(localStorage.getItem("auth")));
-  //     dispatch(tokenState(localStorage.getItem("token")));
-  //   }
-  // }, [autorisation]);
+  useEffect(() => {
+    if (autorisation) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("auth", autorisation);
+    } else if (localStorage.getItem("auth") !== "undefined") {
+      dispatch(loginState(localStorage.getItem("auth")));
+      dispatch(tokenState(localStorage.getItem("token")));
+    }
+  }, [autorisation]);
 
   const [register, setRegister] = useState(false);
 
@@ -74,9 +73,8 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
           setIsShowing(false);
           dispatch(loginState(true));
           dispatch(tokenState(res.data.auth_token));
-          localStorage.setItem("token", res.data.auth_token);
         } else {
-          setIsShowing(false);
+          setIsShowing(true);
           dispatch(loginState(false));
         }
       })
@@ -109,6 +107,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
         }
       )
       .then((res) => {
+        console.log(res)
 
         res.request.status == 201 ? navigate('/registerCode') && setRegister(false) : setRegister(true)
       }
@@ -123,6 +122,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
       {
         email: recoveryEmail
       })
+      .then(res => console.log(res))
       .catch(err => console.error(err))
 
     onCloseButtonClick()
@@ -222,7 +222,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
             <div className={s.modal_wrapper}>
               <div className={s.modal}>
                 <form onSubmit={recoveryFunc}>
-                  <Link to="/" onClick={() => setRegister(true)} className={s.modal_close}>
+                  <Link to="/" onClick={() => setRegister(false)} className={s.modal_close}>
                     <span onClick={onCloseButtonClick}>&#10006;</span>
                   </Link>
                   <p className={s.modal_title}>Восстановление пароля</p>
@@ -276,7 +276,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
                     <div className={s.modal_footer_info}>
                       {error ? (
                         <p className={s.modal_footer_info_error}>
-                          Неверный логин или пароль!
+                          Неверные логин или пароль!
                         </p>
                       )
 
@@ -311,3 +311,4 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 };
 
 export default Modal;
+

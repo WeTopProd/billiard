@@ -7,37 +7,42 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import useModal from "../../useModal";
 import { useDispatch, useSelector } from "react-redux";
-import { loginState, logoutState } from "../../redux/slices/autorisation";
+import { loginState } from "../../redux/slices/autorisation";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isShowingModal, setIsShowing, toggleModal] = useModal();
+
+  const { autorisation } = useSelector((state) => state.autorisationReducer);
+
+
   const dispatch = useDispatch();
-  const { autorisation, token } = useSelector(
-    (state) => state.autorisationReducer
-  );
-  const [userName, setUserName] = useState('');
-  const [Header, setNavbar] = useState(false);
+  const token = localStorage.getItem('token')
+  const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    token.length > 0 && axios.get('https://frantsuz-shop.ru/api/users/', {
+    axios.get('https://frantsuz-shop.ru/api/users/', {
+
       headers: {
         "Content-Type": "application/json",
         'authorization': `Token ${token}`
       },
-    })
-      .then(res => {
-        localStorage.setItem('name', res.data[0].first_name)
-        setUserName(res.data[0].first_name);
-      })
 
-  }, [autorisation])
+    })
+      .then(res => localStorage.setItem('name', res.data[0].first_name))
+    setUserName(localStorage.getItem('name'))
+  }, [autorisation, localStorage.getItem('name')])
+
 
   const logOut = () => {
-    dispatch(logoutState());
+    dispatch(loginState(false));
+    localStorage.setItem("auth", false);
+    localStorage.setItem('token', null)
+    window.location.reload();
+
   };
 
-
+  const [Header, setNavbar] = useState(false);
 
   const changeBackground = () => {
     if (window.scrollY >= 100) {
@@ -52,8 +57,6 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeBackground);
   }, []);
-
-
 
   return (
     <nav className={Header ? `${s.header} ${s.header_active}` : `${s.header}`}>

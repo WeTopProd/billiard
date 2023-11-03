@@ -6,7 +6,7 @@ import {
 import basketApi from "../../api/basketApi/basket.js";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { initfavoriteIn } from "../../redux/slices/favoritedSlice";
+
 
 const BascketCard = ({ id, description, price, images, count ,item }) => {
 
