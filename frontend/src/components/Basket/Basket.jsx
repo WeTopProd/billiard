@@ -125,7 +125,7 @@ const Basket = () => {
 					)
 			}
 			<div className={s.total_container}>
-				<button className={s.total_container_order} onClick={handleSubmit}>Оформить заказ</button>
+				<button disabled className={s.total_container_order} onClick={handleSubmit}>Оформить заказ</button>
 				<p className={s.total}>
 					Итоговая цена: <span className={s.total_final}>{finalPrice}</span>
 				</p>
