@@ -197,6 +197,7 @@ function Footer() {
               <Link to={'/policy'}> Политика конфиденциальности</Link>
               <span>Не является публичной офертой</span>
               <span>© Все права защищены</span>
+              <Link to={'/returninfo'}>Возврат</Link>
             </p>
 
             <p className={f.bottom_center}>Сделано WeTop digital agency 2023</p>

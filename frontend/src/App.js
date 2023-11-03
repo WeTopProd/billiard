@@ -30,6 +30,7 @@ import RegisterCode from "./components/Modal/RegisterCode";
 import basketApi from "./api/basketApi/basket";
 import favorite from "./api/FavoriteApi/Favorite"
 import ScrollToTop from "./components/ScrollToTop";
+import ReturnInfo from "./components/Footer/ReturnInfo";
 
 
 
@@ -132,6 +133,7 @@ function App() {
           <Route path="/recoveryOk" element={<RecoveryOk />} />
           <Route path='/policy' element={<Konfid />} />
           <Route path="/registerCode" element={<RegisterCode />} />
+          <Route path="/returninfo" element={<ReturnInfo />} />
           
         </Routes>
         <Footer />
