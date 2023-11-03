@@ -44,10 +44,15 @@ const Basket = () => {
 		let priceGood = basketItemsX.map(el => el.price * el.count)
 		setPriceGood(priceGood)
 
-		let totalPrice = priceGood.reduce((prev, curr) => prev + curr, 0)
-		setFinalPrice(totalPrice)
+		let totalPricee = priceGood.reduce((prev, curr) => prev + curr, 0)
+		setFinalPrice(totalPricee)
 
 	}, [basketItemsX])
+
+	// useEffect(() => {
+	// 	basketApi.get(token, id)
+
+	// }, [totalPrice])
 
 
 	const handleSubmit = () => {
@@ -122,7 +127,7 @@ const Basket = () => {
 			<div className={s.total_container}>
 				<button className={s.total_container_order} onClick={handleSubmit}>Оформить заказ</button>
 				<p className={s.total}>
-					Итоговая цена: <span className={s.total_final}>{totalPrice}</span>
+					Итоговая цена: <span className={s.total_final}>{finalPrice}</span>
 				</p>
 			</div>
 		</div>
