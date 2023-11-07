@@ -75,7 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'frantsuz_api.wsgi.application'
 
-if not DEBUG:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
