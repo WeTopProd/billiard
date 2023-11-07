@@ -1,5 +1,5 @@
 import React from 'react'
-import o from './Konfid.scss'
+import './Konfid.scss'
 import ScrollToTop from '../ScrollToTop'
 
 export const Konfid = () => {

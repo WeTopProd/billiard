@@ -17,7 +17,7 @@ import img3 from "../../image/footer__img3.png";
 import img4 from "../../image/footer__img4.png";
 import img5 from "../../image/footer__img5.png";
 import img6 from "../../image/footer__img6.png";
-import img7 from "../../image/footer__img7.png";
+// import img7 from "../../image/footer__img7.png";
 import img8 from "../../image/footer__img8.png";
 import img9 from "../../image/footer__img9.png";
 import img10 from "../../image/footer__img10.png";
@@ -204,9 +204,9 @@ function Footer() {
           </div>
         </div>
         <div className='forPay'>
-          <Link to={'/returninfo'}>Возврат</Link>
+          <Link to={'/returninfo'} style={{marginTop:'10px'}}>Возврат</Link>
           <br/>
-          <Link to={'/paymantRull'}>Правила оплаты</Link>
+          <Link to={'/paymantRull'} style={{ marginTop: '10px' }}>Правила оплаты</Link>
 
         </div>
         
