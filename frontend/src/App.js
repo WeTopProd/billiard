@@ -31,6 +31,7 @@ import basketApi from "./api/basketApi/basket";
 import favorite from "./api/FavoriteApi/Favorite"
 import ScrollToTop from "./components/ScrollToTop";
 import ReturnInfo from "./components/Footer/ReturnInfo";
+import PayRull from "./components/Footer/PayRull";
 
 
 
@@ -134,6 +135,7 @@ function App() {
           <Route path='/policy' element={<Konfid />} />
           <Route path="/registerCode" element={<RegisterCode />} />
           <Route path="/returninfo" element={<ReturnInfo />} />
+          <Route path="/paymantRull" element={<PayRull />} />
           
         </Routes>
         <Footer />

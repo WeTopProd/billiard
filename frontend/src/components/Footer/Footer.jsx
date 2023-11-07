@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import f from "./Footer.module.scss";
-
+import  './pay.css'
 import Logo from "../../image/logo.png";
 import Logo2 from "../../image/logo2.svg";
 import Logo3 from '../../image/logo (1).png'
@@ -197,12 +197,19 @@ function Footer() {
               <Link to={'/policy'}> Политика конфиденциальности</Link>
               <span>Не является публичной офертой</span>
               <span>© Все права защищены</span>
-              <Link to={'/returninfo'}>Возврат</Link>
+              
             </p>
 
             <p className={f.bottom_center}>Сделано WeTop digital agency 2023</p>
           </div>
         </div>
+        <div className='forPay'>
+          <Link to={'/returninfo'}>Возврат</Link>
+          <br/>
+          <Link to={'/paymantRull'}>Правила оплаты</Link>
+
+        </div>
+        
       </div>
     </>
   );
