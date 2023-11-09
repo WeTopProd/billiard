@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import useModal from "../../useModal";
 import { useDispatch, useSelector } from "react-redux";
-import { loginState } from "../../redux/slices/autorisation";
+import { loginState, logoutState } from "../../redux/slices/autorisation";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -21,7 +21,7 @@ const Navbar = () => {
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    axios.get('https://frantsuz-shop.ru/api/users/', {
+    axios.get('http://127.0.0.1:8000/api/users/', {
 
       headers: {
         "Content-Type": "application/json",
@@ -35,13 +35,13 @@ const Navbar = () => {
 
 
   const logOut = () => {
-    dispatch(loginState(false));
+    dispatch(logoutState(false));
     localStorage.setItem("auth", false);
-    localStorage.setItem('token', null)
-    window.location.reload();
+    // localStorage.setItem('token', null)
+    // window.location.reload();
 
   };
-
+  console.log(autorisation,'log')
   const [Header, setNavbar] = useState(false);
 
   const changeBackground = () => {

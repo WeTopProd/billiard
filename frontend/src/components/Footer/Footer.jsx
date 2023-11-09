@@ -41,7 +41,7 @@ function Footer() {
                 <p className={f.footer__info_item_title}>Наши проекты</p>
 
                 <div className={f.footer__info_port_imgs}>
-                  <Link to="">
+                <Link to="https://frantsuz-club.ru/">
                     <img
                       src={img2}
                       alt="img"
@@ -49,9 +49,7 @@ function Footer() {
                     />
                   </Link>
 
-                  
-
-                <Link to="https://tyteda.ru/">
+                  <Link to="https://tyteda.ru/">
                     <img
                       src={img6}
                       alt="img"
@@ -59,7 +57,7 @@ function Footer() {
                     />
                   </Link>
 
-                <Link to="">
+                <Link to="http://dali-khinkali.ru/">
                   <img
                     src={img11}
                     alt="img"
@@ -67,7 +65,7 @@ function Footer() {
                   />
                 </Link>
 
-                  <Link to="">
+                <Link to="https://poyuvsegda.ru/">
                     <img
                       src={img9}
                       alt="img"
@@ -75,7 +73,7 @@ function Footer() {
                     />
                   </Link>
 
-                  <Link to="">
+                <Link to="https://comicadze.ru/">
                     <img
                       src={img5}
                       alt="img"
@@ -83,14 +81,14 @@ function Footer() {
                     />
                   </Link>
 
-                  <Link to="">
+                <Link to="https://wetop.ru/">
                     <img
                       src={img4}
                       alt="img"
                       className={f.footer__info_port_imgs_img}
                     />
                   </Link>
-                <Link to="">
+                <Link to="https://шашландия.рф/">
                   <img
                     src={img1}
                     alt="img"
@@ -98,7 +96,7 @@ function Footer() {
                   />
                 </Link>
 
-                  <Link to="">
+                <Link to="https://reiting.moscow/">
                     <img
                       src={Logo3}
                       alt="img"
@@ -128,7 +126,7 @@ function Footer() {
                     />
                   </Link>
 
-                  <Link to="">
+                <Link to="https://frantsuz.ru/">
                     <img
                       src={img3}
                       alt="img"
@@ -176,7 +174,7 @@ function Footer() {
                   <img src={Mail} alt="svg" />
                   <Link
                     className={f.footer__info_item_mail_text}
-                    to="mailto:frantsuz-shop.ru">
+                    to="https://wetop.ru/">
                     frantsuz-shop.ru
                   </Link>
                 </div>

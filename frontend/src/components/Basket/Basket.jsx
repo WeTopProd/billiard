@@ -49,17 +49,11 @@ const Basket = () => {
 
 	}, [basketItemsX])
 
-	// useEffect(() => {
-	// 	basketApi.get(token, id)
-
-	// }, [totalPrice])
-
 
 	const handleSubmit = () => {
 
-
-		axios.request({
-			url: 'https://frantsuz-shop.ru/api/send-order/',
+		 axios.request({
+			url: 'http://127.0.0.1:8000/api/send-order/',
 			data: {
 				decription: `${goodDisc}`,
 				goods_id: goodId,
@@ -74,32 +68,32 @@ const Basket = () => {
 			method: 'POST',
 
 		})
-			.then(response => {
-				axios.request({
-					url: 'https://frantsuz-shop.ru/api/payment/',
-					method: 'POST',
-					data: {
-						"service_name": `${goodDisc}`,
-						"num_order": goodId,
-						"price": `${finalPrice}`
-					},
-					headers: {
-						authorization: `Token ${token}`,
-						'Content-Type': 'application/json',
-					},
-				})
-					.then(response => {
+		.then(response => {
+			 axios.request({
+				url: 'http://127.0.0.1:8000/api/payment/',
+				data: {
+					service_name: `${goodDisc}`,
+					num_order: goodId,
+					price: `${finalPrice}`
+				},
+				headers: {
+					'Content-Type': 'application/json',
+					authorization: `Token ${token}`
+				},
+				method: 'POST'
+			})
+				.then(response => {
 
-						const redirectUrl = response.data.success;
-						if (redirectUrl) {
-							window.location.href = redirectUrl;
-						}
-					})
+					const redirectUrl = response.data.success;
+					if (redirectUrl) {
+						window.location.href = redirectUrl;
+					}
+				})
 
 			}).catch((err) => {
+				console.err(err);
 
-
-			});
+		});
 
 	}
 	return (
@@ -125,7 +119,7 @@ const Basket = () => {
 					)
 			}
 			<div className={s.total_container}>
-				<button disabled className={s.total_container_order} onClick={handleSubmit}>Оформить заказ</button>
+				<button className={s.total_container_order} onClick={handleSubmit}>Оформить заказ</button>
 				<p className={s.total}>
 					Итоговая цена: <span className={s.total_final}>{finalPrice}</span>
 				</p>

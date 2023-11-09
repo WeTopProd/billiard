@@ -13,7 +13,7 @@ const KatalogRound = ({ arr, setArr, cards, setCards, finall }) => {
 
   function filterMini(type) {
     axios
-      .get("https://frantsuz-shop.ru/api/goods", {
+      .get("http://127.0.0.1:8000/api/goods", {
         params: {
           play: type,
         },

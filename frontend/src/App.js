@@ -47,14 +47,16 @@ function App() {
 
   const dispatch = useDispatch();
 
-
   var stopper = 0
 
   const basketItemsX = useSelector(state => state.cartSlice.items)
 
-
   const favoriteItems = useSelector(state => state.favoritedSlice.items)
   
+  useEffect(() => {
+    console.log(token, localStorage.getItem('token'))
+  },[])
+
   useEffect(() => {
     {
 
@@ -103,7 +105,12 @@ function App() {
 
   useEffect(() => {
     dispatch(counter)
+  }, [])
+
+  useEffect(() => {
+    dispatch(counter)
   }, [basketItemsX])
+
   return (
     <BrowserRouter>
       <div className="App">
