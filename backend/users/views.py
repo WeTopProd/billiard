@@ -96,7 +96,7 @@ def payment(request):
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': f'Basic {base64_auth}'
     }
-    server_paykeeper = "https://tyteda-1.server.paykeeper.ru"
+    server_paykeeper = "https://frantsuz-shop.server.paykeeper.ru"
 
     price = request.data.get('price')
     num_order = request.data.get('num_order', '')
