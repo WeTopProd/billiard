@@ -90,7 +90,7 @@ def send_email(request):
 @permission_classes([IsAuthenticated])
 def payment(request):
     user = "admin"
-    password = "2a0bc5f99012"
+    password = "d9353bdaea5e"
     base64_auth = base64.b64encode(f"{user}:{password}".encode()).decode()
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
