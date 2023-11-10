@@ -5,6 +5,7 @@ import { initfavoriteIn, addCountToFavorite, incrementf } from "../../../redux/s
 import favorite from "../../../api/FavoriteApi/Favorite";
 import basketApi from "../../../api/basketApi/basket";
 import { useEffect, useState } from 'react';
+import { Link} from "react-router-dom";
 
 
 const Stock = ({ id, description, price, images, sale , item}) => {
@@ -12,9 +13,15 @@ const Stock = ({ id, description, price, images, sale , item}) => {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
   const allItemsCount = localStorage.getItem('allItemsCount');
+  
+  const redirectToRegistration = () => {
 
-  const addToBasket = () => {
-    basketApi.post(token, id).then(data => {
+    const page = window.location.href
+    page = '/registerCode'
+  };
+
+  const addToBasket = async() => {
+    await basketApi.post(token, id).then(data => {
       dispatch(addToCart({ ...data }))
       dispatch(increment());
 
@@ -26,17 +33,37 @@ const Stock = ({ id, description, price, images, sale , item}) => {
 
       console.log(JSON.parse(localStorage.getItem('allItemsCount')));
     })
-    setIsadded(true)
+    .catch(error => {
+      try {
+        if (error.response.status === 401) {
+          redirectToRegistration();
+        }
+      } catch (e) {
+        console.log('Error occurred while handling error:', e);
+      }
+    });
   }
+
+  
+
   const addFavorite = async () => {
-    favorite.post(token, id).then(data => {
+    await favorite.post(token, id).then(data => {
 
       dispatch(initfavoriteIn({ data }))
       dispatch(incrementf(data))
     });
 
-    favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)
+    await favorite.get(token, id).then(data => dispatch(initfavoriteIn(data)
     ))
+    .catch(error => {
+      try {
+        if (error.response.status === 401) {
+          redirectToRegistration();
+        }
+      } catch (e) {
+        console.log('Error occurred while handling error:', e);
+      }
+    });
   }
   return (
     <div className={s.card} key={id}>
@@ -93,7 +120,7 @@ const Stock = ({ id, description, price, images, sale , item}) => {
             <button className={s.button_two} onClick={addToBasket}>Добавить в корзину</button>}
         </div>
         <div className={s.buttonOneClick_container}>
-          <button className={s.buttonOneClick}>Купить в один клик</button>
+          <Link className={s.buttonOneClick} onClick={addToBasket} to={"/basket"}>Купить в один клик</Link>
         </div>
       </div>
     </div>

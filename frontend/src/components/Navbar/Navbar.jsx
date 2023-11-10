@@ -21,7 +21,7 @@ const Navbar = () => {
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
-    axios.get('https://frantsuz-shop.ru/api/users/', {
+    axios.get('http://127.0.0.1:8000/api/users/', {
 
       headers: {
         "Content-Type": "application/json",

@@ -53,7 +53,7 @@ const Basket = () => {
 	const handleSubmit = () => {
 
 		axios.request({
-			url: 'https://frantsuz-shop.ru/api/send-order/',
+			url: 'http://127.0.0.1:8000/api/send-order/',
 			data: {
 				decription: `${goodDisc}`,
 				goods_id: goodId,
@@ -70,7 +70,7 @@ const Basket = () => {
 		})
 			.then(response => {
 				axios.request({
-					url: 'https://frantsuz-shop.ru/api/payment/',
+					url: 'http://127.0.0.1:8000/api/payment/',
 					data: {
 						service_name: `${goodDisc}`,
 						num_order: goodId,

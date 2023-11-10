@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const goodsApiUrl = 'https://frantsuz-shop.ru/api/goods'
+const goodsApiUrl = 'http://127.0.0.1:8000/api/goods'
 export const basketApi = {
     get: async (token) => {
 

@@ -11,16 +11,11 @@ import { Link, useNavigate } from "react-router-dom";
 const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
   const navigate = useNavigate()
-
-
-
   const { autorisation, token } = useSelector(
     (state) => state.autorisationReducer
   );
   const [error, setError] = useState(false);
-
   const [recovery, setRecovery] = useState(false);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,7 +29,6 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   }, [autorisation]);
 
   const [register, setRegister] = useState(false);
-
   const [emailValue, setEmailValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [firstNameValue, setFirstNameValue] = useState("");
@@ -42,20 +36,15 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   const [passwordValue1, setPasswordValue1] = useState("");
   const [passwordValue2, setPasswordValue2] = useState("");
   const [recoveryEmail, setRecoveryEmail] = useState("")
-
   const [login, setLogin] = useState("");
   const [passwordLog, setPasswordLog] = useState("");
-
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
   const logIn = (event) => {
     event.preventDefault();
-
     axios
       .post(
-        `https://frantsuz-shop.ru/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
+        `http://127.0.0.1:8000/api/auth/${emailRegex.test(login) ? "token-email" : "token-phone"
         }/`,
-
         {
           email: emailRegex.test(login) === true ? login : null,
           phone: !emailRegex.test(login) ? login : null,
@@ -91,7 +80,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
 
     axios
       .post(
-        "https://frantsuz-shop.ru/api/users/",
+        "http://127.0.0.1:8000/api/users/",
         {
           phone: phoneValue,
           first_name: firstNameValue,
@@ -118,7 +107,7 @@ const Modal = ({ isShowingModal, setIsShowing, onCloseButtonClick }) => {
   const recoveryFunc = (event) => {
     event.preventDefault()
 
-    axios.post('https://frantsuz-shop.ru/api/users/reset_password/',
+    axios.post('http://127.0.0.1:8000/api/users/reset_password/',
       {
         email: recoveryEmail
       })
